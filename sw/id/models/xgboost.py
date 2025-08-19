@@ -9,14 +9,12 @@ class XGBoostSurrogate(BaseModel):
     """
 
     def __init__(self, **kwargs):
-        # sensible defaults, can be overridden
         self.model = XGBRegressor(
-            n_estimators=200,
-            learning_rate=0.1,
-            max_depth=6,
-            subsample=0.8,
-            colsample_bytree=0.8,
-            random_state=42,
+            colsample_bytree=1.0,
+            learning_rate=0.2,
+            max_depth=3,
+            n_estimators=50,
+            subsample=0.6,
             **kwargs
         )
 
