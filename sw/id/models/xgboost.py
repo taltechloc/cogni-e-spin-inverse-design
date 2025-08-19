@@ -1,5 +1,5 @@
 # models/xgboost_model.py
-from .base_model import BaseModel
+from id.models.base_model import BaseModel
 from xgboost import XGBRegressor
 
 

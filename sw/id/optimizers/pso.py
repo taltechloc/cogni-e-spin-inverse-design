@@ -1,6 +1,6 @@
 # optimizers/pso.py
 import numpy as np
-from .base_optimizer import BaseOptimizer
+from id.optimizers.base_optimizer import BaseOptimizer
 
 
 class PSOOptimizer(BaseOptimizer):

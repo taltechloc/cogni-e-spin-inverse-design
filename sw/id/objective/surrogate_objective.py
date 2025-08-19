@@ -1,6 +1,6 @@
 # objective/surrogate_objective.py
 import numpy as np
-from .base_objective import BaseObjective
+from id.objective.base_objective import BaseObjective
 
 
 class SurrogateObjective(BaseObjective):

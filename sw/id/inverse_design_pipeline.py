@@ -1,7 +1,6 @@
 import numpy as np
 from id.data.data_loader import DataLoader
-from InverseDesign.model_trainer import ModelTrainer
-from InverseDesign.optimizers.pso import PSOOptimizer
+from id.optimizers.pso import PSOOptimizer
 
 
 class InverseDesignPipeline:

@@ -1,6 +1,6 @@
 # models/base_model.py
 from abc import ABC, abstractmethod
-from InverseDesign.utils.metrics import regression_metrics
+from id.utils.metrics import regression_metrics
 
 
 class BaseModel(ABC):
