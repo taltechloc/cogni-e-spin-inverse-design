@@ -1,36 +1,38 @@
-import numpy as np
-from id.data.data_loader import DataLoader
-from id.optimizers.pso import PSOOptimizer
+from dataclasses import dataclass
+from typing import Any, List
 
+@dataclass
+class InverseDesignResult:
+    targets: List[Any]
+    predictions: List[Any]
+    candidates: List[Any]
+    cost_histories: List[Any]
+    model: Any
 
 class InverseDesignPipeline:
-    def __init__(self, data_path, target_col, optimizer_class=PSOOptimizer, model_params=None, optimizer_params=None):
-        self.data_loader = DataLoader(data_path)
-        self.target_col = target_col
-        self.model_params = model_params or {}
-        self.optimizer_params = optimizer_params or {}
-        self.optimizer_class = optimizer_class
-        self.model = None
-        self.X = None
-        self.y = None
+    def __init__(self, config):
+        self.method_name = config.method_name
 
-    def load_data(self):
-        df = self.data_loader.load()
-        self.X = df.drop(columns=[self.target_col])
-        self.y = df[self.target_col]
+    def run(self, method_func, model, X_train, y_train, X_val, y_val, boundaries):
+        model.train(X_train, y_train)
 
-    def train_model(self, X_train, y_train):
-        trainer = ModelTrainer(**self.model_params)
-        self.model = trainer.train(X_train, y_train)
-        return self.model
+        targets, preds, candidates, cost_histories = [], [], [], []
 
-    def run_optimizer(self, target, boundaries):
-        if self.model is None:
-            raise ValueError("Model must be trained before running optimizer.")
+        for target in y_val.values:
+            if self.method_name == "knn":
+                best_input, pred, cost_hist = method_func(model, target, X_train.values, y_train.values)
+            else:
+                best_input, pred, cost_hist = method_func(model, target, boundaries)
 
-        optimizer = self.optimizer_class(self.model, **self.optimizer_params)
-        best_input, pred, cost_history = optimizer.run(target, boundaries)
-        return best_input, pred, cost_history
+            targets.append(target)
+            preds.append(pred)
+            candidates.append(best_input)
+            cost_histories.append(cost_hist)
 
-    def get_features_targets(self):
-        return self.X, self.y
+        return InverseDesignResult(
+            targets=targets,
+            predictions=preds,
+            candidates=candidates,
+            cost_histories=cost_histories,
+            model=model
+        )

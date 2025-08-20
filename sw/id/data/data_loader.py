@@ -8,21 +8,12 @@ class DataLoader:
     Responsible only for loading and holding data.
     """
 
-    def __init__(self, df=None, file_path=None, file_type='csv', **kwargs):
-        """
-        Parameters:
-            df (pd.DataFrame): Preloaded DataFrame.
-            file_path (str): Path to CSV or Excel file.
-            file_type (str): 'csv' or 'excel'
-            **kwargs: Additional arguments for pandas read_csv/read_excel
-        """
-        if df is not None:
-            self.df = df.copy()
-        elif file_path:
-            if file_type == 'csv':
-                self.df = pd.read_csv(file_path, **kwargs)
-            elif file_type == 'excel':
-                self.df = pd.read_excel(file_path, **kwargs)
+    def __init__(self, config):
+        if config.file_path:
+            if config.file_type == 'csv':
+                self.df = pd.read_csv(config.file_path)
+            elif config.file_type == 'excel':
+                self.df = pd.read_excel(config.file_path)
             else:
                 raise ValueError("file_type must be 'csv' or 'excel'")
         else:

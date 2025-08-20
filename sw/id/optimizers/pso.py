@@ -8,16 +8,14 @@ class PSOOptimizer(BaseOptimizer):
     Particle Swarm Optimizer with inertia decay, velocity limits, and early stopping.
     """
 
-    def __init__(self, objective, bounds, n_particles=50, n_iter=20,
-                 w_max=0.9, w_min=0.4, c1=0.8, c2=0.9, max_velocity=0.2,
-                 early_stop_patience=60):
-        super().__init__(objective, bounds, n_iter)
-        self.n_particles = n_particles
-        self.dim = len(bounds)
-        self.w_max, self.w_min = w_max, w_min
-        self.c1, self.c2 = c1, c2
-        self.max_velocity = max_velocity
-        self.early_stop_patience = early_stop_patience
+    def __init__(self, config, objective, boundaries):
+        super().__init__(objective, boundaries, config.n_iter)
+        self.n_particles = config.n_particles
+        self.dim = len(boundaries)
+        self.w_max, self.w_min = config.w_max, config.w_min
+        self.c1, self.c2 = config.c1, config.c2
+        self.max_velocity = config.max_velocity
+        self.early_stop_patience = config.early_stop_patience
 
     def optimize(self, target):
         # Initialize particles and velocities

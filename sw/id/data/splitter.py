@@ -8,11 +8,11 @@ class Splitter:
     and applying train/test or k-fold splits.
     """
 
-    def __init__(self, df, target_column):
-        if target_column not in df.columns:
-            raise ValueError(f"{target_column} not found in DataFrame.")
+    def __init__(self, df, config):
+        if config.target_column not in df.columns:
+            raise ValueError(f"{config.arget_column} not found in DataFrame.")
         self.df = df
-        self.target_column = target_column
+        self.target_column = config.target_column
 
     def get_features_target(self):
         """Return X and y."""
