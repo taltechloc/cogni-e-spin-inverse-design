@@ -1,6 +1,25 @@
 # optimizers/pso.py
 import numpy as np
+from dataclasses import dataclass
+
+from id.optimizers._optimization_result import _OptimizationResult
 from id.optimizers.base_optimizer import BaseOptimizer
+
+
+@dataclass
+class PSOConfig:
+    """
+    Template configuration class for PSOOptimizer.
+    Actual values assignment in config.py.
+    """
+    n_iter: int
+    n_particles: int
+    w_max: float
+    w_min: float
+    c1: float
+    c2: float
+    max_velocity: float
+    early_stop_patience: int
 
 
 class PSOOptimizer(BaseOptimizer):
@@ -9,7 +28,8 @@ class PSOOptimizer(BaseOptimizer):
     """
 
     def __init__(self, config, objective, boundaries):
-        super().__init__(objective, boundaries, config.n_iter)
+        super().__init__(objective, boundaries)
+        self.n_iter = config.n_iter
         self.n_particles = config.n_particles
         self.dim = len(boundaries)
         self.w_max, self.w_min = config.w_max, config.w_min
@@ -17,14 +37,17 @@ class PSOOptimizer(BaseOptimizer):
         self.max_velocity = config.max_velocity
         self.early_stop_patience = config.early_stop_patience
 
-    def optimize(self, target):
-        # Initialize particles and velocities
-        lower_bounds = np.array([b[0] for b in self.bounds])
-        upper_bounds = np.array([b[1] for b in self.bounds])
-        param_ranges = upper_bounds - lower_bounds
-        v_max = self.max_velocity * param_ranges
+        # Derived values
+        self.lower_bounds = np.array([b[0] for b in self.boundaries])
+        self.upper_bounds = np.array([b[1] for b in self.boundaries])
+        self.param_ranges = self.upper_bounds - self.lower_bounds
+        self.v_max = self.max_velocity * self.param_ranges
 
-        particles = np.random.uniform(low=lower_bounds, high=upper_bounds,
+    def initialize_particles(self, target):
+        """
+        Initializes particles, velocities, best positions, and costs.
+        """
+        particles = np.random.uniform(low=self.lower_bounds, high=self.upper_bounds,
                                       size=(self.n_particles, self.dim))
         velocities = np.zeros_like(particles)
 
@@ -34,6 +57,13 @@ class PSOOptimizer(BaseOptimizer):
         global_best_index = np.argmin(best_costs)
         global_best_position = best_positions[global_best_index].copy()
         global_best_cost = best_costs[global_best_index]
+
+        return particles, velocities, best_positions, best_costs, global_best_position, global_best_cost
+
+    def optimize(self, target):
+        # Initialization step
+        particles, velocities, best_positions, best_costs, global_best_position, global_best_cost = \
+            self.initialize_particles(target)
 
         cost_history = []
         no_improvement_counter = 0
@@ -47,10 +77,10 @@ class PSOOptimizer(BaseOptimizer):
             cognitive = self.c1 * r1 * (best_positions - particles)
             social = self.c2 * r2 * (global_best_position - particles)
             velocities = w * velocities + cognitive + social
-            velocities = np.clip(velocities, -v_max, v_max)
+            velocities = np.clip(velocities, -self.v_max, self.v_max)
 
             particles += velocities
-            particles = np.clip(particles, lower_bounds, upper_bounds)
+            particles = np.clip(particles, self.lower_bounds, self.upper_bounds)
 
             # Evaluate
             costs = np.array([self.objective.evaluate(p, target) for p in particles])
@@ -75,4 +105,9 @@ class PSOOptimizer(BaseOptimizer):
                 break
 
         predicted = self.objective.model.predict(global_best_position.reshape(1, -1))[0]
-        return global_best_position, predicted, cost_history
+        return _OptimizationResult(
+            best_candidates=global_best_position,
+            best_prediction=predicted,
+            cost_history=cost_history,
+            n_iterations=len(cost_history)
+        )

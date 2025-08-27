@@ -1,6 +1,22 @@
 # models/xgboost_model.py
-from id.models.base_model import BaseModel
 from xgboost import XGBRegressor
+from dataclasses import dataclass
+
+from id.models.base_model import BaseModel
+
+
+@dataclass
+class XGBoostConfig:
+    """
+    Configuration template for XGBoostSurrogate model.
+    Actual values assigned in config.py
+    """
+    n_estimators: int
+    colsample_bytree: float
+    learning_rate: float
+    max_depth: int
+    subsample: float
+    random_state: int = 42  # default value
 
 
 class XGBoostSurrogate(BaseModel):
