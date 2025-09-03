@@ -38,6 +38,11 @@ def pad_and_average_costs(cost_histories):
     return np.nanmean(padded, axis=0)
 
 
+def log_and_print(message, log_file):
+    print(message, end="")         # print to console
+    log_file.write(message)        # write to file
+    log_file.flush()               # flush immediately (so you see updates live)
+
 # -------------------------
 # Main workflow
 # -------------------------
@@ -89,27 +94,31 @@ def main():
                 fold_metrics["candidates"].append(candidate)
 
                 # Log per sample
-                log_f.write(
+                log_and_print(
                     f"------\nTest index: {X_test.index[idx]}\n"
                     f"Target: {target_value}\n"
                     f"Candidate: {candidate}\n"
                     f"Predicted: {predicted}\n"
                     f"Absolute error: {abs_error}\n"
-                    f"Final cost: {cost_history[-1]}\n------\n"
+                    f"Final cost: {cost_history[-1]}\n------\n",
+                    log_f
                 )
 
             # Fold summary: compute MAE and RMSE properly
             mae_mean = np.mean(fold_metrics["abs_errors"])
             mae_std = np.std(fold_metrics["abs_errors"])
             rmse_mean = np.sqrt(np.mean(np.square(fold_metrics["abs_errors"])))
-            rmse_std = np.sqrt(np.mean(np.square(fold_metrics["abs_errors"])))  # or std of squared errors if you want
+            rmse_std = np.sqrt(np.mean(np.square(fold_metrics["abs_errors"])))
             fold_r2 = r2_score(fold_metrics["y_test"], fold_metrics["y_pred"])
             fold_cost_histories_all.append(pad_and_average_costs(fold_metrics["cost_histories"]))
 
-            log_f.write(f"\nFold {fold_idx} averages:\n"
-                        f"MAE: {mae_mean:.4f} ± {mae_std:.4f}\n"
-                        f"RMSE: {rmse_mean:.4f} ± {rmse_std:.4f}\n"
-                        f"R²: {fold_r2:.4f}\n")
+            log_and_print(
+                f"\nFold {fold_idx} averages:\n"
+                f"MAE: {mae_mean:.4f} ± {mae_std:.4f}\n"
+                f"RMSE: {rmse_mean:.4f} ± {rmse_std:.4f}\n"
+                f"R²: {fold_r2:.4f}\n",
+                log_f
+            )
 
             all_results["targets"].extend(fold_metrics["y_test"])
             all_results["predictions"].extend(fold_metrics["y_pred"])
@@ -121,15 +130,29 @@ def main():
         for metric in ["mae", "rmse", "r2"]:
             all_results[f"{metric}_list"] = [f"{metric}_mean" for f in all_fold_metrics]
 
+        mae_means = [m["mae_mean"] for m in all_fold_metrics]
+        rmse_means = [m["rmse_mean"] for m in all_fold_metrics]
+        r2_scores = [m["r2"] for m in all_fold_metrics]
+
+        summary_msg = (
+            "\n=== Overall Summary Across Folds ===\n"
+            f"MAE: {np.mean(mae_means):.4f} ± {np.std(mae_means):.4f}\n"
+            f"RMSE: {np.mean(rmse_means):.4f} ± {np.std(rmse_means):.4f}\n"
+            f"R²: {np.mean(r2_scores):.4f} ± {np.std(r2_scores):.4f}\n"
+        )
+        log_and_print(summary_msg, log_f)
+        log_and_print(summary_msg, log_f)
+
     # Plot results
     plot_target_vs_prediction_per_fold(
         all_results, "PSO", n_folds=5,
         save_path=os.path.join(plots_folder, "target_vs_prediction_per_fold.png")
     )
-    plot_target_vs_prediction_overall(
-        all_results, "PSO",
-        save_path=os.path.join(plots_folder, "target_vs_prediction_overall.png")
-    )
+    # plot_target_vs_prediction_overall(
+    #     all_results, "PSO",
+    #     save_path=os.path.join(plots_folder, "target_vs_prediction_overall.png")
+    # )
+
     plot_cost_trajectories(
         fold_cost_histories_all, "PSO",
         save_path=os.path.join(plots_folder, "cost_trajectories.png")
