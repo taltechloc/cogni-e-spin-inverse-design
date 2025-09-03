@@ -5,6 +5,7 @@ from id.pipeline import Pipeline
 from sklearn.model_selection import KFold
 from sklearn.metrics import r2_score
 import numpy as np
+import pandas as pd
 from datetime import datetime
 import os
 from id.utils.plot_utils import (
@@ -12,7 +13,6 @@ from id.utils.plot_utils import (
     plot_target_vs_prediction_overall,
     plot_cost_trajectories
 )
-
 
 # -------------------------
 # Helper functions
@@ -39,9 +39,9 @@ def pad_and_average_costs(cost_histories):
 
 
 def log_and_print(message, log_file):
-    print(message, end="")         # print to console
-    log_file.write(message)        # write to file
-    log_file.flush()               # flush immediately (so you see updates live)
+    print(message, end="")
+    log_file.write(message)
+    log_file.flush()
 
 # -------------------------
 # Main workflow
@@ -60,6 +60,8 @@ def main():
                    "cost_histories": [], "mae_list": [], "rmse_list": [], "r2_list": []}
     fold_cost_histories_all = []
 
+    candidate_records = []  # for storing dataframe of candidates
+
     with open(log_file, "w") as log_f:
         kf = KFold(n_splits=5, shuffle=True, random_state=Global.seed)
         all_fold_metrics = []
@@ -69,10 +71,10 @@ def main():
             X_train, X_test = X_full.iloc[train_idx], X_full.iloc[test_idx]
             y_train, y_test = y_full.iloc[train_idx], y_full.iloc[test_idx]
 
-            # Train surrogate model
             model = train_surrogate_model(X_train, y_train)
 
-            fold_metrics = {"abs_errors": [], "y_test": [], "y_pred": [], "cost_histories": [], "candidates": []}
+            fold_metrics = {"abs_errors": [], "y_test": [], "y_pred": [],
+                            "cost_histories": [], "candidates": []}
 
             for idx, target_value in enumerate(y_test):
                 pipeline = Pipeline(optimizer_config=pso_config, data_x=X_train, model=model)
@@ -93,6 +95,14 @@ def main():
                 fold_metrics["cost_histories"].append(cost_history)
                 fold_metrics["candidates"].append(candidate)
 
+                # Record for candidate DataFrame
+                candidate_records.append({
+                    "real_inputs": X_test.iloc[idx].tolist(),
+                    "given_candidate": candidate,
+                    "target": target_value,
+                    "predicted": predicted
+                })
+
                 # Log per sample
                 log_and_print(
                     f"------\nTest index: {X_test.index[idx]}\n"
@@ -104,7 +114,6 @@ def main():
                     log_f
                 )
 
-            # Fold summary: compute MAE and RMSE properly
             mae_mean = np.mean(fold_metrics["abs_errors"])
             mae_std = np.std(fold_metrics["abs_errors"])
             rmse_mean = np.sqrt(np.mean(np.square(fold_metrics["abs_errors"])))
@@ -126,32 +135,17 @@ def main():
             all_fold_metrics.append({"mae_mean": mae_mean, "mae_std": mae_std,
                                      "rmse_mean": rmse_mean, "rmse_std": rmse_std, "r2": fold_r2})
 
-        # Aggregate overall metrics
-        for metric in ["mae", "rmse", "r2"]:
-            all_results[f"{metric}_list"] = [f"{metric}_mean" for f in all_fold_metrics]
-
-        mae_means = [m["mae_mean"] for m in all_fold_metrics]
-        rmse_means = [m["rmse_mean"] for m in all_fold_metrics]
-        r2_scores = [m["r2"] for m in all_fold_metrics]
-
-        summary_msg = (
-            "\n=== Overall Summary Across Folds ===\n"
-            f"MAE: {np.mean(mae_means):.4f} ± {np.std(mae_means):.4f}\n"
-            f"RMSE: {np.mean(rmse_means):.4f} ± {np.std(rmse_means):.4f}\n"
-            f"R²: {np.mean(r2_scores):.4f} ± {np.std(r2_scores):.4f}\n"
-        )
-        log_and_print(summary_msg, log_f)
-        log_and_print(summary_msg, log_f)
+    # Save candidate DataFrame
+    df_candidates = pd.DataFrame(candidate_records)
+    df_candidates_path = os.path.join(run_folder, "pso_candidates.csv")
+    df_candidates.to_csv(df_candidates_path, index=False)
+    print(f"Candidate DataFrame saved to {df_candidates_path}")
 
     # Plot results
     plot_target_vs_prediction_per_fold(
         all_results, "PSO", n_folds=5,
         save_path=os.path.join(plots_folder, "target_vs_prediction_per_fold.png")
     )
-    # plot_target_vs_prediction_overall(
-    #     all_results, "PSO",
-    #     save_path=os.path.join(plots_folder, "target_vs_prediction_overall.png")
-    # )
 
     plot_cost_trajectories(
         fold_cost_histories_all, "PSO",
