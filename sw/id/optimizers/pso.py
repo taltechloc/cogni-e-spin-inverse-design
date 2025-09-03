@@ -20,6 +20,7 @@ class PSOConfig:
     c2: float
     max_velocity: float
     early_stop_patience: int
+    optimizer_type: str = "PSO"
 
 
 class PSOOptimizer(BaseOptimizer):
