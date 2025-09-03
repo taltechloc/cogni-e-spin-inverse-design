@@ -3,12 +3,11 @@ from id.optimizers.pso import PSOConfig
 
 
 class Global:
-    surrogate_model_type = "xgboost"
-    optimizer_type = "PSO"
+    seed = 42
 
 
 class DataConfig:
-    file_path = "../../data/PVA-Ziabari-2009.csv"
+    file_path = "../../../data/PVA-Ziabari-2009.csv"
     file_type = "csv"
     target_column = "diameter"
 

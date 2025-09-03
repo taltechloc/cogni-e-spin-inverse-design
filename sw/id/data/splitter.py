@@ -25,15 +25,3 @@ class Splitter:
         X, y = self.get_features_target()
         return train_test_split(X, y, test_size=test_size, random_state=random_state)
 
-    def kfold_split(self, n_splits=5, shuffle=True, random_state=None):
-        """
-        Generator for K-Fold splits.
-        Yields (X_train, X_test, y_train, y_test) for each fold.
-        """
-        X, y = self.get_features_target()
-        kf = KFold(n_splits=n_splits, shuffle=shuffle, random_state=random_state)
-
-        for train_idx, test_idx in kf.split(X):
-            X_train, X_test = X.iloc[train_idx], X.iloc[test_idx]
-            y_train, y_test = y.iloc[train_idx], y.iloc[test_idx]
-            yield X_train, X_test, y_train, y_test
