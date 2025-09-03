@@ -27,7 +27,6 @@ def main():
     target_value = float(input("Enter target fiber diameter: "))
     pipeline.run(target_value)
 
-    # --- Print result ---
     print(pipeline)
 
 
