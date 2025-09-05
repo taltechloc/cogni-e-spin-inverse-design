@@ -65,6 +65,10 @@ class PSOOptimizer(BaseOptimizer):
         cost_history = []
         no_improvement_counter = 0
 
+        # Keep track of top 5 candidates (list of tuples: (cost, position))
+        top_candidates = [(c, p.copy()) for c, p in zip(best_costs, best_positions)]
+        top_candidates = sorted(top_candidates, key=lambda x: x[0])[:5]
+
         for iteration in range(self.n_iter):
             # Inertia weight decay
             w = self.w_max - (self.w_max - self.w_min) * (iteration / self.n_iter)
@@ -96,15 +100,25 @@ class PSOOptimizer(BaseOptimizer):
             else:
                 no_improvement_counter += 1
 
+            # Update top 5 candidates
+            all_candidates = top_candidates + [(c, p.copy()) for c, p in zip(costs, particles)]
+            top_candidates = sorted(all_candidates, key=lambda x: x[0])[:5]
+
             cost_history.append(global_best_cost)
 
             if no_improvement_counter >= self.early_stop_patience:
                 break
 
+        # Extract positions from top_candidates
+        top_positions = [p for c, p in top_candidates]
+
         predicted = self.objective.model.predict(global_best_position.reshape(1, -1))[0]
+
+
         return OptimizationResult(
             best_candidates=global_best_position,
             best_prediction=predicted,
             cost_history=cost_history,
+            top_candidates=top_positions,
             n_iterations=len(cost_history)
         )
