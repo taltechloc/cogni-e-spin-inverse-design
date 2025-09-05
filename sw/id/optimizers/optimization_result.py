@@ -14,3 +14,4 @@ class OptimizationResult:
     cost_history: List[float]
     top_candidates: Optional[List[np.ndarray]]
     n_iterations: int = 0
+    plots_data: None = None
