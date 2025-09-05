@@ -3,7 +3,7 @@ from dataclasses import dataclass
 
 @dataclass
 class DataConfig:
-    file_path: str = "/home/mehrab/Projects/Cogni-E-Spin-Inverse-Design/data/PVA-Ziabari-2009.csv"
+    file_path: str = "/home/mehrab/Projects/Cogni-E-Spin-Inverse-Design/dataset/PVA-Ziabari-2009.csv"
     file_type: str = "csv"
     target_column: str = "diameter"
 

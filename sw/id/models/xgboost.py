@@ -24,14 +24,14 @@ class XGBoostSurrogate(BaseModel):
     XGBoost surrogate model for regression tasks.
     """
 
-    def __init__(self, config):
+    def __init__(self, definition):
         self.model = XGBRegressor(
-            n_estimators=config.n_estimators,
-            colsample_bytree=config.colsample_bytree,
-            learning_rate=config.learning_rate,
-            max_depth=config.max_depth,
-            subsample=config.subsample,
-            random_state=getattr(config, "random_state", 42)
+            n_estimators=definition.get("n_estimators"),
+            colsample_bytree=definition.get("colsample_bytree"),
+            learning_rate=definition.get("learning_rate"),
+            max_depth=definition.get("max_depth"),
+            subsample=definition.get("subsample"),
+            random_state=definition.get("random_state")
         )
 
     def train(self, X, y):

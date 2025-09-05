@@ -1,16 +1,17 @@
-from config import DataConfig, Global, xgb_config, pso_config
-from id.data.data_loader import DataLoader
-from id.models.model_type import ModelType
-from id.pipeline import Pipeline
-from sklearn.model_selection import KFold
-from sklearn.metrics import r2_score
+import json
+import os
+from datetime import datetime
+
 import numpy as np
 import pandas as pd
-from datetime import datetime
-import os
+from sklearn.model_selection import KFold
+from sklearn.metrics import r2_score
+
+from id.dataset import Dataset
+from id.models.model_type import ModelType
+from id.pipeline_factory import PipelineFactory
 from id.utils.plot_utils import (
     plot_target_vs_prediction_per_fold,
-    plot_target_vs_prediction_overall,
     plot_cost_trajectories
 )
 
@@ -23,62 +24,74 @@ def create_run_folder(base="main"):
     run_folder = os.path.join(base, timestamp)
     plots_folder = os.path.join(run_folder, "plots")
     os.makedirs(plots_folder, exist_ok=True)
-    return run_folder, plots_folder, os.path.join(run_folder, "log.txt")
+    log_file = os.path.join(run_folder, "log.txt")
+    return run_folder, plots_folder, log_file
 
 
-def train_surrogate_model(X, y):
-    model = ModelType.from_str('XGBoostSurrogate').create(xgb_config)
+def train_surrogate_model(X, y, model_def):
+    """Train a surrogate model from a model definition dict."""
+    model_type = model_def["type"]
+    model_params = model_def.get("params", {})
+    model = ModelType.from_str(model_type).create(model_params)
     model.train(X, y)
     return model
 
 
 def pad_and_average_costs(cost_histories):
+    """Pad cost histories to equal length and average."""
     max_len = max(len(ch) for ch in cost_histories)
     padded = [np.pad(ch, (0, max_len - len(ch)), constant_values=np.nan) for ch in cost_histories]
     return np.nanmean(padded, axis=0)
 
 
-def log_and_print(message, log_file):
+def log_and_print(message, log_file_handle):
     print(message, end="")
-    log_file.write(message)
-    log_file.flush()
+    log_file_handle.write(message)
+    log_file_handle.flush()
+
 
 # -------------------------
 # Main workflow
 # -------------------------
 
 def main():
-    # Load data
-    df = DataLoader(DataConfig).get_dataframe()
-    df.drop("diameter_stdev", axis=1, inplace=True)
-    X_full, y_full = df.drop(columns=[DataConfig.target_column]), df[DataConfig.target_column]
+    # Load configuration
+    with open("config.json", "r") as f:
+        config = json.load(f)
+
+    dataset_cfg = config["dataset"]
+    pipeline_cfg = config["pipeline"]
+    model_cfg = config["model"]
+
+    # Load dataset
+    dataset = Dataset(dataset_cfg)
+    if "diameter_stdev" in dataset.df.columns:
+        dataset.df.drop("diameter_stdev", axis=1, inplace=True)
+    X_full, y_full = dataset.get_features_target(scaled=False)
 
     # Create run folder
-    run_folder, plots_folder, log_file = create_run_folder()
+    run_folder, plots_folder, log_file_path = create_run_folder()
 
-    all_results = {"targets": [], "predictions": [], "candidates": [],
-                   "cost_histories": [], "mae_list": [], "rmse_list": [], "r2_list": []}
+    candidate_records = []
+    all_results = {"targets": [], "predictions": [], "candidates": [], "cost_histories": []}
     fold_cost_histories_all = []
 
-    candidate_records = []  # for storing dataframe of candidates
-
-    with open(log_file, "w") as log_f:
-        kf = KFold(n_splits=5, shuffle=True, random_state=Global.seed)
-        all_fold_metrics = []
-
+    with open(log_file_path, "w") as log_f:
+        kf = KFold(n_splits=5, shuffle=True, random_state=config.get("seed", 42))
         for fold_idx, (train_idx, test_idx) in enumerate(kf.split(X_full), start=1):
-            log_f.write(f"\n=== Fold {fold_idx} ===\n")
+            log_and_print(f"\n=== Fold {fold_idx} ===\n", log_f)
+
             X_train, X_test = X_full.iloc[train_idx], X_full.iloc[test_idx]
             y_train, y_test = y_full.iloc[train_idx], y_full.iloc[test_idx]
 
-            model = train_surrogate_model(X_train, y_train)
+            # Train surrogate model
+            model = train_surrogate_model(X_train, y_train, model_cfg)
 
-            fold_metrics = {"abs_errors": [], "y_test": [], "y_pred": [],
-                            "cost_histories": [], "candidates": []}
+            fold_cost_histories = []
 
             for idx, target_value in enumerate(y_test):
-                pipeline = Pipeline(optimizer_config=pso_config, data_x=X_train, model=model)
-                result = pipeline.run(target_value)
+                pipeline = PipelineFactory.create_pipeline(pipeline_cfg, X_train, model)
+                result = pipeline.run(float(target_value))
 
                 candidate = result.best_candidates
                 predicted = model.predict(np.array(candidate).reshape(1, -1))[0]
@@ -89,11 +102,10 @@ def main():
                     cost_history = [cost_history]
 
                 # Store metrics
-                fold_metrics["abs_errors"].append(abs_error)
-                fold_metrics["y_test"].append(target_value)
-                fold_metrics["y_pred"].append(predicted)
-                fold_metrics["cost_histories"].append(cost_history)
-                fold_metrics["candidates"].append(candidate)
+                fold_cost_histories.append(cost_history)
+                all_results["targets"].append(target_value)
+                all_results["predictions"].append(predicted)
+                all_results["candidates"].append(candidate)
 
                 # Record for candidate DataFrame
                 candidate_records.append({
@@ -114,30 +126,16 @@ def main():
                     log_f
                 )
 
-            mae_mean = np.mean(fold_metrics["abs_errors"])
-            mae_std = np.std(fold_metrics["abs_errors"])
-            rmse_mean = np.sqrt(np.mean(np.square(fold_metrics["abs_errors"])))
-            rmse_std = np.sqrt(np.mean(np.square(fold_metrics["abs_errors"])))
-            fold_r2 = r2_score(fold_metrics["y_test"], fold_metrics["y_pred"])
-            fold_cost_histories_all.append(pad_and_average_costs(fold_metrics["cost_histories"]))
+            # Save fold cost history for plotting
+            fold_cost_histories_all.append(pad_and_average_costs(fold_cost_histories))
 
-            log_and_print(
-                f"\nFold {fold_idx} averages:\n"
-                f"MAE: {mae_mean:.4f} ± {mae_std:.4f}\n"
-                f"RMSE: {rmse_mean:.4f} ± {rmse_std:.4f}\n"
-                f"R²: {fold_r2:.4f}\n",
-                log_f
-            )
-
-            all_results["targets"].extend(fold_metrics["y_test"])
-            all_results["predictions"].extend(fold_metrics["y_pred"])
-            all_results["candidates"].extend(fold_metrics["candidates"])
-            all_fold_metrics.append({"mae_mean": mae_mean, "mae_std": mae_std,
-                                     "rmse_mean": rmse_mean, "rmse_std": rmse_std, "r2": fold_r2})
+            # Fold-level metrics
+            fold_r2 = r2_score(y_test, [model.predict(np.array(c).reshape(1, -1))[0] for c in all_results["candidates"][-len(y_test):]])
+            log_and_print(f"\nFold {fold_idx} R²: {fold_r2:.4f}\n", log_f)
 
     # Save candidate DataFrame
     df_candidates = pd.DataFrame(candidate_records)
-    df_candidates_path = os.path.join(run_folder, "pso_candidates.csv")
+    df_candidates_path = os.path.join(run_folder, "candidates.csv")
     df_candidates.to_csv(df_candidates_path, index=False)
     print(f"Candidate DataFrame saved to {df_candidates_path}")
 

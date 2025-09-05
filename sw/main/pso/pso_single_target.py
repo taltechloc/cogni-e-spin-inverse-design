@@ -1,29 +1,33 @@
-from config import DataConfig, xgb_config, pso_config
-import config
-from id.data.data_loader import DataLoader
-from id.data.splitter import Splitter
+import json
+from id.dataset import Dataset
 from id.models.model_type import ModelType
-from id.pipeline import Pipeline
+from id.pipeline_factory import PipelineFactory
 
 
-def _train_surrogate_model(X, y):
-    model = ModelType.from_str('XGBoostSurrogate').create(xgb_config)
+def _train_surrogate_model(X, y, model_def):
+    model_type = model_def["type"]
+    model_params = model_def.get("params", {})
+    model = ModelType.from_str(model_type).create(model_params)
     model.train(X, y)
     return model
 
 
 def main():
-    # --- Load and preprocess data ---
-    df = DataLoader(DataConfig).get_dataframe()
-    df.drop("diameter_stdev", axis=1, inplace=True)
-    splitter = Splitter(df, DataConfig)
-    X, y = splitter.get_features_target()
+    with open("config.json", "r") as f:
+        config = json.load(f)
 
-    # --- Train surrogate model ---
-    model = _train_surrogate_model(X, y)
+    dataset_cfg = config["dataset"]
+    dataset = Dataset(dataset_cfg)
 
-    # --- Create pipeline and run optimization ---
-    pipeline = Pipeline(optimizer_config=pso_config, data_x=X, model=model)
+    if "diameter_stdev" in dataset.df.columns:
+        dataset.df.drop("diameter_stdev", axis=1, inplace=True)
+
+    X, y = dataset.get_features_target(scaled=False)
+
+    model = _train_surrogate_model(X, y, config["model"])
+
+    pipeline = PipelineFactory.create_pipeline(config["pipeline"], X, model)
+
     target_value = float(input("Enter target fiber diameter: "))
     pipeline.run(target_value)
 

@@ -1,42 +1,38 @@
 # optimizers/pso.py
 import numpy as np
-from dataclasses import dataclass
 
-from id.optimizers._optimization_result import _OptimizationResult
+from id.optimizers.optimization_result import OptimizationResult
 from id.optimizers.base_optimizer import BaseOptimizer
 
 
-@dataclass
-class PSOConfig:
-    """
-    Template configuration class for PSOOptimizer.
-    Actual values assignment in config.py.
-    """
-    n_iter: int
-    n_particles: int
-    w_max: float
-    w_min: float
-    c1: float
-    c2: float
-    max_velocity: float
-    early_stop_patience: int
-    optimizer_type: str = "PSO"
-
+PSOConfig = {
+    # Template configuration for PSOOptimizer
+    # Actual values assignment in config.py
+    "n_iter": None,              # int
+    "n_particles": None,         # int
+    "w_max": None,               # float
+    "w_min": None,               # float
+    "c1": None,                  # float
+    "c2": None,                  # float
+    "max_velocity": None,        # float
+    "early_stop_patience": None, # int
+    "optimizer_type": "PSO"      # str (default)
+}
 
 class PSOOptimizer(BaseOptimizer):
     """
     Particle Swarm Optimizer with inertia decay, velocity limits, and early stopping.
     """
 
-    def __init__(self, config, objective, boundaries):
+    def __init__(self, definition, objective, boundaries):
         super().__init__(objective, boundaries)
-        self.n_iter = config.n_iter
-        self.n_particles = config.n_particles
+        self.n_iter = definition.get("n_iter")
+        self.n_particles = definition.get("n_particles")
         self.dim = len(boundaries)
-        self.w_max, self.w_min = config.w_max, config.w_min
-        self.c1, self.c2 = config.c1, config.c2
-        self.max_velocity = config.max_velocity
-        self.early_stop_patience = config.early_stop_patience
+        self.w_max, self.w_min = definition.get("w_max"), definition.get("w_min")
+        self.c1, self.c2 = definition.get("c1"), definition.get("c2")
+        self.max_velocity = definition.get("max_velocity")
+        self.early_stop_patience = definition.get("early_stop_patience")
 
         # Derived values
         self.lower_bounds = np.array([b[0] for b in self.boundaries])
@@ -106,7 +102,7 @@ class PSOOptimizer(BaseOptimizer):
                 break
 
         predicted = self.objective.model.predict(global_best_position.reshape(1, -1))[0]
-        return _OptimizationResult(
+        return OptimizationResult(
             best_candidates=global_best_position,
             best_prediction=predicted,
             cost_history=cost_history,

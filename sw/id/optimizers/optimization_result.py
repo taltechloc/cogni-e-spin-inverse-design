@@ -5,7 +5,7 @@ import numpy as np
 
 
 @dataclass
-class _OptimizationResult:
+class OptimizationResult:
     """
     Generic container for storing optimizer results.
     """

@@ -13,4 +13,4 @@ class OptimizerType(Enum):
         if self is OptimizerType.PSO:
             return PSOOptimizer(**kwargs)
         else:
-            raise OptimizerTypeError('Unknown optimizer type: ' + str(self))
+            raise OptimizerTypeError("Unknown optimizer type: " + str(self))

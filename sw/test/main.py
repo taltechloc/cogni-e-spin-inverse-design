@@ -94,7 +94,7 @@ def plot_results(results, eval_results, method_name, n_perturb):
 # =====================
 
 def main():
-    # --- Load data ---
+    # --- Load dataset ---
     data_config = DataConfig()
     loader = DataLoader(data_config)
     df = loader.get_dataframe()

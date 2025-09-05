@@ -1,5 +1,5 @@
-from id.data.data_loader import DataLoader
-from id.data.splitter import Splitter
+from id.dataset.data_loader import DataLoader
+from id.dataset.splitter import Splitter
 from id.models.xgboost import XGBoostSurrogate
 from id.objective.surrogate_objective import SurrogateObjective
 from id.optimizers.pso import PSOOptimizer
@@ -10,7 +10,7 @@ from id.optimizers.pso import PSOOptimizer
 # =====================
 
 def main():
-    # --- Load data ---
+    # --- Load dataset ---
     data_config = DataConfig()
     loader = DataLoader(data_config)
     df = loader.get_dataframe()
@@ -24,13 +24,13 @@ def main():
     # --- Train model ---
     model_config = ModelConfig()
     model = XGBoostSurrogate(model_config)
-    model.train(X, y)  # train on full data or specific train split
+    model.train(X, y)  # train on full dataset or specific train split
 
     # --- Define optimizer ---
     optimizer_config = OptimizerConfig()
     target_value = float(input("Enter target fiber diameter: "))  # single target
     objective = SurrogateObjective(model)
-    optimizer = PSOOptimizer(config=optimizer_config, objective=objective, boundaries=boundaries)
+    optimizer = PSOOptimizer(definition=optimizer_config, objective=objective, boundaries=boundaries)
 
     # --- Run PSO for single target ---
     best_input, predicted, cost_history = optimizer.optimize(target_value)
