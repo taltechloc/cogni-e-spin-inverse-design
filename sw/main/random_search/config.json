@@ -1,0 +1,35 @@
+{
+  "global": {
+    "seed": 42
+  },
+  "dataset": {
+    "file_path": "../../../data/PVA-Ziabari-2009.csv",
+    "file_type": "csv",
+    "target_column": "diameter"
+  },
+  "model": {
+    "type": "XGBoostSurrogate",
+    "params": {
+      "n_estimators": 100,
+      "colsample_bytree": 0.8,
+      "learning_rate": 0.05,
+      "max_depth": 6,
+      "subsample": 0.9,
+      "random_state": 42
+    }
+  },
+  "pipeline": {
+    "boundaries": {
+      "method": "minmax"
+    },
+    "objective": {
+      "type": "SURROGATE",
+      "params": {
+        "regularization": 0.1
+      }
+    },
+    "optimizer": {
+      "optimizer_type": "RANSOM_SEARCH"
+    }
+  }
+}
