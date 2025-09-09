@@ -1,3 +1,4 @@
+import datetime
 import json
 import os
 from id.dataset import Dataset
@@ -32,7 +33,8 @@ def main():
     print(pipeline)
 
 
-    run_folder = "plots"  # you can customize or create a timestamped folder
+    timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    run_folder = os.path.join("plots", timestamp)
     os.makedirs(run_folder, exist_ok=True)
 
     for name, fig in result.plots_data.items():

@@ -1,5 +1,7 @@
 import json
 import os
+import datetime
+
 from id.dataset import Dataset
 from id.models.model_type import ModelType
 from id.pipeline_factory import PipelineFactory
@@ -30,7 +32,8 @@ def main():
     print(pipeline)
 
 
-    run_folder = "plots"  # you can customize or create a timestamped folder
+    timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    run_folder = os.path.join("plots", timestamp)
     os.makedirs(run_folder, exist_ok=True)
 
     for name, fig in result.plots_data.items():
