@@ -29,7 +29,7 @@
       }
     },
     "optimizer": {
-      "optimizer_type": "KNNSearch"
+      "optimizer_type": "KNN_SEARCH"
     }
   }
 }

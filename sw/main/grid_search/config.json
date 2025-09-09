@@ -29,7 +29,7 @@
       }
     },
     "optimizer": {
-      "optimizer_type": "GA_Optimizer"
+      "optimizer_type": "GRID_SEARCH"
     }
   }
 }

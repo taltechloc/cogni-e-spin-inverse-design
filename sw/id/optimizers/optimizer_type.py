@@ -12,10 +12,10 @@ class OptimizerTypeError(Exception):
 
 
 class OptimizerType(Enum):
-    PSO = "PSOOptimizer"
+    PSO = "PSO"
     RANDOM_SEARCH = "RANDOM_SEARCH"
-    KNNSearch = "KNNSearch"
-    GA_Optimizer = "GA_Optimizer"
+    KNN_Search = "KNN_Search"
+    GA = "GA"
     GRID_SEARCH = "GRID_SEARCH"
 
 
@@ -24,9 +24,9 @@ class OptimizerType(Enum):
             return PSOOptimizer(**kwargs)
         elif self is OptimizerType.RANDOM_SEARCH:
             return RandomSearchOptimizer(**kwargs)
-        elif self is OptimizerType.KNNSearch:
-            return KNNSearch(**kwargs)
-        elif self is OptimizerType.GA_Optimizer:
+        elif self is OptimizerType.KNN_Search:
+            return KNN_Search(**kwargs)
+        elif self is OptimizerType.GA:
             return GAOptimizer(**kwargs)
         elif self is OptimizerType.GRID_SEARCH:
             return GridSearchOptimizer(**kwargs)
