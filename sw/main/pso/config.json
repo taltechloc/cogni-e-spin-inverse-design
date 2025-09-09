@@ -30,13 +30,13 @@
     },
     "optimizer": {
       "optimizer_type": "PSO",
-      "n_iter": 500,
-      "n_particles": 100,
+      "n_iter": 50,
+      "n_particles": 20,
       "w_max": 0.9,
       "w_min": 0.4,
       "c1": 2.0,
       "c2": 2.0,
-      "max_velocity": 0.2,
+      "max_velocity": 0.4,
       "early_stop_patience": 50
     }
   }

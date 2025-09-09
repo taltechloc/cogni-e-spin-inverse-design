@@ -29,7 +29,7 @@
       }
     },
     "optimizer": {
-      "optimizer_type": "RANSOM_SEARCH"
+      "optimizer_type": "RANDOM_SEARCH"
     }
   }
 }
