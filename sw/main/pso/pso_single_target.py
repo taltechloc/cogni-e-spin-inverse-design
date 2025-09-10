@@ -35,7 +35,7 @@ def main():
     result = pipeline.run(target_value)
 
     print(pipeline)
-    is_novel = maha_distance.distance(result.best_candidates.reshape(1, -1))
+    is_novel = maha_distance.find_distance(result.best_candidates.reshape(1, -1))
     print(f"Is the point novel? {is_novel[0]}")
 
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")

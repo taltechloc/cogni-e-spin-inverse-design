@@ -20,7 +20,7 @@ class MahalanobisDistance:
         cov_reg = cov + self.reg * np.eye(cov.shape[0])
         self.cov_inv = np.linalg.pinv(cov_reg)
 
-    def distance(self, X: np.ndarray) -> np.ndarray:
+    def find_distance(self, X: np.ndarray) -> np.ndarray:
         """
         Compute Mahalanobis distance(s) of given point(s) from the training distribution.
         Returns a numpy array of distances.

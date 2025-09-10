@@ -48,7 +48,7 @@ def main():
         result = pipeline.run(target_value)
         # Ensure candidate is 2D
         candidate = np.atleast_2d(result.best_candidates)
-        distance = maha_detector.distance(candidate)
+        distance = maha_detector.find_distance(candidate)
         print("Distance", distance)
 
     # Optional: save plots for the last run
