@@ -1,4 +1,4 @@
-# optimizers/bayesian_optimizer
+# optimizers/bayesian_optimizer.py
 import numpy as np
 from scipy.stats import norm
 from scipy.optimize import minimize

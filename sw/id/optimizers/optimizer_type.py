@@ -1,12 +1,13 @@
+# optimizers/optimizer_type.py
 from enum import Enum
-from id.optimizers.particle_swarm_optimizer import ParticleSwarmOptimizer
-from id.optimizers.random_search_optimizer import RandomSearchOptimizer
-from id.optimizers.genetic_algorithm_optimizer import GeneticAlgorithmOptimizer
-from id.optimizers.grid_search_optimizer import GridSearchOptimizer
-from id.optimizers.simulated_annealing_optimizer import simulated_annealing_optimizer
-from id.optimizers.bayesian_optimizer import BayesianOptimizer
-from id.optimizers.differential_evolution_optimizer import DifferentialEvolutionOptimizer
 
+from id.optimizers.bayesian_optimizer import BayesianOptimizer
+from id.optimizers.grid_search_optimizer import GridSearchOptimizer
+from id.optimizers.random_search_optimizer import RandomSearchOptimizer
+from id.optimizers.particle_swarm_optimizer import ParticleSwarmOptimizer
+from id.optimizers.genetic_algorithm_optimizer import GeneticAlgorithmOptimizer
+from id.optimizers.simulated_annealing_optimzier import SimulatedAnnealingOptimizer
+from id.optimizers.differential_evolution_optimizer import DifferentialEvolutionOptimizer
 
 
 class OptimizerTypeError(Exception):
@@ -34,7 +35,7 @@ class OptimizerType(Enum):
         elif self is OptimizerType.GRID_SEARCH:
             return GridSearchOptimizer(**kwargs)
         elif self is OptimizerType.SA:
-            return simulated_annealing_optimizer(**kwargs)
+            return SimulatedAnnealingOptimizer(**kwargs)
         elif self is OptimizerType.BO:
             return BayesianOptimizer(**kwargs)
         elif self is OptimizerType.DE:

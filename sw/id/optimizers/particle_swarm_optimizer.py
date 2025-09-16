@@ -2,8 +2,8 @@
 import numpy as np
 from matplotlib import pyplot as plt
 
-from id.optimizers.optimization_result import OptimizationResult
 from id.optimizers.base_optimizer import BaseOptimizer
+from id.optimizers.optimization_result import OptimizationResult
 
 
 PSOConfig = {
@@ -112,7 +112,7 @@ class ParticleSwarmOptimizer(BaseOptimizer):
                 break
 
         top_positions = [p for c, p in top_candidates]
-        predicted = self.objective.model.predict(global_best_position.reshape(1, -1))[0]
+        predicted = self.objective.model.predict(global_best_position.reshape(1, -1)).item()
 
         # Generate plots and store in dictionary
         plots_data = self._generate_all_plots(cost_history, swarm_diversity_history, particle_trajectories)

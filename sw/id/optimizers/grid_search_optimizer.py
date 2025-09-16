@@ -1,10 +1,10 @@
 # optimizers/grid_search_optimizer.py
 import numpy as np
 from itertools import product
-from matplotlib import pyplot as plt
 
-from id.optimizers.optimization_result import OptimizationResult
 from id.optimizers.base_optimizer import BaseOptimizer
+from id.optimizers.optimization_result import OptimizationResult
+
 
 GridSearchConfig = {
     "optimizer_type": "GridSearch",
@@ -53,7 +53,7 @@ class GridSearchOptimizer(BaseOptimizer):
 
         for point in grid_points:
             x = np.array(point).reshape(1, -1)
-            pred = self.objective.model.predict(x)[0]
+            pred = self.objective.model.predict(x).item()
             cost = (pred - target) ** 2
             cost_history.append(cost)
 

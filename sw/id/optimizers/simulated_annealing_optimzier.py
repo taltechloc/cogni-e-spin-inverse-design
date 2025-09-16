@@ -1,8 +1,9 @@
-# optimizers/sa_optimizer.py
+# optimizers/simulated_annealing_optimizer.py
 import numpy as np
-from matplotlib import pyplot as plt
-from id.optimizers.optimization_result import OptimizationResult
+
 from id.optimizers.base_optimizer import BaseOptimizer
+from id.optimizers.optimization_result import OptimizationResult
+
 
 SAConfig = {
     "initial_temperature": None,
@@ -14,7 +15,7 @@ SAConfig = {
 }
 
 
-class simulated_annealing_optimizer(BaseOptimizer):
+class SimulatedAnnealingOptimizer(BaseOptimizer):
     """
     Simulated Annealing Optimizer for inverse design.
     """
@@ -34,7 +35,7 @@ class simulated_annealing_optimizer(BaseOptimizer):
     def optimize(self, target):
         def obj_fun(x):
             x = np.array(x).reshape(1, -1)
-            pred = self.objective.model.predict(x)[0]
+            pred = self.objective.model.predict(x).item()
             return (pred - target) ** 2
 
         # Initialize current solution
@@ -84,7 +85,7 @@ class simulated_annealing_optimizer(BaseOptimizer):
             # Cool down
             temperature *= self.cooling_rate
 
-        predicted = self.objective.model.predict(best_solution.reshape(1, -1))[0]
+        predicted = self.objective.model.predict(best_solution.reshape(1, -1)).item()
         top_positions = [p for c, p in top_candidates]
 
         plots_data = {

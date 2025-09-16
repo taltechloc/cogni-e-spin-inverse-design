@@ -1,9 +1,8 @@
 # optimizers/random_search_optimizer.py
 import numpy as np
-from matplotlib import pyplot as plt
 
-from id.optimizers.optimization_result import OptimizationResult
 from id.optimizers.base_optimizer import BaseOptimizer
+from id.optimizers.optimization_result import OptimizationResult
 
 
 RSConfig = {
@@ -48,7 +47,7 @@ class RandomSearchOptimizer(BaseOptimizer):
             top_candidates = sorted(top_candidates, key=lambda t: t[0])[:5]
 
         top_positions = [p for c, p in top_candidates]
-        predicted = self.objective.model.predict(best_x.reshape(1, -1))[0]
+        predicted = self.objective.model.predict(best_x.reshape(1, -1)).item()
 
         plots_data = {
             "cost_history": self.plot_cost_history(

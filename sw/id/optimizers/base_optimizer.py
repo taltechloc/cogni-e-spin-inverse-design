@@ -1,6 +1,5 @@
 # optimizers/base_optimizer.py
 from abc import ABC, abstractmethod
-
 from matplotlib import pyplot as plt
 
 from id.optimizers.optimization_result import OptimizationResult

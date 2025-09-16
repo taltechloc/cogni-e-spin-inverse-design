@@ -1,4 +1,4 @@
-# models/xgboost_model.py
+# models/xgboost.py
 from xgboost import XGBRegressor
 from dataclasses import dataclass
 

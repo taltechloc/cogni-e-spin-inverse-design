@@ -1,9 +1,9 @@
-# optimizers/ga_optimizer.py
+# optimizers/genetic_algorithm_optimizer.py
 import numpy as np
-from matplotlib import pyplot as plt
 
-from id.optimizers.optimization_result import OptimizationResult
 from id.optimizers.base_optimizer import BaseOptimizer
+from id.optimizers.optimization_result import OptimizationResult
+
 
 GAConfig = {
     "population_size": None,
@@ -96,7 +96,7 @@ class GeneticAlgorithmOptimizer(BaseOptimizer):
             if no_improvement_counter >= self.early_stop_patience:
                 break
 
-        predicted = self.objective.model.predict(best_solution.reshape(1, -1))[0]
+        predicted = self.objective.model.predict(best_solution.reshape(1, -1)).item()
         top_positions = [p for c, p in top_candidates]
         plots_data = {
             "cost_history": self.plot_cost_history(

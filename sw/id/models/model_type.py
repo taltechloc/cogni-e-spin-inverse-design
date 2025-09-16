@@ -1,4 +1,6 @@
+# models/model_type.py
 from enum import Enum
+
 from id.models.xgboost import XGBoostSurrogate
 
 
