@@ -8,7 +8,6 @@ class ObjectiveTypeError(Exception):
 
 class ObjectiveType(Enum):
     SURROGATE = "SurrogateObjective"
-    # add more types here when needed, e.g. CUSTOM = "CustomObjective"
 
     def create(self, model, **kwargs):
         if self is ObjectiveType.SURROGATE:

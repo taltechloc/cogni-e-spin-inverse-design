@@ -1,10 +1,13 @@
+# optimizers/bayesian_optimizer
 import numpy as np
-from matplotlib import pyplot as plt
 from scipy.stats import norm
+from scipy.optimize import minimize
 from sklearn.gaussian_process import GaussianProcessRegressor
 from sklearn.gaussian_process.kernels import RBF, ConstantKernel as C
-from id.optimizers.optimization_result import OptimizationResult
+
 from id.optimizers.base_optimizer import BaseOptimizer
+from id.optimizers.optimization_result import OptimizationResult
+
 
 BOConfig = {
     "n_init": None,
@@ -38,7 +41,7 @@ class BayesianOptimizer(BaseOptimizer):
     def optimize(self, target):
         def obj_fun(x):
             x = np.array(x).reshape(1, -1)
-            pred = self.objective.model.predict(x)[0]
+            pred = self.objective.model.predict(x).item()
             return (pred - target) ** 2
 
         # Initial samples
@@ -63,30 +66,43 @@ class BayesianOptimizer(BaseOptimizer):
             def acquisition(x):
                 x = x.reshape(1, -1)
                 mu, sigma = gp.predict(x, return_std=True)
+                sigma = np.maximum(sigma, 1e-9)  # prevent division by zero
 
                 if self.acquisition_function == "ucb":
+                    # Minimization: use Lower Confidence Bound
                     return mu - self.kappa * sigma
                 elif self.acquisition_function == "ei":
                     improvement = best_fitness - mu - self.xi
-                    z = improvement / (sigma + 1e-9)
+                    z = improvement / sigma
                     return improvement * norm.cdf(z) + sigma * norm.pdf(z)
-                else:  # poi
+                elif self.acquisition_function == "poi":
                     improvement = best_fitness - mu - self.xi
-                    z = improvement / (sigma + 1e-9)
+                    z = improvement / sigma
                     return norm.cdf(z)
-
-            # Optimize acquisition function
-            from scipy.optimize import minimize
+                else:
+                    raise ValueError(f"Unknown acquisition function: {self.acquisition_function}")
 
             def neg_acquisition(x):
                 return -acquisition(x)
 
-            result = minimize(neg_acquisition,
-                              x0=np.random.uniform(self.lower_bounds, self.upper_bounds),
-                              bounds=list(zip(self.lower_bounds, self.upper_bounds)),
-                              method='L-BFGS-B')
+            # Optimize acquisition function with multiple random restarts
+            n_restarts = 5
+            best_acq_value = np.inf
+            best_point = None
 
-            next_point = result.x
+            for _ in range(n_restarts):
+                x0 = np.random.uniform(self.lower_bounds, self.upper_bounds)
+                result = minimize(
+                    neg_acquisition,
+                    x0=x0,
+                    bounds=list(zip(self.lower_bounds, self.upper_bounds)),
+                    method='L-BFGS-B'
+                )
+                if result.fun < best_acq_value:
+                    best_acq_value = result.fun
+                    best_point = result.x
+
+            next_point = best_point
             next_value = obj_fun(next_point)
 
             # Update data
@@ -108,7 +124,7 @@ class BayesianOptimizer(BaseOptimizer):
             if no_improvement_counter >= self.early_stop_patience:
                 break
 
-        predicted = self.objective.model.predict(best_solution.reshape(1, -1))[0]
+        predicted = self.objective.model.predict(best_solution.reshape(1, -1)).item()
         top_positions = [p for c, p in top_candidates]
 
         plots_data = {
@@ -120,6 +136,7 @@ class BayesianOptimizer(BaseOptimizer):
                 label="Best Cost"
             )
         }
+
         return OptimizationResult(
             best_candidates=best_solution,
             best_prediction=predicted,
