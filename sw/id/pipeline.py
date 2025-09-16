@@ -1,3 +1,6 @@
+# pipeline.py
+
+
 class Pipeline:
     def __init__(self, optimizer, objective_function, boundaries):
         self.optimizer = optimizer

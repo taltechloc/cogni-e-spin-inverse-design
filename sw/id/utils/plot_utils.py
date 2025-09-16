@@ -1,5 +1,5 @@
-import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib.pyplot as plt
 
 def plot_target_vs_prediction_per_fold(results_dict, method_name, n_folds=5, save_path=None):
     predictions = np.array(results_dict["predictions"])

@@ -1,6 +1,7 @@
-from id.objective.objective_type import ObjectiveType
+# pipeline_factory.py
+
 from id.pipeline import Pipeline
-from id.objective.surrogate_objective import SurrogateObjective
+from id.objective.objective_type import ObjectiveType
 from id.optimizers.optimizer_type import OptimizerType
 
 
