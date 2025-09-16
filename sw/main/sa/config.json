@@ -30,11 +30,11 @@
     },
     "optimizer": {
       "optimizer_type": "SA",
-      "initial_temperature": 100.0,
-      "cooling_rate": 0.90,
+      "initial_temperature": 50,
+      "cooling_rate": 0.95,
       "iterations_per_temp": 20,
-      "step_size": 0.2,
-      "early_stop_patience": 10
+      "step_size": 0.3,
+      "early_stop_patience": 20
     }
   }
 }
