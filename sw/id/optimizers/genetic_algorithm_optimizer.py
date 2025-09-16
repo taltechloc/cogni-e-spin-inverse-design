@@ -16,7 +16,7 @@ GAConfig = {
 }
 
 
-class GAOptimizer(BaseOptimizer):
+class GeneticAlgorithmOptimizer(BaseOptimizer):
     """
     Genetic Algorithm Optimizer for inverse design.
     """
@@ -98,7 +98,15 @@ class GAOptimizer(BaseOptimizer):
 
         predicted = self.objective.model.predict(best_solution.reshape(1, -1))[0]
         top_positions = [p for c, p in top_candidates]
-        plots_data = self._generate_all_plots(cost_history)
+        plots_data = {
+            "cost_history": self.plot_cost_history(
+                cost_history,
+                xlabel="Generation",
+                ylabel="Squared Error",
+                title="GA Convergence",
+                label="Best Fitness per Generation"
+            )
+        }
 
         return OptimizationResult(
             best_candidates=best_solution,
@@ -109,9 +117,6 @@ class GAOptimizer(BaseOptimizer):
             plots_data=plots_data
         )
 
-    # ----------------------
-    # GA operators
-    # ----------------------
     def _tournament_selection(self, pop, fit, k=3):
         selected = []
         pop_size = len(pop)
@@ -145,21 +150,3 @@ class GAOptimizer(BaseOptimizer):
                 mutation = np.random.normal(0, self.mutation_scale, self.dim)
                 offspring[i] += mutation
                 offspring[i] = np.clip(offspring[i], self.lower_bounds, self.upper_bounds)
-
-    # ----------------------
-    # Plot generation
-    # ----------------------
-    def _generate_all_plots(self, cost_history):
-        plots = {}
-        plots["cost_history"] = self._plot_cost_history(cost_history)
-        return plots
-
-    def _plot_cost_history(self, cost_history):
-        fig, ax = plt.subplots(figsize=(6, 4))
-        ax.plot(cost_history, label="Best Fitness per Generation")
-        ax.set_xlabel("Generation")
-        ax.set_ylabel("Squared Error")
-        ax.set_title("GA Convergence")
-        ax.legend()
-        plt.close(fig)
-        return fig

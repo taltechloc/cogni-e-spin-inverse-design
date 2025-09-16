@@ -6,7 +6,7 @@ import numpy as np
 from id.dataset import Dataset
 from id.models.model_type import ModelType
 from id.pipeline_factory import PipelineFactory
-from id.out_of_distribution_detection.mahalanobis_distance import MahalanobisDistance
+from storage.out_of_distribution_detection.mahalanobis_distance import MahalanobisDistance
 
 
 def _train_surrogate_model(X, y, model_def):

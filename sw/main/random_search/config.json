@@ -29,7 +29,8 @@
       }
     },
     "optimizer": {
-      "optimizer_type": "RANDOM_SEARCH"
+      "optimizer_type": "RANDOM_SEARCH",
+      "n_iter": 1000
     }
   }
 }

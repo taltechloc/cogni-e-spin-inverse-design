@@ -1,4 +1,4 @@
-# optimizers/random_search.py
+# optimizers/random_search_optimizer.py
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -50,8 +50,15 @@ class RandomSearchOptimizer(BaseOptimizer):
         top_positions = [p for c, p in top_candidates]
         predicted = self.objective.model.predict(best_x.reshape(1, -1))[0]
 
-        plots_data = self._generate_all_plots(cost_history)
-
+        plots_data = {
+            "cost_history": self.plot_cost_history(
+                cost_history,
+                xlabel="Iteration",
+                ylabel="Cost",
+                title="Random Search Convergence",
+                label="Cost per iteration"
+            )
+        }
         return OptimizationResult(
             best_candidates=best_x,
             best_prediction=predicted,
@@ -60,21 +67,3 @@ class RandomSearchOptimizer(BaseOptimizer):
             n_iterations=len(cost_history),
             plots_data=plots_data
         )
-
-    # ----------------------
-    # Plot generation methods
-    # ----------------------
-    def _generate_all_plots(self, cost_history):
-        plots = {}
-        plots["cost_history"] = self._plot_cost_history(cost_history)
-        return plots
-
-    def _plot_cost_history(self, cost_history):
-        fig, ax = plt.subplots(figsize=(6, 4))
-        ax.plot(cost_history, label="Cost per iteration")
-        ax.set_xlabel("Iteration")
-        ax.set_ylabel("Cost")
-        ax.set_title("Random Search Convergence")
-        ax.legend()
-        plt.close(fig)
-        return fig

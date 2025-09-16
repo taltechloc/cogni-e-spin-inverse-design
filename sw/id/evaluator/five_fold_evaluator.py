@@ -1,6 +1,7 @@
 # id/evaluator/five_fold_evaluator.py
 import json
 import os
+import time
 from datetime import datetime
 import numpy as np
 import pandas as pd
@@ -41,10 +42,13 @@ def log_and_print(message, log_file_handle):
     log_file_handle.write(message)
     log_file_handle.flush()
 
+
 # -------------------------
 # Main workflow
 # -------------------------
 def run_evaluation(config_path: str, optimizer_name: str):
+    total_start = time.time()
+
     with open(config_path, "r") as f:
         config = json.load(f)
 
@@ -63,11 +67,16 @@ def run_evaluation(config_path: str, optimizer_name: str):
     all_results = {"targets": [], "predictions": [], "candidates": [], "cost_histories": []}
     fold_cost_histories_all = []
     fold_metrics_list = []
+    fold_times_all = []  # store per-candidate evaluation times per fold
 
+    # -------------------------
+    # Keep log file open for entire evaluation
+    # -------------------------
     with open(log_file_path, "w") as log_f:
         kf = KFold(n_splits=5, shuffle=True, random_state=config.get("seed", 42))
         for fold_idx, (train_idx, test_idx) in enumerate(kf.split(X_full), start=1):
             log_and_print(f"\n=== Fold {fold_idx} ===\n", log_f)
+            fold_start_time = time.time()
 
             X_train, X_test = X_full.iloc[train_idx], X_full.iloc[test_idx]
             y_train, y_test = y_full.iloc[train_idx], y_full.iloc[test_idx]
@@ -78,10 +87,16 @@ def run_evaluation(config_path: str, optimizer_name: str):
             fold_cost_histories = []
             fold_targets = []
             fold_predictions = []
+            fold_candidate_times = []  # per-candidate timing
 
             for idx, target_value in enumerate(y_test):
+                candidate_start_time = time.time()
+
                 pipeline = PipelineFactory.create_pipeline(pipeline_cfg, X_train, model)
                 result = pipeline.run(float(target_value))
+
+                candidate_elapsed_time = time.time() - candidate_start_time
+                fold_candidate_times.append(candidate_elapsed_time)
 
                 candidate = result.best_candidates
                 predicted = model.predict(np.array(candidate).reshape(1, -1))[0]
@@ -108,7 +123,8 @@ def run_evaluation(config_path: str, optimizer_name: str):
                     "given_candidate": candidate,
                     "target": target_value,
                     "predicted": predicted,
-                    "top_candidates": top_candidates
+                    "top_candidates": top_candidates,
+                    "eval_time_sec": candidate_elapsed_time
                 })
 
                 log_and_print(
@@ -118,11 +134,13 @@ def run_evaluation(config_path: str, optimizer_name: str):
                     f"Predicted: {predicted}\n"
                     f"Absolute error: {abs_error}\n"
                     f"Final cost: {cost_history[-1]}\n"
-                    f"Top 5 Candidates:\n    " + "\n    ".join(str(c) for c in top_candidates) + "\n------\n",
+                    f"Top 5 Candidates:\n    " + "\n    ".join(str(c) for c in top_candidates) + "\n"
+                    f"Evaluation time: {candidate_elapsed_time:.4f} sec\n------\n",
                     log_f
                 )
 
             fold_cost_histories_all.append(pad_and_average_costs(fold_cost_histories))
+            fold_times_all.append(fold_candidate_times)
 
             fold_r2 = r2_score(fold_targets, fold_predictions)
             fold_rmse = mean_squared_error(fold_targets, fold_predictions)
@@ -134,34 +152,61 @@ def run_evaluation(config_path: str, optimizer_name: str):
                 "mae": fold_mae
             })
 
+            fold_elapsed = time.time() - fold_start_time
+            mean_time = np.mean(fold_candidate_times)
+            std_time = np.std(fold_candidate_times)
+
             log_and_print(
                 f"\nFold {fold_idx} metrics:\n"
                 f"  R²: {fold_r2:.4f}\n"
                 f"  RMSE: {fold_rmse:.4f}\n"
-                f"  MAE: {fold_mae:.4f}\n",
+                f"  MAE: {fold_mae:.4f}\n"
+                f"Fold total time: {fold_elapsed:.2f} sec\n"
+                f"Fold candidate evaluation time: {mean_time:.4f} ± {std_time:.4f} sec\n",
                 log_f
             )
 
-    df_candidates = pd.DataFrame(candidate_records)
-    df_candidates_path = os.path.join(run_folder, "candidates.csv")
-    df_candidates.to_csv(df_candidates_path, index=False)
-    print(f"Candidate DataFrame saved to {df_candidates_path}")
+        # -------------------------
+        # Save candidate DataFrame and timing summary
+        # -------------------------
+        df_candidates = pd.DataFrame(candidate_records)
+        df_candidates_path = os.path.join(run_folder, "candidates.csv")
+        df_candidates.to_csv(df_candidates_path, index=False)
+        log_and_print(f"\nCandidate DataFrame saved to {df_candidates_path}\n", log_f)
 
-    r2_values = [m["r2"] for m in fold_metrics_list]
-    rmse_values = [m["rmse"] for m in fold_metrics_list]
-    mae_values = [m["mae"] for m in fold_metrics_list]
+        # Save candidate time summary
+        df_time_summary = pd.DataFrame(fold_times_all).describe()
+        df_time_summary_path = os.path.join(run_folder, "candidate_time_summary.csv")
+        df_time_summary.to_csv(df_time_summary_path)
+        log_and_print(f"Candidate time summary saved to {df_time_summary_path}\n", log_f)
 
-    summary = (
-        f"\n=== Cross-Validation Summary ===\n"
-        f"R²:   {np.mean(r2_values):.4f} ± {np.std(r2_values):.4f}\n"
-        f"RMSE: {np.mean(rmse_values):.4f} ± {np.std(rmse_values):.4f}\n"
-        f"MAE:  {np.mean(mae_values):.4f} ± {np.std(mae_values):.4f}\n"
-    )
+        # Compute cross-validation summary
+        r2_values = [m["r2"] for m in fold_metrics_list]
+        rmse_values = [m["rmse"] for m in fold_metrics_list]
+        mae_values = [m["mae"] for m in fold_metrics_list]
 
-    print(summary)
-    with open(log_file_path, "a") as log_f:
-        log_f.write(summary)
+        summary = (
+            f"\n=== Cross-Validation Summary ===\n"
+            f"R²:   {np.mean(r2_values):.4f} ± {np.std(r2_values):.4f}\n"
+            f"RMSE: {np.mean(rmse_values):.4f} ± {np.std(rmse_values):.4f}\n"
+            f"MAE:  {np.mean(mae_values):.4f} ± {np.std(mae_values):.4f}\n"
+        )
+        log_and_print(summary, log_f)
 
+        # Overall candidate evaluation time across 5 folds
+        all_times = np.concatenate(fold_times_all)
+        overall_mean = np.mean(all_times)
+        overall_std = np.std(all_times)
+        log_and_print(
+            f"\nOverall candidate evaluation time across 5 folds: {overall_mean:.4f} ± {overall_std:.4f} sec\n", log_f
+        )
+
+        total_elapsed = time.time() - total_start
+        log_and_print(f"Total optimizer run time: {total_elapsed:.2f} sec\n", log_f)
+
+    # -------------------------
+    # Generate plots
+    # -------------------------
     plot_target_vs_prediction_per_fold(
         all_results, optimizer_name, n_folds=5,
         save_path=os.path.join(plots_folder, "target_vs_prediction_per_fold.png")

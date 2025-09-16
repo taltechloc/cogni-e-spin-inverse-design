@@ -1,4 +1,4 @@
-# optimizers/pso.py
+# optimizers/particle_swarm_optimizer.py
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -20,7 +20,7 @@ PSOConfig = {
     "optimizer_type": "PSO"      # str (default)
 }
 
-class PSOOptimizer(BaseOptimizer):
+class ParticleSwarmOptimizer(BaseOptimizer):
     """
     Particle Swarm Optimizer with inertia decay, velocity limits, and early stopping.
     """

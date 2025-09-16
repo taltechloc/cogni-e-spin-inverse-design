@@ -1,4 +1,4 @@
-# optimizers/grid_search.py
+# optimizers/grid_search_optimizer.py
 import numpy as np
 from itertools import product
 from matplotlib import pyplot as plt
@@ -7,8 +7,13 @@ from id.optimizers.optimization_result import OptimizationResult
 from id.optimizers.base_optimizer import BaseOptimizer
 
 GridSearchConfig = {
-    "steps_per_param": None,
-    "optimizer_type": "GridSearch"
+    "optimizer_type": "GridSearch",
+    "param_levels": [
+        [8, 9, 10, 12],            # Solution Concentration
+        [10, 12.5, 15, 20],        # Tip–Collector Distance
+        [15, 22.5, 20, 25],        # Applied Voltage
+        [0.2, 0.25, 0.3, 0.4]      # Feed Rate
+    ]
 }
 
 
@@ -19,16 +24,26 @@ class GridSearchOptimizer(BaseOptimizer):
 
     def __init__(self, definition, objective, boundaries):
         super().__init__(objective, boundaries)
-        self.steps_per_param = definition.get("steps_per_param", 5)
-        self.dim = len(boundaries)
+        self.param_levels = definition.get("param_levels", None)
 
-        self.lower_bounds = np.array([b[0] for b in boundaries])
-        self.upper_bounds = np.array([b[1] for b in boundaries])
+        self.dim = len(boundaries)
+        if self.param_levels is not None:
+            assert len(self.param_levels) == self.dim, "Levels must match number of parameters"
+
+        else:
+            # fallback to linspace if levels not provided
+            self.steps_per_param = definition.get("steps_per_param", 5)
+            self.lower_bounds = np.array([b[0] for b in boundaries])
+            self.upper_bounds = np.array([b[1] for b in boundaries])
 
     def optimize(self, target):
         # Create grid axes for each parameter
-        grid_axes = [np.linspace(self.lower_bounds[i], self.upper_bounds[i], self.steps_per_param)
-                     for i in range(self.dim)]
+        if self.param_levels is not None:
+            grid_axes = self.param_levels
+        else:
+            grid_axes = [np.linspace(self.lower_bounds[i], self.upper_bounds[i], self.steps_per_param)
+                         for i in range(self.dim)]
+
         grid_points = list(product(*grid_axes))
 
         cost_history = []
@@ -52,8 +67,15 @@ class GridSearchOptimizer(BaseOptimizer):
             top_candidates = sorted(top_candidates, key=lambda t: t[0])[:5]
 
         top_positions = [p for c, p in top_candidates]
-        plots_data = self._generate_all_plots(cost_history)
-
+        plots_data = {
+            "cost_history": self.plot_cost_history(
+                cost_history,
+                xlabel="Grid Point Index",
+                ylabel="Squared Error",
+                title="Grid Search Convergence",
+                label="Cost per Grid Point"
+            )
+        }
         return OptimizationResult(
             best_candidates=best_input,
             best_prediction=best_pred,
@@ -62,21 +84,3 @@ class GridSearchOptimizer(BaseOptimizer):
             n_iterations=len(cost_history),
             plots_data=plots_data
         )
-
-    # ----------------------
-    # Plot generation
-    # ----------------------
-    def _generate_all_plots(self, cost_history):
-        plots = {}
-        plots["cost_history"] = self._plot_cost_history(cost_history)
-        return plots
-
-    def _plot_cost_history(self, cost_history):
-        fig, ax = plt.subplots(figsize=(6, 4))
-        ax.plot(cost_history, label="Cost per grid point")
-        ax.set_xlabel("Grid Point Index")
-        ax.set_ylabel("Squared Error")
-        ax.set_title("Grid Search Convergence")
-        ax.legend()
-        plt.close(fig)
-        return fig
