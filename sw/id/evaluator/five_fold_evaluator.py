@@ -1,10 +1,11 @@
 # id/evaluator/five_fold_evaluator.py
+
 import json
 import os
 import time
-from datetime import datetime
 import numpy as np
 import pandas as pd
+from datetime import datetime
 from sklearn.model_selection import KFold
 from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 
@@ -17,7 +18,7 @@ from id.utils.plot_utils import plot_target_vs_prediction_per_fold, plot_cost_tr
 # -------------------------
 # Helper functions
 # -------------------------
-def create_run_folder(base="main"):
+def create_run_folder(base="run"):
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     run_folder = os.path.join(base, timestamp)
     plots_folder = os.path.join(run_folder, "plots")
@@ -143,7 +144,7 @@ def run_evaluation(config_path: str, optimizer_name: str):
             fold_times_all.append(fold_candidate_times)
 
             fold_r2 = r2_score(fold_targets, fold_predictions)
-            fold_rmse = mean_squared_error(fold_targets, fold_predictions)
+            fold_rmse = np.sqrt(mean_squared_error(fold_targets, fold_predictions))
             fold_mae = mean_absolute_error(fold_targets, fold_predictions)
 
             fold_metrics_list.append({
