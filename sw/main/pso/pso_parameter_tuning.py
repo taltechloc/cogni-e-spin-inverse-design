@@ -1,14 +1,13 @@
 from id.evaluator.hyperparameter_tuner import run_hyperparameter_tuning
 
 if __name__ == "__main__":
-    # Define the hyperparameter grid for PSO
     param_grid = {
-        "n_particles": [10],
-        "w_max": [0.8],
+        "n_particles": [20, 30, 40],
+        "w_max": [0.8, 0.9],
         "w_min": [0.3, 0.4],
         "c1": [1.5, 2.0],
         "c2": [1.5, 2.0],
-        "max_velocity": [0.2]
+        "max_velocity": [0.1, 0.2, 0.3]
     }
 
     run_hyperparameter_tuning(
