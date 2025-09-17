@@ -68,14 +68,14 @@ class BayesianOptimizer(BaseOptimizer):
                 mu, sigma = gp.predict(x, return_std=True)
                 sigma = np.maximum(sigma, 1e-9)  # prevent division by zero
 
-                if self.acquisition_function == "ucb":
+                if self.acquisition_function == "UCB":
                     # Minimization: use Lower Confidence Bound
                     return mu - self.kappa * sigma
-                elif self.acquisition_function == "ei":
+                elif self.acquisition_function == "EI":
                     improvement = best_fitness - mu - self.xi
                     z = improvement / sigma
                     return improvement * norm.cdf(z) + sigma * norm.pdf(z)
-                elif self.acquisition_function == "poi":
+                elif self.acquisition_function == "PI":
                     improvement = best_fitness - mu - self.xi
                     z = improvement / sigma
                     return norm.cdf(z)
