@@ -30,11 +30,11 @@
     },
     "optimizer": {
       "n_init": 10,
-      "n_iter": 50,
+      "n_iter": 70,
       "acquisition_function": "EI",
-      "kappa": 2.5,
-      "xi": 0.01,
-      "early_stop_patience": 10,
+      "kappa": 1.5,
+      "xi": 0.02,
+      "early_stop_patience": 20,
       "optimizer_type": "BO"
     }
   }

@@ -29,7 +29,12 @@
       }
     },
     "optimizer": {
-      "optimizer_type": "GA"
+      "optimizer_type": "GA",
+      "population_size": 50,
+      "generations": 100,
+      "crossover_rate": 0.8,
+      "mutation_rate": 0.1,
+      "mutation_scale": 0.2
     }
   }
 }

@@ -30,14 +30,14 @@
     },
     "optimizer": {
       "optimizer_type": "PSO",
-      "n_iter": 50,
-      "n_particles": 20,
+      "n_iter": 100,
+      "n_particles": 50,
       "w_max": 0.9,
       "w_min": 0.4,
       "c1": 2.0,
-      "c2": 1.5,
-      "max_velocity": 0.4,
-      "early_stop_patience": 10
+      "c2": 2.0,
+      "max_velocity": 0.3,
+      "early_stop_patience": 20
     }
   }
 }

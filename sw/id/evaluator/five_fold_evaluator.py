@@ -209,7 +209,7 @@ def run_evaluation(config_path: str, optimizer_name: str):
     # Generate plots
     # -------------------------
     plot_target_vs_prediction_per_fold(
-        all_results, optimizer_name, n_folds=5,
+        all_results, optimizer_name, np.mean(r2_values), n_folds=5,
         save_path=os.path.join(plots_folder, "target_vs_prediction_per_fold.png")
     )
 

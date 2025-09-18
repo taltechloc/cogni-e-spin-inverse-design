@@ -1,0 +1,1496 @@
+
+=== Fold 1 ===
+------
+Test index: 0
+Target: 232.62
+Candidate: [ 8.  15.  22.5  0.3]
+Predicted: 232.52345275878906
+Absolute error: 0.0965423583984375
+Final cost: 3552.131044004322
+Top 5 Candidates:
+    [ 8.  15.  22.5  0.3]
+    [ 8.   15.   22.5   0.35]
+    [ 8.  17.5 22.5  0.3]
+    [ 8.   17.5  22.5   0.35]
+    [ 8.   15.   20.    0.25]
+Evaluation time: 0.3030 sec
+------
+------
+Test index: 4
+Target: 232.08
+Candidate: [ 9.  20.  25.   0.2]
+Predicted: 231.90452575683594
+Absolute error: 0.17547607421875
+Final cost: 3616.7903816508056
+Top 5 Candidates:
+    [ 9.  20.  25.   0.2]
+    [ 8.  20.  20.   0.3]
+    [ 8.   20.   20.    0.35]
+    [ 8.  12.5 20.   0.3]
+    [ 8.   12.5  20.    0.35]
+Evaluation time: 0.4481 sec
+------
+------
+Test index: 10
+Target: 238.63
+Candidate: [ 9.  10.  22.5  0.3]
+Predicted: 238.40342712402344
+Absolute error: 0.2265777587890625
+Final cost: 2871.862063901784
+Top 5 Candidates:
+    [ 9.  10.  22.5  0.3]
+    [ 9.   10.   22.5   0.35]
+    [ 8.  15.  15.   0.4]
+    [ 8.  15.  17.5  0.4]
+    [ 8.  17.5 15.   0.4]
+Evaluation time: 0.3061 sec
+------
+------
+Test index: 12
+Target: 219.76
+Candidate: [ 8.  20.  25.   0.4]
+Predicted: 219.9667205810547
+Absolute error: 0.20672607421875
+Final cost: 5250.416396103933
+Top 5 Candidates:
+    [ 8.  20.  25.   0.4]
+    [ 9.  20.  15.   0.2]
+    [ 9.  20.  17.5  0.2]
+    [ 8.  15.  25.   0.4]
+    [ 8.  17.5 25.   0.4]
+Evaluation time: 0.2835 sec
+------
+------
+Test index: 18
+Target: 196.63
+Candidate: [ 8.  10.  25.   0.2]
+Predicted: 199.939208984375
+Absolute error: 3.3092041015625
+Final cost: 9137.401658628347
+Top 5 Candidates:
+    [ 8.  10.  25.   0.2]
+    [ 8.  20.  15.   0.3]
+    [ 8.   20.   15.    0.35]
+    [ 8.  20.  17.5  0.3]
+    [ 8.   20.   17.5   0.35]
+Evaluation time: 0.2631 sec
+------
+------
+Test index: 22
+Target: 224.38
+Candidate: [ 9.   12.5  25.    0.25]
+Predicted: 224.27276611328125
+Absolute error: 0.10723876953125
+Final cost: 4602.232640684011
+Top 5 Candidates:
+    [ 9.   12.5  25.    0.25]
+    [ 9.  12.5 25.   0.3]
+    [ 9.   12.5  25.    0.35]
+    [ 9.  20.  15.   0.4]
+    [ 9.  20.  17.5  0.4]
+Evaluation time: 0.2144 sec
+------
+------
+Test index: 26
+Target: 231.34
+Candidate: [ 8.   15.   22.5   0.25]
+Predicted: 231.38165283203125
+Absolute error: 0.041656494140625
+Final cost: 3706.344822129322
+Top 5 Candidates:
+    [ 8.   15.   22.5   0.25]
+    [ 8.   17.5  22.5   0.25]
+    [ 8.  12.5 20.   0.2]
+    [ 8.  10.  20.   0.2]
+    [ 8.   12.5  20.    0.25]
+Evaluation time: 0.3495 sec
+------
+------
+Test index: 30
+Target: 256.11
+Candidate: [ 9.  10.  15.   0.4]
+Predicted: 254.81607055664062
+Absolute error: 1.293914794921875
+Final cost: 1303.9145563822512
+Top 5 Candidates:
+    [ 9.  10.  15.   0.4]
+    [ 9.  10.  17.5  0.4]
+    [10.  12.5 25.   0.3]
+    [10.   12.5  25.    0.35]
+    [11.  12.5 25.   0.3]
+Evaluation time: 0.2287 sec
+------
+------
+Test index: 31
+Target: 264.86
+Candidate: [10.  12.5 22.5  0.3]
+Predicted: 264.20916748046875
+Absolute error: 0.65081787109375
+Final cost: 748.5563074808844
+Top 5 Candidates:
+    [10.  12.5 22.5  0.3]
+    [10.   12.5  22.5   0.35]
+    [11.  12.5 22.5  0.3]
+    [11.   12.5  22.5   0.35]
+    [10.  10.  22.5  0.3]
+Evaluation time: 0.2918 sec
+------
+------
+Test index: 33
+Target: 228.21
+Candidate: [ 9.  20.  25.   0.4]
+Predicted: 228.3829345703125
+Absolute error: 0.1729278564453125
+Final cost: 4097.24900145061
+Top 5 Candidates:
+    [ 9.  20.  25.   0.4]
+    [ 8.  20.  22.5  0.2]
+    [ 8.   10.   22.5   0.25]
+    [ 9.   15.   25.    0.25]
+    [ 9.   17.5  25.    0.25]
+Evaluation time: 0.2362 sec
+------
+------
+Test index: 42
+Target: 249.42
+Candidate: [ 9.   10.   15.    0.25]
+Predicted: 249.40408325195312
+Absolute error: 0.0159149169921875
+Final cost: 1831.8192061136986
+Top 5 Candidates:
+    [ 9.   10.   15.    0.25]
+    [ 9.   10.   17.5   0.25]
+    [ 9.  12.5 15.   0.4]
+    [ 9.  12.5 17.5  0.4]
+    [ 9.  12.5 20.   0.4]
+Evaluation time: 0.3605 sec
+------
+------
+Test index: 53
+Target: 306.28
+Candidate: [12.   15.   20.    0.25]
+Predicted: 305.943115234375
+Absolute error: 0.336883544921875
+Final cost: 197.69043096721245
+Top 5 Candidates:
+    [12.   15.   20.    0.25]
+    [12.   17.5  20.    0.25]
+    [12.  15.  20.   0.3]
+    [12.   15.   20.    0.35]
+    [12.  17.5 20.   0.3]
+Evaluation time: 0.2780 sec
+------
+------
+Test index: 64
+Target: 297.65
+Candidate: [12.   20.   22.5   0.25]
+Predicted: 298.1530456542969
+Absolute error: 0.5030517578125
+Final cost: 29.487538169361404
+Top 5 Candidates:
+    [12.   20.   22.5   0.25]
+    [12.  15.  20.   0.2]
+    [12.  17.5 20.   0.2]
+    [12.  15.  15.   0.4]
+    [12.  15.  17.5  0.4]
+Evaluation time: 0.5016 sec
+------
+------
+Test index: 69
+Target: 272.24
+Candidate: [12.  12.5 25.   0.3]
+Predicted: 272.4737243652344
+Absolute error: 0.233734130859375
+Final cost: 399.1906929789316
+Top 5 Candidates:
+    [12.  12.5 25.   0.3]
+    [12.   12.5  25.    0.35]
+    [10.  12.5 15.   0.4]
+    [10.  12.5 17.5  0.4]
+    [11.  12.5 15.   0.4]
+Evaluation time: 0.2520 sec
+------
+------
+Test index: 73
+Target: 278.4
+Candidate: [12.  10.  15.   0.2]
+Predicted: 278.2870788574219
+Absolute error: 0.1129150390625
+Final cost: 190.9856857523701
+Top 5 Candidates:
+    [12.  10.  15.   0.2]
+    [12.  10.  17.5  0.2]
+    [10.  10.  20.   0.4]
+    [11.  10.  20.   0.4]
+    [10.   15.   20.    0.25]
+Evaluation time: 0.3602 sec
+------
+------
+Test index: 77
+Target: 337.88
+Candidate: [12.  20.  20.   0.3]
+Predicted: 320.06488037109375
+Absolute error: 17.81512451171875
+Final cost: 2084.857783506275
+Top 5 Candidates:
+    [12.  20.  20.   0.3]
+    [12.   20.   20.    0.35]
+    [12.   20.   20.    0.25]
+    [12.  20.  20.   0.4]
+    [12.  15.  20.   0.4]
+Evaluation time: 0.3838 sec
+------
+------
+Test index: 79
+Target: 334.54
+Candidate: [12.  20.  20.   0.3]
+Predicted: 320.06488037109375
+Absolute error: 14.475128173828125
+Final cost: 1791.0029608011994
+Top 5 Candidates:
+    [12.  20.  20.   0.3]
+    [12.   20.   20.    0.35]
+    [12.   20.   20.    0.25]
+    [12.  20.  20.   0.4]
+    [12.  15.  20.   0.4]
+Evaluation time: 0.4563 sec
+------
+------
+Test index: 80
+Target: 342.45
+Candidate: [12.  20.  20.   0.3]
+Predicted: 320.06488037109375
+Absolute error: 22.3851318359375
+Final cost: 2523.0773037943604
+Top 5 Candidates:
+    [12.  20.  20.   0.3]
+    [12.   20.   20.    0.35]
+    [12.   20.   20.    0.25]
+    [12.  20.  20.   0.4]
+    [12.  15.  20.   0.4]
+Evaluation time: 0.2608 sec
+------
+------
+Test index: 85
+Target: 247.57
+Candidate: [ 9.  10.  15.   0.3]
+Predicted: 247.56512451171875
+Absolute error: 0.0048828125
+Final cost: 1993.6008073099872
+Top 5 Candidates:
+    [ 9.  10.  15.   0.3]
+    [ 9.   10.   15.    0.35]
+    [ 9.  10.  17.5  0.3]
+    [ 9.   10.   17.5   0.35]
+    [12.  10.  25.   0.3]
+Evaluation time: 0.2716 sec
+------
+------
+Test index: 94
+Target: 260.71
+Candidate: [10.   10.   22.5   0.25]
+Predicted: 260.6755676269531
+Absolute error: 0.034423828125
+Final cost: 992.8647912455348
+Top 5 Candidates:
+    [10.   10.   22.5   0.25]
+    [11.   10.   22.5   0.25]
+    [10.  12.5 15.   0.3]
+    [10.   12.5  15.    0.35]
+    [10.  12.5 17.5  0.3]
+Evaluation time: 0.2815 sec
+------
+
+Fold 1 metrics:
+  R²: 0.9688
+  RMSE: 7.2169
+  MAE: 3.1099
+Fold total time: 6.42 sec
+Fold candidate evaluation time: 0.3165 ± 0.0781 sec
+
+=== Fold 2 ===
+------
+Test index: 5
+Target: 249.21
+Candidate: [ 9.  20.  25.   0.4]
+Predicted: 249.20973205566406
+Absolute error: 0.000274658203125
+Final cost: 6873.12608359385
+Top 5 Candidates:
+    [ 9.  20.  25.   0.4]
+    [ 8.  10.  20.   0.4]
+    [12.   10.   25.    0.25]
+    [ 9.  15.  20.   0.4]
+    [ 9.  17.5 20.   0.4]
+Evaluation time: 0.3619 sec
+------
+------
+Test index: 9
+Target: 221.1
+Candidate: [ 9.  12.5 25.   0.3]
+Predicted: 221.31179809570312
+Absolute error: 0.2117919921875
+Final cost: 12324.178989209087
+Top 5 Candidates:
+    [ 9.  12.5 25.   0.3]
+    [ 9.   12.5  25.    0.35]
+    [ 8.  12.5 22.5  0.2]
+    [ 8.  20.  25.   0.3]
+    [ 8.   20.   25.    0.35]
+Evaluation time: 0.2893 sec
+------
+------
+Test index: 11
+Target: 242.32
+Candidate: [ 9.   15.   15.    0.25]
+Predicted: 242.62217712402344
+Absolute error: 0.3021697998046875
+Final cost: 8063.019697314556
+Top 5 Candidates:
+    [ 9.   15.   15.    0.25]
+    [ 9.   15.   17.5   0.25]
+    [ 9.   17.5  15.    0.25]
+    [ 9.   17.5  17.5   0.25]
+    [ 9.  20.  22.5  0.2]
+Evaluation time: 0.2646 sec
+------
+------
+Test index: 15
+Target: 202.62
+Candidate: [ 8.   10.   25.    0.25]
+Predicted: 202.4158935546875
+Absolute error: 0.2041015625
+Final cost: 16768.77861381846
+Top 5 Candidates:
+    [ 8.   10.   25.    0.25]
+    [ 8.  20.  15.   0.3]
+    [ 8.   20.   15.    0.35]
+    [ 8.  20.  17.5  0.3]
+    [ 8.   20.   17.5   0.35]
+Evaluation time: 0.3379 sec
+------
+------
+Test index: 16
+Target: 208.21
+Candidate: [ 8.   12.5  25.    0.25]
+Predicted: 209.4340057373047
+Absolute error: 1.2239990234375
+Final cost: 15352.280229101661
+Top 5 Candidates:
+    [ 8.   12.5  25.    0.25]
+    [ 9.  10.  25.   0.2]
+    [ 8.  12.5 25.   0.3]
+    [ 8.   12.5  25.    0.35]
+    [ 8.  15.  25.   0.2]
+Evaluation time: 0.3181 sec
+------
+------
+Test index: 28
+Target: 270.05
+Candidate: [12.  10.  22.5  0.3]
+Predicted: 270.0728759765625
+Absolute error: 0.02288818359375
+Final cost: 3851.9796740235374
+Top 5 Candidates:
+    [12.  10.  22.5  0.3]
+    [12.   10.   22.5   0.35]
+    [12.  12.5 25.   0.3]
+    [12.   12.5  25.    0.35]
+    [10.   20.   20.    0.25]
+Evaluation time: 0.3589 sec
+------
+------
+Test index: 35
+Target: 238.74
+Candidate: [ 9.  15.  20.   0.3]
+Predicted: 238.83425903320312
+Absolute error: 0.0942535400390625
+Final cost: 8718.763420263771
+Top 5 Candidates:
+    [ 9.  15.  20.   0.3]
+    [ 9.   15.   20.    0.35]
+    [ 9.  17.5 20.   0.3]
+    [ 9.   17.5  20.    0.35]
+    [ 8.  15.  15.   0.3]
+Evaluation time: 0.2747 sec
+------
+------
+Test index: 39
+Target: 284.2
+Candidate: [12.  15.  25.   0.4]
+Predicted: 285.0624084472656
+Absolute error: 0.862396240234375
+Final cost: 2295.781950634868
+Top 5 Candidates:
+    [12.  15.  25.   0.4]
+    [12.  17.5 25.   0.4]
+    [12.  20.  15.   0.4]
+    [12.  20.  17.5  0.4]
+    [12.  12.5 15.   0.3]
+Evaluation time: 0.2964 sec
+------
+------
+Test index: 40
+Target: 281.82
+Candidate: [12.   12.5  15.    0.25]
+Predicted: 281.87103271484375
+Absolute error: 0.051025390625
+Final cost: 2529.5185083497113
+Top 5 Candidates:
+    [12.   12.5  15.    0.25]
+    [12.   12.5  17.5   0.25]
+    [12.   10.   15.    0.25]
+    [12.   10.   17.5   0.25]
+    [10.  20.  22.5  0.2]
+Evaluation time: 0.3254 sec
+------
+------
+Test index: 44
+Target: 286.96
+Candidate: [10.  10.  15.   0.4]
+Predicted: 286.7796630859375
+Absolute error: 0.180328369140625
+Final cost: 2038.9125105958062
+Top 5 Candidates:
+    [10.  10.  15.   0.4]
+    [10.  10.  17.5  0.4]
+    [11.  10.  15.   0.4]
+    [11.  10.  17.5  0.4]
+    [12.  15.  20.   0.2]
+Evaluation time: 0.2337 sec
+------
+------
+Test index: 45
+Target: 239.45
+Candidate: [ 9.   15.   20.    0.25]
+Predicted: 239.3328094482422
+Absolute error: 0.1171875
+Final cost: 8586.675987500103
+Top 5 Candidates:
+    [ 9.   15.   20.    0.25]
+    [ 9.   17.5  20.    0.25]
+    [ 9.  20.  25.   0.3]
+    [ 9.   20.   25.    0.35]
+    [10.  10.  25.   0.3]
+Evaluation time: 0.3252 sec
+------
+------
+Test index: 47
+Target: 251.58
+Candidate: [ 9.  15.  15.   0.4]
+Predicted: 250.9513397216797
+Absolute error: 0.628662109375
+Final cost: 6485.776512255959
+Top 5 Candidates:
+    [ 9.  15.  15.   0.4]
+    [ 9.  15.  17.5  0.4]
+    [ 9.  17.5 15.   0.4]
+    [ 9.  17.5 17.5  0.4]
+    [10.  15.  25.   0.2]
+Evaluation time: 0.5035 sec
+------
+------
+Test index: 49
+Target: 273.05
+Candidate: [10.  15.  22.5  0.4]
+Predicted: 273.64910888671875
+Absolute error: 0.59912109375
+Final cost: 3488.5937609376
+Top 5 Candidates:
+    [10.  15.  22.5  0.4]
+    [10.  17.5 22.5  0.4]
+    [11.  15.  22.5  0.4]
+    [11.  17.5 22.5  0.4]
+    [10.   20.   25.    0.25]
+Evaluation time: 1.2555 sec
+------
+------
+Test index: 55
+Target: 295.6
+Candidate: [12.  10.  20.   0.4]
+Predicted: 295.6780090332031
+Absolute error: 0.0780029296875
+Final cost: 1333.2954809083028
+Top 5 Candidates:
+    [12.  10.  20.   0.4]
+    [12.  12.5 20.   0.4]
+    [12.  15.  15.   0.4]
+    [12.  15.  17.5  0.4]
+    [12.  17.5 15.   0.4]
+Evaluation time: 0.3399 sec
+------
+------
+Test index: 67
+Target: 310.06
+Candidate: [12.  20.  22.5  0.2]
+Predicted: 311.2334899902344
+Absolute error: 1.173492431640625
+Final cost: 486.3929798340856
+Top 5 Candidates:
+    [12.  20.  22.5  0.2]
+    [12.  20.  20.   0.2]
+    [12.  20.  25.   0.2]
+    [12.   20.   20.    0.25]
+    [12.   20.   22.5   0.25]
+Evaluation time: 0.2477 sec
+------
+------
+Test index: 68
+Target: 312.15
+Candidate: [12.  20.  25.   0.2]
+Predicted: 312.4418640136719
+Absolute error: 0.2918701171875
+Final cost: 398.5740270508835
+Top 5 Candidates:
+    [12.  20.  25.   0.2]
+    [12.  20.  20.   0.2]
+    [12.  20.  22.5  0.2]
+    [12.   20.   20.    0.25]
+    [12.   20.   22.5   0.25]
+Evaluation time: 0.3440 sec
+------
+------
+Test index: 70
+Target: 282.04
+Candidate: [12.   12.5  15.    0.25]
+Predicted: 281.87103271484375
+Absolute error: 0.168975830078125
+Final cost: 2507.43740805674
+Top 5 Candidates:
+    [12.   12.5  15.    0.25]
+    [12.   12.5  17.5   0.25]
+    [12.   10.   15.    0.25]
+    [12.   10.   17.5   0.25]
+    [10.  20.  22.5  0.2]
+Evaluation time: 0.3144 sec
+------
+------
+Test index: 72
+Target: 259.63
+Candidate: [10.  10.  22.5  0.3]
+Predicted: 259.59716796875
+Absolute error: 0.0328369140625
+Final cost: 5253.976478808696
+Top 5 Candidates:
+    [10.  10.  22.5  0.3]
+    [10.   10.   22.5   0.35]
+    [11.  10.  22.5  0.3]
+    [11.   10.   22.5   0.35]
+    [10.  10.  20.   0.2]
+Evaluation time: 0.2756 sec
+------
+------
+Test index: 88
+Target: 263.7
+Candidate: [10.   15.   25.    0.25]
+Predicted: 263.4892272949219
+Absolute error: 0.210784912109375
+Final cost: 4680.519023388775
+Top 5 Candidates:
+    [10.   15.   25.    0.25]
+    [10.   17.5  25.    0.25]
+    [11.   15.   25.    0.25]
+    [11.   17.5  25.    0.25]
+    [10.  10.  22.5  0.4]
+Evaluation time: 0.3382 sec
+------
+
+Fold 2 metrics:
+  R²: 0.9997
+  RMSE: 0.5013
+  MAE: 0.3397
+Fold total time: 7.09 sec
+Fold candidate evaluation time: 0.3687 ± 0.2164 sec
+
+=== Fold 3 ===
+------
+Test index: 3
+Target: 236.84
+Candidate: [ 9.  12.5 15.   0.2]
+Predicted: 236.93788146972656
+Absolute error: 0.0978851318359375
+Final cost: 8962.809449177397
+Top 5 Candidates:
+    [ 9.  12.5 15.   0.2]
+    [ 9.  12.5 17.5  0.2]
+    [ 9.   12.5  22.5   0.25]
+    [ 8.   10.   15.    0.25]
+    [ 8.   10.   17.5   0.25]
+Evaluation time: 0.2869 sec
+------
+------
+Test index: 6
+Target: 196.05
+Candidate: [ 8.  20.  15.   0.2]
+Predicted: 202.00990295410156
+Absolute error: 5.95989990234375
+Final cost: 18349.9847299147
+Top 5 Candidates:
+    [ 8.  20.  15.   0.2]
+    [ 8.  20.  17.5  0.2]
+    [ 8.   20.   15.    0.25]
+    [ 8.   20.   17.5   0.25]
+    [ 8.  15.  25.   0.2]
+Evaluation time: 0.2578 sec
+------
+------
+Test index: 7
+Target: 201.38
+Candidate: [ 8.  20.  15.   0.2]
+Predicted: 202.00990295410156
+Absolute error: 0.6298980712890625
+Final cost: 16934.367478913726
+Top 5 Candidates:
+    [ 8.  20.  15.   0.2]
+    [ 8.  20.  17.5  0.2]
+    [ 8.   20.   15.    0.25]
+    [ 8.   20.   17.5   0.25]
+    [ 8.  15.  25.   0.2]
+Evaluation time: 0.3082 sec
+------
+------
+Test index: 8
+Target: 215.0
+Candidate: [ 8.  12.5 25.   0.3]
+Predicted: 215.74537658691406
+Absolute error: 0.7453765869140625
+Final cost: 13575.07305327896
+Top 5 Candidates:
+    [ 8.  12.5 25.   0.3]
+    [ 8.   12.5  25.    0.35]
+    [ 8.   12.5  25.    0.25]
+    [ 9.  20.  15.   0.2]
+    [ 9.  20.  17.5  0.2]
+Evaluation time: 0.2513 sec
+------
+------
+Test index: 13
+Target: 228.56
+Candidate: [ 8.  12.5 25.   0.4]
+Predicted: 228.3852081298828
+Absolute error: 0.1747894287109375
+Final cost: 10599.138081501616
+Top 5 Candidates:
+    [ 8.  12.5 25.   0.4]
+    [ 9.  15.  15.   0.2]
+    [ 9.  15.  17.5  0.2]
+    [ 9.  17.5 15.   0.2]
+    [ 9.  17.5 17.5  0.2]
+Evaluation time: 0.2510 sec
+------
+------
+Test index: 17
+Target: 213.66
+Candidate: [ 9.  20.  15.   0.2]
+Predicted: 213.51730346679688
+Absolute error: 0.1427001953125
+Final cost: 13889.121122761382
+Top 5 Candidates:
+    [ 9.  20.  15.   0.2]
+    [ 9.  20.  17.5  0.2]
+    [ 8.   12.5  25.    0.25]
+    [ 8.  10.  25.   0.3]
+    [ 8.   10.   25.    0.35]
+Evaluation time: 0.4846 sec
+------
+------
+Test index: 19
+Target: 197.73
+Candidate: [ 8.  20.  15.   0.2]
+Predicted: 202.00990295410156
+Absolute error: 4.2799072265625
+Final cost: 17897.654421906893
+Top 5 Candidates:
+    [ 8.  20.  15.   0.2]
+    [ 8.  20.  17.5  0.2]
+    [ 8.   20.   15.    0.25]
+    [ 8.   20.   17.5   0.25]
+    [ 8.  15.  25.   0.2]
+Evaluation time: 0.2167 sec
+------
+------
+Test index: 24
+Target: 205.25
+Candidate: [ 8.   20.   15.    0.25]
+Predicted: 205.298095703125
+Absolute error: 0.048095703125
+Final cost: 15942.121805110015
+Top 5 Candidates:
+    [ 8.   20.   15.    0.25]
+    [ 8.   20.   17.5   0.25]
+    [ 8.  15.  25.   0.2]
+    [ 8.  17.5 25.   0.2]
+    [ 8.  20.  15.   0.2]
+Evaluation time: 0.2986 sec
+------
+------
+Test index: 25
+Target: 215.7
+Candidate: [ 8.  12.5 25.   0.3]
+Predicted: 215.74537658691406
+Absolute error: 0.045379638671875
+Final cost: 13412.446091609041
+Top 5 Candidates:
+    [ 8.  12.5 25.   0.3]
+    [ 8.   12.5  25.    0.35]
+    [ 9.   20.   15.    0.25]
+    [ 9.   20.   17.5   0.25]
+    [ 8.  15.  25.   0.3]
+Evaluation time: 0.3387 sec
+------
+------
+Test index: 27
+Target: 269.91
+Candidate: [12.  10.  22.5  0.3]
+Predicted: 270.08233642578125
+Absolute error: 0.172332763671875
+Final cost: 3794.820631428371
+Top 5 Candidates:
+    [12.  10.  22.5  0.3]
+    [12.   10.   22.5   0.35]
+    [10.  15.  15.   0.3]
+    [10.   15.   15.    0.35]
+    [10.  15.  17.5  0.3]
+Evaluation time: 0.2090 sec
+------
+------
+Test index: 34
+Target: 239.28
+Candidate: [ 8.  15.  22.5  0.4]
+Predicted: 239.19317626953125
+Absolute error: 0.086822509765625
+Final cost: 8506.763125642241
+Top 5 Candidates:
+    [ 8.  15.  22.5  0.4]
+    [ 8.  17.5 22.5  0.4]
+    [ 9.   10.   22.5   0.25]
+    [ 9.   12.5  20.    0.25]
+    [10.   20.   15.    0.25]
+Evaluation time: 0.2833 sec
+------
+------
+Test index: 36
+Target: 263.67
+Candidate: [10.   10.   20.    0.25]
+Predicted: 264.0079040527344
+Absolute error: 0.337890625
+Final cost: 4602.552632600247
+Top 5 Candidates:
+    [10.   10.   20.    0.25]
+    [11.   10.   20.    0.25]
+    [12.  15.  25.   0.2]
+    [12.  17.5 25.   0.2]
+    [10.   12.5  20.    0.25]
+Evaluation time: 0.3398 sec
+------
+------
+Test index: 38
+Target: 277.71
+Candidate: [12.  15.  15.   0.2]
+Predicted: 277.6889953613281
+Absolute error: 0.02099609375
+Final cost: 2894.667629963533
+Top 5 Candidates:
+    [12.  15.  15.   0.2]
+    [12.  15.  17.5  0.2]
+    [12.  17.5 15.   0.2]
+    [12.  17.5 17.5  0.2]
+    [10.  15.  22.5  0.3]
+Evaluation time: 0.2089 sec
+------
+------
+Test index: 62
+Target: 247.13
+Candidate: [10.  12.5 25.   0.3]
+Predicted: 247.01898193359375
+Absolute error: 0.11102294921875
+Final cost: 7120.3414126295465
+Top 5 Candidates:
+    [10.  12.5 25.   0.3]
+    [10.   12.5  25.    0.35]
+    [11.  12.5 25.   0.3]
+    [11.   12.5  25.    0.35]
+    [10.  10.  25.   0.4]
+Evaluation time: 0.2966 sec
+------
+------
+Test index: 75
+Target: 307.42
+Candidate: [12.  15.  20.   0.4]
+Predicted: 308.44061279296875
+Absolute error: 1.020599365234375
+Final cost: 580.4300282301314
+Top 5 Candidates:
+    [12.  15.  20.   0.4]
+    [12.  17.5 20.   0.4]
+    [12.  15.  20.   0.3]
+    [12.   15.   20.    0.35]
+    [12.  17.5 20.   0.3]
+Evaluation time: 0.2355 sec
+------
+------
+Test index: 78
+Target: 321.78
+Candidate: [12.  20.  22.5  0.3]
+Predicted: 321.52294921875
+Absolute error: 0.257049560546875
+Final cost: 94.71407168716394
+Top 5 Candidates:
+    [12.  20.  22.5  0.3]
+    [12.   20.   22.5   0.35]
+    [12.  20.  20.   0.3]
+    [12.   20.   20.    0.35]
+    [12.   20.   25.    0.25]
+Evaluation time: 0.3729 sec
+------
+------
+Test index: 84
+Target: 235.04
+Candidate: [ 8.  15.  15.   0.3]
+Predicted: 234.9110107421875
+Absolute error: 0.1289825439453125
+Final cost: 9306.869064900056
+Top 5 Candidates:
+    [ 8.  15.  15.   0.3]
+    [ 8.   15.   15.    0.35]
+    [ 8.  15.  17.5  0.3]
+    [ 8.   15.   17.5   0.35]
+    [ 8.  17.5 15.   0.3]
+Evaluation time: 0.3448 sec
+------
+------
+Test index: 89
+Target: 258.26
+Candidate: [10.   12.5  15.    0.25]
+Predicted: 258.1739196777344
+Absolute error: 0.086090087890625
+Final cost: 5365.872422077789
+Top 5 Candidates:
+    [10.   12.5  15.    0.25]
+    [10.   12.5  17.5   0.25]
+    [11.   12.5  15.    0.25]
+    [11.   12.5  17.5   0.25]
+    [10.   15.   15.    0.25]
+Evaluation time: 0.2826 sec
+------
+------
+Test index: 91
+Target: 235.75
+Candidate: [ 9.  15.  22.5  0.2]
+Predicted: 235.85768127441406
+Absolute error: 0.1076812744140625
+Final cost: 9170.382760920562
+Top 5 Candidates:
+    [ 9.  15.  22.5  0.2]
+    [ 9.  17.5 22.5  0.2]
+    [ 9.   15.   15.    0.25]
+    [ 9.   15.   17.5   0.25]
+    [ 9.   17.5  15.    0.25]
+Evaluation time: 0.5548 sec
+------
+
+Fold 3 metrics:
+  R²: 0.9976
+  RMSE: 1.7193
+  MAE: 0.7607
+Fold total time: 5.96 sec
+Fold candidate evaluation time: 0.3064 ± 0.0870 sec
+
+=== Fold 4 ===
+------
+Test index: 32
+Target: 278.34
+Candidate: [12.  20.  15.   0.3]
+Predicted: 278.21881103515625
+Absolute error: 0.121185302734375
+Final cost: 3040.434273504035
+Top 5 Candidates:
+    [12.  20.  15.   0.3]
+    [12.   20.   15.    0.35]
+    [12.  20.  17.5  0.3]
+    [12.   20.   17.5   0.35]
+    [10.  15.  25.   0.4]
+Evaluation time: 0.3693 sec
+------
+------
+Test index: 41
+Target: 282.39
+Candidate: [12.   15.   25.    0.25]
+Predicted: 282.0580139160156
+Absolute error: 0.332000732421875
+Final cost: 2610.2016957452447
+Top 5 Candidates:
+    [12.   15.   25.    0.25]
+    [12.   17.5  25.    0.25]
+    [10.  15.  20.   0.3]
+    [10.   15.   20.    0.35]
+    [10.  17.5 20.   0.3]
+Evaluation time: 0.3773 sec
+------
+------
+Test index: 43
+Target: 278.22
+Candidate: [12.  20.  15.   0.3]
+Predicted: 278.21881103515625
+Absolute error: 0.001190185546875
+Final cost: 3053.6823054376227
+Top 5 Candidates:
+    [12.  20.  15.   0.3]
+    [12.   20.   15.    0.35]
+    [12.  20.  17.5  0.3]
+    [12.   20.   17.5   0.35]
+    [10.  15.  25.   0.4]
+Evaluation time: 0.2106 sec
+------
+------
+Test index: 46
+Target: 244.04
+Candidate: [ 8.  20.  22.5  0.4]
+Predicted: 244.10403442382812
+Absolute error: 0.0640411376953125
+Final cost: 7999.53740118958
+Top 5 Candidates:
+    [ 8.  20.  22.5  0.4]
+    [ 9.  12.5 22.5  0.4]
+    [ 9.   12.5  15.    0.25]
+    [ 9.   12.5  17.5   0.25]
+    [ 9.  12.5 20.   0.3]
+Evaluation time: 0.3494 sec
+------
+------
+Test index: 48
+Target: 285.67
+Candidate: [12.  10.  15.   0.4]
+Predicted: 285.66925048828125
+Absolute error: 0.000762939453125
+Final cost: 2285.808822893679
+Top 5 Candidates:
+    [12.  10.  15.   0.4]
+    [12.  10.  17.5  0.4]
+    [12.  15.  25.   0.3]
+    [12.   15.   25.    0.35]
+    [12.  17.5 25.   0.3]
+Evaluation time: 0.7362 sec
+------
+------
+Test index: 50
+Target: 280.62
+Candidate: [12.  20.  15.   0.4]
+Predicted: 280.31585693359375
+Absolute error: 0.30413818359375
+Final cost: 2794.1936667657505
+Top 5 Candidates:
+    [12.  20.  15.   0.4]
+    [12.  20.  17.5  0.4]
+    [10.  15.  22.5  0.4]
+    [10.  17.5 22.5  0.4]
+    [11.  15.  22.5  0.4]
+Evaluation time: 0.2129 sec
+------
+------
+Test index: 54
+Target: 286.23
+Candidate: [12.  10.  15.   0.4]
+Predicted: 285.66925048828125
+Absolute error: 0.560760498046875
+Final cost: 2232.5750738702413
+Top 5 Candidates:
+    [12.  10.  15.   0.4]
+    [12.  10.  17.5  0.4]
+    [12.   12.5  22.5   0.25]
+    [12.  15.  25.   0.3]
+    [12.   15.   25.    0.35]
+Evaluation time: 0.2944 sec
+------
+------
+Test index: 56
+Target: 293.41
+Candidate: [12.  15.  22.5  0.4]
+Predicted: 293.86383056640625
+Absolute error: 0.453826904296875
+Final cost: 1605.6155631768818
+Top 5 Candidates:
+    [12.  15.  22.5  0.4]
+    [12.  17.5 22.5  0.4]
+    [10.  15.  20.   0.4]
+    [10.  17.5 20.   0.4]
+    [11.  15.  20.   0.4]
+Evaluation time: 0.2087 sec
+------
+------
+Test index: 57
+Target: 271.2
+Candidate: [12.  15.  25.   0.2]
+Predicted: 271.1834411621094
+Absolute error: 0.016571044921875
+Final cost: 3878.814973552862
+Top 5 Candidates:
+    [12.  15.  25.   0.2]
+    [12.  17.5 25.   0.2]
+    [12.  12.5 22.5  0.2]
+    [12.   12.5  25.    0.25]
+    [12.  15.  15.   0.2]
+Evaluation time: 0.3096 sec
+------
+------
+Test index: 58
+Target: 291.89
+Candidate: [12.  15.  25.   0.4]
+Predicted: 291.896728515625
+Absolute error: 0.0067138671875
+Final cost: 1729.7391676690725
+Top 5 Candidates:
+    [12.  15.  25.   0.4]
+    [12.  17.5 25.   0.4]
+    [12.  10.  15.   0.3]
+    [12.   10.   15.    0.35]
+    [12.  10.  17.5  0.3]
+Evaluation time: 0.3160 sec
+------
+------
+Test index: 59
+Target: 295.93
+Candidate: [10.  20.  20.   0.4]
+Predicted: 296.1163330078125
+Absolute error: 0.18634033203125
+Final cost: 1410.0124925714144
+Top 5 Candidates:
+    [10.  20.  20.   0.4]
+    [11.  20.  20.   0.4]
+    [12.  15.  15.   0.3]
+    [12.   15.   15.    0.35]
+    [12.  15.  17.5  0.3]
+Evaluation time: 0.2400 sec
+------
+------
+Test index: 61
+Target: 247.65
+Candidate: [ 9.  10.  15.   0.3]
+Predicted: 248.58888244628906
+Absolute error: 0.9388885498046875
+Final cost: 7366.811740520633
+Top 5 Candidates:
+    [ 9.  10.  15.   0.3]
+    [ 9.   10.   15.    0.35]
+    [ 9.  10.  17.5  0.3]
+    [ 9.   10.   17.5   0.35]
+    [ 8.  10.  20.   0.4]
+Evaluation time: 0.2604 sec
+------
+------
+Test index: 65
+Target: 296.79
+Candidate: [10.  20.  20.   0.4]
+Predicted: 296.1163330078125
+Absolute error: 0.673675537109375
+Final cost: 1346.1658637139917
+Top 5 Candidates:
+    [10.  20.  20.   0.4]
+    [11.  20.  20.   0.4]
+    [10.  20.  22.5  0.4]
+    [11.  20.  22.5  0.4]
+    [12.  15.  15.   0.3]
+Evaluation time: 0.4245 sec
+------
+------
+Test index: 66
+Target: 297.94
+Candidate: [10.  20.  22.5  0.4]
+Predicted: 297.64935302734375
+Absolute error: 0.2906494140625
+Final cost: 1263.1010576837198
+Top 5 Candidates:
+    [10.  20.  22.5  0.4]
+    [11.  20.  22.5  0.4]
+    [10.  20.  25.   0.4]
+    [11.  20.  25.   0.4]
+    [10.  20.  20.   0.4]
+Evaluation time: 0.6442 sec
+------
+------
+Test index: 76
+Target: 327.77
+Candidate: [12.  20.  22.5  0.4]
+Predicted: 331.12109375
+Absolute error: 3.351104736328125
+Final cost: 32.60561952454022
+Top 5 Candidates:
+    [12.  20.  22.5  0.4]
+    [12.  20.  25.   0.3]
+    [12.   20.   25.    0.35]
+    [12.  20.  20.   0.4]
+    [12.  20.  25.   0.4]
+Evaluation time: 0.5296 sec
+------
+------
+Test index: 83
+Target: 300.27
+Candidate: [12.   15.   20.    0.25]
+Predicted: 299.9108581542969
+Absolute error: 0.359130859375
+Final cost: 1102.9129376397757
+Top 5 Candidates:
+    [12.   15.   20.    0.25]
+    [12.   17.5  20.    0.25]
+    [10.  20.  25.   0.4]
+    [11.  20.  25.   0.4]
+    [10.  20.  22.5  0.4]
+Evaluation time: 0.2278 sec
+------
+------
+Test index: 90
+Target: 272.03
+Candidate: [10.  10.  15.   0.3]
+Predicted: 272.2483215332031
+Absolute error: 0.21832275390625
+Final cost: 3776.11885267884
+Top 5 Candidates:
+    [10.  10.  15.   0.3]
+    [10.   10.   15.    0.35]
+    [10.  10.  17.5  0.3]
+    [10.   10.   17.5   0.35]
+    [11.  10.  15.   0.3]
+Evaluation time: 0.3106 sec
+------
+------
+Test index: 93
+Target: 252.5
+Candidate: [ 9.  15.  20.   0.4]
+Predicted: 252.71604919433594
+Absolute error: 0.2160491943359375
+Final cost: 6557.78194987122
+Top 5 Candidates:
+    [ 9.  15.  20.   0.4]
+    [ 9.  17.5 20.   0.4]
+    [10.   15.   25.    0.25]
+    [10.   17.5  25.    0.25]
+    [11.   15.   25.    0.25]
+Evaluation time: 0.2852 sec
+------
+------
+Test index: 95
+Target: 231.97
+Candidate: [ 8.  12.5 15.   0.2]
+Predicted: 232.2783660888672
+Absolute error: 0.3083648681640625
+Final cost: 10304.307113176885
+Top 5 Candidates:
+    [ 8.  12.5 15.   0.2]
+    [ 8.  12.5 17.5  0.2]
+    [10.   10.   25.    0.25]
+    [11.   10.   25.    0.25]
+    [ 8.  10.  15.   0.2]
+Evaluation time: 0.5041 sec
+------
+
+Fold 4 metrics:
+  R²: 0.9986
+  RMSE: 0.8505
+  MAE: 0.4423
+Fold total time: 7.01 sec
+Fold candidate evaluation time: 0.3585 ± 0.1454 sec
+
+=== Fold 5 ===
+------
+Test index: 1
+Target: 235.5
+Candidate: [ 9.   20.   15.    0.25]
+Predicted: 235.32867431640625
+Absolute error: 0.17132568359375
+Final cost: 9739.776817575097
+Top 5 Candidates:
+    [ 9.   20.   15.    0.25]
+    [ 9.   20.   17.5   0.25]
+    [ 8.   10.   15.    0.25]
+    [ 8.   10.   17.5   0.25]
+    [ 9.  12.5 22.5  0.2]
+Evaluation time: 0.2328 sec
+------
+------
+Test index: 2
+Target: 252.02
+Candidate: [ 9.   20.   22.5   0.25]
+Predicted: 251.9909210205078
+Absolute error: 0.029083251953125
+Final cost: 6751.9594539032205
+Top 5 Candidates:
+    [ 9.   20.   22.5   0.25]
+    [ 9.  15.  22.5  0.4]
+    [ 9.  17.5 22.5  0.4]
+    [ 9.   10.   15.    0.25]
+    [ 9.   10.   17.5   0.25]
+Evaluation time: 0.2619 sec
+------
+------
+Test index: 14
+Target: 242.01
+Candidate: [10.  20.  15.   0.2]
+Predicted: 242.0353240966797
+Absolute error: 0.02532958984375
+Final cost: 8497.209112399318
+Top 5 Candidates:
+    [10.  20.  15.   0.2]
+    [10.  20.  17.5  0.2]
+    [11.  20.  15.   0.2]
+    [11.  20.  17.5  0.2]
+    [ 8.  15.  15.   0.4]
+Evaluation time: 0.2505 sec
+------
+------
+Test index: 20
+Target: 206.28
+Candidate: [ 8.  12.5 25.   0.2]
+Predicted: 206.89915466308594
+Absolute error: 0.6191558837890625
+Final cost: 16361.046794723534
+Top 5 Candidates:
+    [ 8.  12.5 25.   0.2]
+    [ 8.   15.   25.    0.25]
+    [ 8.   17.5  25.    0.25]
+    [ 8.  20.  15.   0.3]
+    [ 8.   20.   15.    0.35]
+Evaluation time: 0.2476 sec
+------
+------
+Test index: 21
+Target: 206.69
+Candidate: [ 8.  12.5 25.   0.2]
+Predicted: 206.89915466308594
+Absolute error: 0.2091522216796875
+Final cost: 16256.328442477441
+Top 5 Candidates:
+    [ 8.  12.5 25.   0.2]
+    [ 8.   15.   25.    0.25]
+    [ 8.   17.5  25.    0.25]
+    [ 8.  20.  15.   0.3]
+    [ 8.   20.   15.    0.35]
+Evaluation time: 0.2473 sec
+------
+------
+Test index: 23
+Target: 242.06
+Candidate: [ 8.  15.  15.   0.4]
+Predicted: 242.05288696289062
+Absolute error: 0.007110595703125
+Final cost: 8487.993581637596
+Top 5 Candidates:
+    [ 8.  15.  15.   0.4]
+    [ 8.  15.  17.5  0.4]
+    [ 8.  17.5 15.   0.4]
+    [ 8.  17.5 17.5  0.4]
+    [10.  20.  15.   0.2]
+Evaluation time: 0.2590 sec
+------
+------
+Test index: 29
+Target: 291.99
+Candidate: [12.  12.5 20.   0.3]
+Predicted: 291.557373046875
+Absolute error: 0.4326171875
+Final cost: 1780.8659629852525
+Top 5 Candidates:
+    [12.  12.5 20.   0.3]
+    [12.   12.5  20.    0.35]
+    [12.  10.  15.   0.4]
+    [12.  10.  17.5  0.4]
+    [12.  10.  15.   0.3]
+Evaluation time: 0.2402 sec
+------
+------
+Test index: 37
+Target: 269.29
+Candidate: [10.  12.5 22.5  0.4]
+Predicted: 269.2908935546875
+Absolute error: 0.000885009765625
+Final cost: 4212.0499288055635
+Top 5 Candidates:
+    [10.  12.5 22.5  0.4]
+    [11.  12.5 22.5  0.4]
+    [10.   20.   25.    0.25]
+    [11.   20.   25.    0.25]
+    [12.   10.   22.5   0.25]
+Evaluation time: 0.3203 sec
+------
+------
+Test index: 51
+Target: 278.1
+Candidate: [12.  10.  20.   0.2]
+Predicted: 278.0361328125
+Absolute error: 0.063873291015625
+Final cost: 3146.1226085907197
+Top 5 Candidates:
+    [12.  10.  20.   0.2]
+    [10.  20.  22.5  0.2]
+    [11.  20.  22.5  0.2]
+    [10.  15.  20.   0.2]
+    [10.  17.5 20.   0.2]
+Evaluation time: 0.2284 sec
+------
+------
+Test index: 52
+Target: 280.95
+Candidate: [12.  10.  15.   0.2]
+Predicted: 280.8422546386719
+Absolute error: 0.107757568359375
+Final cost: 2834.5303551727548
+Top 5 Candidates:
+    [12.  10.  15.   0.2]
+    [12.  10.  17.5  0.2]
+    [12.  12.5 22.5  0.3]
+    [12.   12.5  22.5   0.35]
+    [12.   12.5  22.5   0.25]
+Evaluation time: 0.2667 sec
+------
+------
+Test index: 60
+Target: 234.13
+Candidate: [ 8.  10.  20.   0.3]
+Predicted: 234.23638916015625
+Absolute error: 0.10638427734375
+Final cost: 10012.065160446191
+Top 5 Candidates:
+    [ 8.  10.  20.   0.3]
+    [ 8.   10.   20.    0.35]
+    [ 8.  20.  25.   0.4]
+    [ 8.  10.  15.   0.2]
+    [ 8.  10.  17.5  0.2]
+Evaluation time: 0.2382 sec
+------
+------
+Test index: 63
+Target: 271.93
+Candidate: [10.   15.   22.5   0.25]
+Predicted: 271.9071350097656
+Absolute error: 0.022857666015625
+Final cost: 3876.345904586815
+Top 5 Candidates:
+    [10.   15.   22.5   0.25]
+    [10.   17.5  22.5   0.25]
+    [11.   15.   22.5   0.25]
+    [11.   17.5  22.5   0.25]
+    [10.   20.   20.    0.25]
+Evaluation time: 0.2500 sec
+------
+------
+Test index: 71
+Target: 288.0
+Candidate: [12.   15.   15.    0.25]
+Predicted: 288.04693603515625
+Absolute error: 0.04693603515625
+Final cost: 2133.5445177704096
+Top 5 Candidates:
+    [12.   15.   15.    0.25]
+    [12.   15.   17.5   0.25]
+    [12.   17.5  15.    0.25]
+    [12.   17.5  17.5   0.25]
+    [12.  12.5 15.   0.3]
+Evaluation time: 0.2601 sec
+------
+------
+Test index: 74
+Target: 279.25
+Candidate: [12.   15.   25.    0.25]
+Predicted: 279.7614440917969
+Absolute error: 0.511444091796875
+Final cost: 3018.437401071191
+Top 5 Candidates:
+    [12.   15.   25.    0.25]
+    [12.   17.5  25.    0.25]
+    [10.  15.  25.   0.4]
+    [10.  17.5 25.   0.4]
+    [11.  15.  25.   0.4]
+Evaluation time: 0.2488 sec
+------
+------
+Test index: 81
+Target: 216.53
+Candidate: [ 9.  10.  25.   0.2]
+Predicted: 215.8784942626953
+Absolute error: 0.6515045166015625
+Final cost: 13843.94798857119
+Top 5 Candidates:
+    [ 9.  10.  25.   0.2]
+    [ 9.  10.  25.   0.3]
+    [ 9.   10.   25.    0.35]
+    [ 9.   10.   25.    0.25]
+    [ 8.  20.  15.   0.4]
+Evaluation time: 0.2612 sec
+------
+------
+Test index: 82
+Target: 259.61
+Candidate: [10.  12.5 25.   0.4]
+Predicted: 259.4605712890625
+Absolute error: 0.1494140625
+Final cost: 5562.222284274314
+Top 5 Candidates:
+    [10.  12.5 25.   0.4]
+    [11.  12.5 25.   0.4]
+    [ 9.  10.  20.   0.4]
+    [10.   12.5  22.5   0.25]
+    [11.   12.5  22.5   0.25]
+Evaluation time: 0.2424 sec
+------
+------
+Test index: 86
+Target: 247.16
+Candidate: [ 9.  12.5 15.   0.3]
+Predicted: 247.33958435058594
+Absolute error: 0.1795806884765625
+Final cost: 7574.274443942285
+Top 5 Candidates:
+    [ 9.  12.5 15.   0.3]
+    [ 9.   12.5  15.    0.35]
+    [ 9.  12.5 17.5  0.3]
+    [ 9.   12.5  17.5   0.35]
+    [ 9.  20.  25.   0.3]
+Evaluation time: 0.2565 sec
+------
+------
+Test index: 87
+Target: 212.82
+Candidate: [ 8.  15.  25.   0.3]
+Predicted: 212.2384796142578
+Absolute error: 0.5815277099609375
+Final cost: 14730.751571090725
+Top 5 Candidates:
+    [ 8.  15.  25.   0.3]
+    [ 8.   15.   25.    0.35]
+    [ 8.  17.5 25.   0.3]
+    [ 8.   17.5  25.    0.35]
+    [ 8.  20.  25.   0.2]
+Evaluation time: 0.2982 sec
+------
+------
+Test index: 92
+Target: 244.43
+Candidate: [ 9.  12.5 22.5  0.4]
+Predicted: 244.3993682861328
+Absolute error: 0.0306243896484375
+Final cost: 8056.912823532127
+Top 5 Candidates:
+    [ 9.  12.5 22.5  0.4]
+    [ 9.  15.  22.5  0.2]
+    [ 9.  17.5 22.5  0.2]
+    [ 9.  15.  15.   0.2]
+    [ 9.  15.  17.5  0.2]
+Evaluation time: 0.2115 sec
+------
+
+Fold 5 metrics:
+  R²: 0.9999
+  RMSE: 0.3039
+  MAE: 0.2077
+Fold total time: 4.89 sec
+Fold candidate evaluation time: 0.2538 ± 0.0233 sec
+
+Candidate DataFrame saved to Grid Search/2025-09-18_16-26-42/candidates.csv
+Candidate time summary saved to Grid Search/2025-09-18_16-26-42/candidate_time_summary.csv
+
+=== Cross-Validation Summary ===
+R²:   0.9929 ± 0.0121
+RMSE: 2.1184 ± 2.5949
+MAE:  0.9721 ± 1.0844
+
+Overall candidate evaluation time across 5 folds: 0.3207 ± 0.1342 sec
+Total optimizer run time: 31.47 sec

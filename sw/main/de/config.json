@@ -29,12 +29,12 @@
       }
     },
     "optimizer": {
-    "population_size": 80,
-    "generations": 140,
-    "crossover_rate": 0.9,
-    "mutation_factor": 0.5,
+    "population_size": 70,
+    "generations": 80,
+    "crossover_rate": 0.6,
+    "mutation_factor": 0.6,
     "strategy": "rand/1/bin",
-    "early_stop_patience": 50,
+    "early_stop_patience": 20,
     "optimizer_type": "DE"
 }
   }
