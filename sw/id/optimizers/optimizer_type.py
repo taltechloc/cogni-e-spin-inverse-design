@@ -24,7 +24,6 @@ class OptimizerType(Enum):
     BO = "BO"
     DE = "DE"
 
-
     def create(self, **kwargs):
         if self is OptimizerType.PSO:
             return ParticleSwarmOptimizer(**kwargs)
