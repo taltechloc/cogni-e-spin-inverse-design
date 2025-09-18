@@ -2,14 +2,14 @@ import json
 import itertools
 import numpy as np
 from copy import deepcopy
-from sklearn.model_selection import KFold
+from sklearn.model_selection import train_test_split
 from id.dataset import Dataset
 from id.models.model_type import ModelType
 from id.pipeline_factory import PipelineFactory
 import os
 from datetime import datetime
 
-def run_hyperparameter_tuning(config_path, optimizer_name, param_grid, n_splits=5):
+def run_hyperparameter_tuning(config_path, optimizer_name, param_grid, test_size=0.2):
     with open(config_path, "r") as f:
         config = json.load(f)
 
@@ -35,33 +35,33 @@ def run_hyperparameter_tuning(config_path, optimizer_name, param_grid, n_splits=
         keys, values = zip(*param_grid.items())
         param_combinations = [dict(zip(keys, v)) for v in itertools.product(*values)]
 
+        # single split instead of KFold
+        X_train, X_val, y_train, y_val = train_test_split(
+            X_full, y_full,
+            test_size=test_size,
+            random_state=config["global"]["seed"],
+            shuffle=True
+        )
+
         for i, params in enumerate(param_combinations, 1):
-            kf = KFold(n_splits=n_splits, shuffle=True, random_state=config["global"]["seed"])
-            fold_maes = []
+            model_type = config["model"]["type"]
+            model_params = config["model"].get("params", {})
+            model = ModelType.from_str(model_type).create(model_params)
+            model.train(X_train, y_train)
 
-            for fold_idx, (train_idx, val_idx) in enumerate(kf.split(X_full), start=1):
-                X_train, X_val = X_full.iloc[train_idx], X_full.iloc[val_idx]
-                y_train, y_val = y_full.iloc[train_idx], y_full.iloc[val_idx]
+            pipeline_cfg = deepcopy(config["pipeline"])
+            pipeline_cfg["optimizer"].update(params)
+            pipeline = PipelineFactory.create_pipeline(pipeline_cfg, X_train, model)
 
-                model_type = config["model"]["type"]
-                model_params = config["model"].get("params", {})
-                model = ModelType.from_str(model_type).create(model_params)
-                model.train(X_train, y_train)
+            errors = []
+            for target in y_val:
+                result = pipeline.run(float(target))
+                predicted = model.predict(result.best_candidates.reshape(1, -1))[0]
+                errors.append(np.abs(predicted - target))
 
-                pipeline_cfg = deepcopy(config["pipeline"])
-                pipeline_cfg["optimizer"].update(params)
-                pipeline = PipelineFactory.create_pipeline(pipeline_cfg, X_train, model)
+            mean_mae = np.mean(errors)
+            std_mae = np.std(errors)
 
-                errors = []
-                for target in y_val:
-                    result = pipeline.run(float(target))
-                    predicted = model.predict(result.best_candidates.reshape(1, -1))[0]
-                    errors.append(np.abs(predicted - target))
-
-                fold_maes.append(np.mean(errors))
-
-            mean_mae = np.mean(fold_maes)
-            std_mae = np.std(fold_maes)
             log(f"{i}/{len(param_combinations)}: MAE = {mean_mae:.4f} ± {std_mae:.4f}, params = {params}")
             results.append((mean_mae, std_mae, params))
 
@@ -70,6 +70,6 @@ def run_hyperparameter_tuning(config_path, optimizer_name, param_grid, n_splits=
 
         log("\n=== Best Hyperparameters ===")
         log(str(best_params))
-        log(f"Mean MAE across folds: {best_mean_mae:.4f} ± {best_std_mae:.4f}")
+        log(f"Mean MAE (80/20 split): {best_mean_mae:.4f} ± {best_std_mae:.4f}")
 
     print(f"\nAll logs saved in: {log_file_path}")
