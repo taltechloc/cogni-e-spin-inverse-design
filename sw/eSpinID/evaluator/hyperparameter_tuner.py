@@ -3,9 +3,9 @@ import itertools
 import numpy as np
 from copy import deepcopy
 from sklearn.model_selection import train_test_split
-from id.dataset import Dataset
-from id.models.model_type import ModelType
-from id.pipeline_factory import PipelineFactory
+from eSpinID.dataset import Dataset
+from eSpinID.models.model_type import ModelType
+from eSpinID.pipeline_factory import PipelineFactory
 import os
 from datetime import datetime
 

@@ -1,4 +1,4 @@
-from id.evaluator.hyperparameter_tuner import run_hyperparameter_tuning
+from eSpinID.evaluator.hyperparameter_tuner import run_hyperparameter_tuning
 
 if __name__ == "__main__":
     bo_param_grid = {

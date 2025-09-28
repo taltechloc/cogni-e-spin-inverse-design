@@ -2,7 +2,7 @@
 from xgboost import XGBRegressor
 from dataclasses import dataclass
 
-from id.models.base_model import BaseModel
+from eSpinID.models.base_model import BaseModel
 
 
 @dataclass

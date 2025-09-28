@@ -1,4 +1,4 @@
-# id/evaluator/five_fold_evaluator.py
+# eSpinID/evaluator/five_fold_evaluator.py
 
 import json
 import os
@@ -9,10 +9,10 @@ from datetime import datetime
 from sklearn.model_selection import KFold
 from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 
-from id.dataset import Dataset
-from id.models.model_type import ModelType
-from id.pipeline_factory import PipelineFactory
-from id.utils.plot_utils import plot_target_vs_prediction_per_fold, plot_cost_trajectories
+from eSpinID.dataset import Dataset
+from eSpinID.models.model_type import ModelType
+from eSpinID.pipeline_factory import PipelineFactory
+from eSpinID.utils.plot_utils import plot_target_vs_prediction_per_fold, plot_cost_trajectories
 
 
 # -------------------------

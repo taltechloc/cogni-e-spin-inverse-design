@@ -1,7 +1,7 @@
 # objective/surrogate_objective.py
 import numpy as np
 
-from id.objective.base_objective import BaseObjective
+from eSpinID.objective.base_objective import BaseObjective
 
 
 class SurrogateObjective(BaseObjective):

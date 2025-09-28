@@ -5,8 +5,8 @@ from scipy.optimize import minimize
 from sklearn.gaussian_process import GaussianProcessRegressor
 from sklearn.gaussian_process.kernels import RBF, ConstantKernel as C
 
-from id.optimizers.base_optimizer import BaseOptimizer
-from id.optimizers.optimization_result import OptimizationResult
+from eSpinID.optimizers.base_optimizer import BaseOptimizer
+from eSpinID.optimizers.optimization_result import OptimizationResult
 
 
 BOConfig = {

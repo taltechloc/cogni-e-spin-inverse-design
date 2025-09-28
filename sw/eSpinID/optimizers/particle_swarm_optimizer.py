@@ -2,8 +2,8 @@
 import numpy as np
 from matplotlib import pyplot as plt
 
-from id.optimizers.base_optimizer import BaseOptimizer
-from id.optimizers.optimization_result import OptimizationResult
+from eSpinID.optimizers.base_optimizer import BaseOptimizer
+from eSpinID.optimizers.optimization_result import OptimizationResult
 
 
 PSOConfig = {

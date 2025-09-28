@@ -1,7 +1,7 @@
 # models/base_model.py
 from abc import ABC, abstractmethod
 
-from id.utils.metrics import regression_metrics
+from eSpinID.utils.metrics import regression_metrics
 
 
 class BaseModel(ABC):

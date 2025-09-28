@@ -1,7 +1,7 @@
 # objective/objective_type.py
 from enum import Enum
 
-from id.objective.surrogate_objective import SurrogateObjective
+from eSpinID.objective.surrogate_objective import SurrogateObjective
 
 
 class ObjectiveTypeError(Exception):

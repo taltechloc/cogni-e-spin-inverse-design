@@ -1,7 +1,7 @@
 # models/model_type.py
 from enum import Enum
 
-from id.models.xgboost import XGBoostSurrogate
+from eSpinID.models.xgboost import XGBoostSurrogate
 
 
 class ModelTypeError(Exception):

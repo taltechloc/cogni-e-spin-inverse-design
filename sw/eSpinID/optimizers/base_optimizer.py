@@ -2,7 +2,7 @@
 from abc import ABC, abstractmethod
 from matplotlib import pyplot as plt
 
-from id.optimizers.optimization_result import OptimizationResult
+from eSpinID.optimizers.optimization_result import OptimizationResult
 
 
 class BaseOptimizer(ABC):

@@ -1,8 +1,8 @@
 import json
 import os
-from id.dataset import Dataset
-from id.models.model_type import ModelType
-from id.pipeline_factory import PipelineFactory
+from eSpinID.dataset import Dataset
+from eSpinID.models.model_type import ModelType
+from eSpinID.pipeline_factory import PipelineFactory
 
 
 def _train_surrogate_model(X, y, model_def):

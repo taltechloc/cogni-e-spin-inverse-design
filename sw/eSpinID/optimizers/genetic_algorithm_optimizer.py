@@ -1,8 +1,8 @@
 # optimizers/genetic_algorithm_optimizer.py
 import numpy as np
 
-from id.optimizers.base_optimizer import BaseOptimizer
-from id.optimizers.optimization_result import OptimizationResult
+from eSpinID.optimizers.base_optimizer import BaseOptimizer
+from eSpinID.optimizers.optimization_result import OptimizationResult
 
 
 GAConfig = {

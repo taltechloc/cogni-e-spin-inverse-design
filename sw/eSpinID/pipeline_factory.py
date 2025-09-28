@@ -1,8 +1,8 @@
 # pipeline_factory.py
 
-from id.pipeline import Pipeline
-from id.objective.objective_type import ObjectiveType
-from id.optimizers.optimizer_type import OptimizerType
+from eSpinID.pipeline import Pipeline
+from eSpinID.objective.objective_type import ObjectiveType
+from eSpinID.optimizers.optimizer_type import OptimizerType
 
 
 class PipelineFactory:

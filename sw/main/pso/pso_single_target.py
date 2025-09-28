@@ -2,9 +2,9 @@ import json
 import os
 import datetime
 
-from id.dataset import Dataset
-from id.models.model_type import ModelType
-from id.pipeline_factory import PipelineFactory
+from eSpinID.dataset import Dataset
+from eSpinID.models.model_type import ModelType
+from eSpinID.pipeline_factory import PipelineFactory
 from storage.out_of_distribution_detection.mahalanobis_distance import MahalanobisDistance
 
 
