@@ -3,7 +3,7 @@
     "seed": 42
   },
   "dataset": {
-    "file_path": "../../../data/PVA-Ziabari-2009.csv",
+    "file_path": "../data/PVA-Ziabari-2009.csv",
     "file_type": "csv",
     "target_column": "diameter"
   },
