@@ -2,7 +2,6 @@
 
 **eSpinID** (**E**lectro**Spin**ning **I**nverse **D**esign) is a Python package that implements a robust, data-driven framework for predicting and controlling the diameter of electrospun nanofibers. It moves beyond traditional trial-and-error methods by integrating a high-fidelity surrogate model with advanced optimization techniques to determine the optimal process parameters for a specified target fiber diameter.
 
-eSpinID (ElectroSpinning Inverse Design) is a Python package that implements a robust, data-driven framework for predicting and controlling the diameter of electrospun nanofibers. It moves beyond traditional trial-and-error methods by integrating a high-fidelity surrogate model with advanced optimization techniques to determine the optimal process parameters for a specified target fiber diameter.
 This package provides the core code supporting the findings in the manuscript:
 
 Inverse Design of Electrospun Nanofibers: An XGBoost and PSO Framework for Targeted Diameter Control.
