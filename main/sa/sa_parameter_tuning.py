@@ -1,4 +1,4 @@
-from eSpinID.evaluator.hyperparameter_tuner import run_hyperparameter_tuning
+from main.evaluator.hyperparameter_tuner import run_hyperparameter_tuning
 
 if __name__ == "__main__":
     # ~150 total combinations

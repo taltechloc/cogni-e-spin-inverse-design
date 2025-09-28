@@ -5,7 +5,7 @@ import datetime
 from eSpinID.dataset import Dataset
 from eSpinID.models.model_type import ModelType
 from eSpinID.pipeline_factory import PipelineFactory
-from storage.out_of_distribution_detection.mahalanobis_distance import MahalanobisDistance
+from package.storage.out_of_distribution_detection.mahalanobis_distance import MahalanobisDistance
 
 
 def _train_surrogate_model(X, y, model_def):

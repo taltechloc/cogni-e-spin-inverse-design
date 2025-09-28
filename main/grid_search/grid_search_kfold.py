@@ -1,4 +1,4 @@
-from eSpinID.evaluator.five_fold_evaluator import run_evaluation
+from main.evaluator import run_evaluation
 
 
 if __name__ == "__main__":
