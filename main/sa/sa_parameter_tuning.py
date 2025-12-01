@@ -1,4 +1,6 @@
-from main.evaluator.hyperparameter_tuner import run_hyperparameter_tuning
+import numpy as np
+
+from main.evaluator.nested_cv_tuning import run_simple_cv_tuning
 
 if __name__ == "__main__":
     # ~150 total combinations
@@ -9,8 +11,9 @@ if __name__ == "__main__":
         "step_size": [0.1, 0.2],
     }
 
-    run_hyperparameter_tuning(
+    best_params, mean_mae, std_mae = run_simple_cv_tuning(
         config_path="config.json",
         optimizer_name="Simulated Annealing",
         param_grid=param_grid
     )
+    print("Best hyperparameters:", best_params)
