@@ -29,7 +29,7 @@ class Dataset:
         if file_path:
             if file_type == "csv":
                 self.df = pd.read_csv(file_path)
-                self.df.drop("diameter_stdev", axis=1, inplace=True)
+                # self.df.drop("diameter_stdev", axis=1, inplace=True)
 
             elif file_type == "excel":
                 self.df = pd.read_excel(file_path)
