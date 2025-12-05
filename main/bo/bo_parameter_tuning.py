@@ -1,6 +1,10 @@
+import joblib
+
 from main.evaluator.hyperparameter_tuner import run_hyperparameter_tuning
 
 if __name__ == "__main__":
+    surrogate_model = joblib.load("../saved_models/XGBoost_model.pkl")  # path to your saved model
+
     bo_param_grid = {
         "n_init": [5, 10, 15],
         "n_iter": [30, 50, 70],
@@ -11,8 +15,12 @@ if __name__ == "__main__":
         "early_stop_patience": [20]
     }
 
-    run_hyperparameter_tuning(
+    best_params, mean_mae, std_mae = run_hyperparameter_tuning(
         config_path="config.json",
         optimizer_name="Bayesian Optimization",
-        param_grid=bo_param_grid
+        param_grid=bo_param_grid,
+        surrogate_model=surrogate_model
     )
+
+    print("Best hyperparameters:", best_params)
+    print(f"Validation MAE: {mean_mae:.4f} ± {std_mae:.4f}")

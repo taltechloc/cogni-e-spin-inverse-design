@@ -1,6 +1,10 @@
+import joblib
+
 from main.evaluator.hyperparameter_tuner import run_hyperparameter_tuning
 
 if __name__ == "__main__":
+    surrogate_model = joblib.load("../saved_models/XGBoost_model.pkl")  # path to your saved model
+
     de_param_grid = {
         "population_size": [30, 50, 70],
         "generations": [80, 110, 140, 170],
@@ -11,5 +15,6 @@ if __name__ == "__main__":
     run_hyperparameter_tuning(
         config_path="config.json",
         optimizer_name="Differential Evolution",
-        param_grid=de_param_grid
+        param_grid=de_param_grid,
+        surrogate_model=surrogate_model
     )

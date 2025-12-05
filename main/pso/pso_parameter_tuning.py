@@ -1,6 +1,8 @@
+import joblib
 from main.evaluator.hyperparameter_tuner import run_hyperparameter_tuning
 
 if __name__ == "__main__":
+    surrogate_model = joblib.load("../saved_models/XGBoost_model.pkl")  # path to your saved model
     param_grid = {
         "n_particles": [20, 30, 40, 50],
         "w_max": [0.8, 0.9],
@@ -13,5 +15,6 @@ if __name__ == "__main__":
     run_hyperparameter_tuning(
         config_path="config.json",
         optimizer_name="Particle Swarm Optimization",
-        param_grid=param_grid
+        param_grid=param_grid,
+        surrogate_model=surrogate_model
     )
