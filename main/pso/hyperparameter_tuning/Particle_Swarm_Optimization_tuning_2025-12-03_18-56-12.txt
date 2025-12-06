@@ -1,6 +1,5 @@
 === Optimizer Hyperparameter Tuning: Particle Swarm Optimization ===
 Total combinations: 192
-Number of target evaluations: 76
 
 1/192 | MAE: 4.100 ± 7.097 | RMSE: 4.100 ± 7.097 | R²: 0.937 | params: {'n_particles': 20, 'w_max': 0.8, 'w_min': 0.3, 'c1': 1.5, 'c2': 1.5, 'max_velocity': 0.1}
 2/192 | MAE: 2.593 ± 6.005 | RMSE: 2.593 ± 6.005 | R²: 0.960 | params: {'n_particles': 20, 'w_max': 0.8, 'w_min': 0.3, 'c1': 1.5, 'c2': 1.5, 'max_velocity': 0.2}

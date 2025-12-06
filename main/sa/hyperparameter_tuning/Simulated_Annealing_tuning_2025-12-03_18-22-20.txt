@@ -1,6 +1,5 @@
 === Optimizer Hyperparameter Tuning: Simulated Annealing ===
 Total combinations: 150
-Number of target evaluations: 76
 
 1/150 | MAE: 21.158 ± 21.181 | RMSE: 21.158 ± 21.181 | R²: 0.157 | params: {'initial_temperature': 50, 'cooling_rate': 0.8, 'iterations_per_temp': 20, 'step_size': 0.1}
 2/150 | MAE: 20.996 ± 20.079 | RMSE: 20.996 ± 20.079 | R²: 0.206 | params: {'initial_temperature': 50, 'cooling_rate': 0.8, 'iterations_per_temp': 20, 'step_size': 0.2}

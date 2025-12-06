@@ -1,0 +1,43 @@
+{
+  "global": {
+    "seed": 42
+  },
+  "dataset": {
+    "file_path": "../data/test.csv",
+    "file_type": "csv",
+    "target_column": "diameter"
+  },
+  "model": {
+    "type": "XGBoostSurrogate",
+    "params": {
+      "n_estimators": 50,
+      "colsample_bytree": 1.0,
+      "learning_rate": 0.2,
+      "max_depth": 3,
+      "subsample": 0.6,
+      "random_state": 42
+    }
+  },
+  "pipeline": {
+    "boundaries": {
+      "method": "minmax"
+    },
+    "objective": {
+      "type": "SURROGATE",
+      "params": {
+        "regularization": 0.1
+      }
+    },
+    "optimizer": {
+      "optimizer_type": "PSO",
+      "n_iter": 100,
+      "n_particles": 50,
+      "w_max": 0.9,
+      "w_min": 0.4,
+      "c1": 2.0,
+      "c2": 2.0,
+      "max_velocity": 0.3,
+      "early_stop_patience": 20
+    }
+  }
+}

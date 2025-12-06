@@ -3,7 +3,7 @@ import numpy as np
 from scipy.stats import norm
 from scipy.optimize import minimize
 from sklearn.gaussian_process import GaussianProcessRegressor
-from sklearn.gaussian_process.kernels import RBF, ConstantKernel as C
+from sklearn.gaussian_process.kernels import RBF, ConstantKernel as C, WhiteKernel
 
 from eSpinID.optimizers.base_optimizer import BaseOptimizer
 from eSpinID.optimizers.optimization_result import OptimizationResult
@@ -45,7 +45,9 @@ class BayesianOptimizer(BaseOptimizer):
         self.upper_bounds = np.array([b[1] for b in boundaries], dtype=float)
 
         # GP kernel (sane bounds but not extreme)
-        self.kernel = C(1.0, (1e-3, 1e3)) * RBF(length_scale=np.ones(self.dim), length_scale_bounds=(1e-2, 1e2))
+        self.kernel = C(1.0, (1e-3, 1e3)) * RBF(length_scale=1.0, length_scale_bounds=(1e-3, 1e5)) \
+                 + WhiteKernel(noise_level=1e-6, noise_level_bounds=(1e-10, 1e1))
+
 
     def _squared_error(self, x, target):
         """
