@@ -1,5 +1,4 @@
 # eSpinID/evaluator/heldout_evaluator.py
-
 import json
 import os
 import time
@@ -11,6 +10,8 @@ from datetime import datetime
 from scipy.stats import t
 from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 
+import matplotlib
+matplotlib.use("Agg")  # safe backend for headless servers
 import matplotlib.pyplot as plt
 
 from eSpinID.dataset import Dataset
@@ -21,7 +22,7 @@ from eSpinID.utils.plot_utils import plot_target_vs_prediction, plot_cost_trajec
 # -------------------------
 # Helper functions
 # -------------------------
-def create_run_folder(base="run"):
+def create_run_folder(base: str = "run"):
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     run_folder = os.path.join(base, timestamp)
     plots_folder = os.path.join(run_folder, "plots")
@@ -41,14 +42,21 @@ def pad_and_average_costs(cost_histories: List[List[float]]) -> np.ndarray:
     return np.nanmean(padded, axis=0)
 
 
-def compute_ci(mean: float, std: float, n: int, confidence: float = 0.95):
+def compute_ci_from_samples(samples: np.ndarray, confidence: float = 0.95):
     """
-    t-distribution two-sided CI for the mean.
-    If n <= 1, returns (mean, mean).
-    (Kept for compatibility; final metric CIs will be bootstrap percentile CIs.)
+    t-distribution two-sided CI for the mean computed from raw sample values.
+    Returns (ci_low, ci_high). If n<=1, returns (mean, mean).
     """
+    if samples is None:
+        return float("nan"), float("nan")
+    samples = np.asarray(samples, dtype=float)
+    n = samples.size
+    if n == 0:
+        return float("nan"), float("nan")
+    mean = float(np.nanmean(samples))
     if n <= 1:
         return mean, mean
+    std = float(np.nanstd(samples, ddof=1))
     t_val = t.ppf(1 - (1 - confidence) / 2, df=n - 1)
     margin = t_val * (std / np.sqrt(n))
     return mean - margin, mean + margin
@@ -59,9 +67,15 @@ def format_ci(mean: float, std: float, ci_low: float, ci_high: float):
 
 
 def log_and_print(message: str, log_file_handle):
+    if not message.endswith("\n"):
+        message = message + "\n"
     print(message, end="")
-    log_file_handle.write(message)
-    log_file_handle.flush()
+    try:
+        log_file_handle.write(message)
+        log_file_handle.flush()
+    except Exception:
+        # don't crash on logging failures
+        pass
 
 
 def _build_replica_series(predictions_replicas: List[List[float]], n_replicas: int):
@@ -71,7 +85,6 @@ def _build_replica_series(predictions_replicas: List[List[float]], n_replicas: i
     Output: replica_series[replica_idx] = [pred_for_sample0, pred_for_sample1, ...]
     """
     n_samples = len(predictions_replicas)
-    # Initialize with NaNs
     replica_series = [[np.nan] * n_samples for _ in range(n_replicas)]
     for s_idx, preds in enumerate(predictions_replicas):
         for r_idx in range(min(n_replicas, len(preds))):
@@ -87,84 +100,90 @@ def plot_spaghetti_predictions(
 ):
     """
     Spaghetti plot:
-    - One line per replica across samples (each labeled in legend)
-    - Mean prediction
-    - Ground truth target
+    - One line per replica across samples
+    - Integer x-axis
+    - Color-coded replicas with legend entries 'Replica 1', 'Replica 2', ...
     """
     preds_replicas = all_results.get("predictions_replicas", [])
     preds_mean = all_results.get("predictions_mean", [])
     targets = all_results.get("targets", [])
 
     if len(preds_replicas) == 0 or len(targets) == 0:
-        raise ValueError("No replica predictions or targets found for spaghetti plot.")
+        return
 
     n_samples = len(preds_replicas)
     n_replicas = max(len(pr) for pr in preds_replicas)
-
-    # Build replica-wise series: replica[k] -> list of predictions across samples
     replica_series = _build_replica_series(preds_replicas, n_replicas)
 
-    # X-axis: test set indices or sample order
+    # X-axis forced to integer positions
     if sample_indices is None:
-        x = np.arange(n_samples)
+        x = np.arange(n_samples, dtype=int)
     else:
-        x = np.array(sample_indices)
+        x = np.array(sample_indices, dtype=int)
 
     plt.figure(figsize=(12, 7))
     ax = plt.gca()
 
-    # ---- Plot one line per replica ----
+    # Color map for replicas (tab10 supports up to 10 distinct colors)
+    cmap = plt.cm.get_cmap('tab10', max(1, n_replicas))
+
     for r_idx, series in enumerate(replica_series, start=1):
         ax.plot(
             x,
             series,
-            linestyle="-",
-            marker="o",
+            linestyle='-',
+            marker='o',
             linewidth=1.2,
             markersize=4,
-            alpha=0.7,
+            alpha=0.75,
+            color=cmap(r_idx - 1),
             label=f"Replica {r_idx}"
         )
 
-    # ---- Mean predictions ----
+    # mean (black dashed) and targets
     ax.plot(
         x,
         preds_mean,
-        linestyle="--",
-        marker="s",
-        color="black",
-        linewidth=2.5,
-        markersize=7,
-        label="Mean prediction"
+        linestyle='--',
+        marker='s',
+        linewidth=2.3,
+        markersize=6,
+        color='black',
+        label='Mean Prediction'
     )
 
-    # ---- True targets ----
     ax.plot(
         x,
         targets,
-        linestyle="",
-        marker="x",
-        color="red",
-        markersize=9,
-        label="Target"
+        linestyle='',
+        marker='x',
+        markersize=8,
+        color='red',
+        label='Target'
     )
 
     ax.set_xlabel("Sample index")
-    ax.set_ylabel("Prediction / Target")
-    ax.set_title(f"Spaghetti plot of replica predictions — {optimizer_name}")
+    ax.set_ylabel("Prediction / Target Nanofiber Diameter (nm)")
+    ax.set_title(f"{optimizer_name}")
     ax.grid(True)
+    ax.legend(loc='upper right', fontsize=9)
 
-    # Put legend outside to avoid clutter
-    ax.legend(loc="center left", bbox_to_anchor=(1, 0.5))
-
+    # Force integer x ticks (one per sample or subset)
+    if x.size <= 50:
+        ax.set_xticks(x)
+    else:
+        # avoid overcrowding: show a subset but ensure integer ticks
+        nticks = 20
+        idxs = np.linspace(0, x.size - 1, nticks, dtype=int)
+        ax.set_xticks(x[idxs])
     plt.tight_layout()
-    plt.savefig(save_path, bbox_inches="tight")
+    plt.savefig(save_path, bbox_inches='tight')
     plt.close()
 
 
 def bootstrap_metric(y_true: np.ndarray, y_pred: np.ndarray, metric_fn, n_bootstrap: int = 1000, seed: int = 0):
     """
-    Bootstrap the given metric function by resampling indices with replacement.
+    Nonparametric paired bootstrap for a metric computed on (y_true, y_pred).
     Returns: mean, std, ci_low (percentile 2.5), ci_high (percentile 97.5), boots_array
     """
     rng = np.random.default_rng(seed)
@@ -172,17 +191,18 @@ def bootstrap_metric(y_true: np.ndarray, y_pred: np.ndarray, metric_fn, n_bootst
     if n == 0:
         return float("nan"), float("nan"), float("nan"), float("nan"), np.array([])
 
-    boots = np.empty(n_bootstrap, dtype=float)
-    for i in range(n_bootstrap):
+    boots = []
+    for _ in range(n_bootstrap):
         idx = rng.integers(0, n, n)  # with replacement
-        yt = y_true[idx]
-        yp = y_pred[idx]
         try:
-            boots[i] = float(metric_fn(yt, yp))
+            val = float(metric_fn(y_true[idx], y_pred[idx]))
+            if np.isfinite(val):
+                boots.append(val)
         except Exception:
-            boots[i] = np.nan
+            # skip invalid resamples (e.g., degenerate R^2)
+            continue
 
-    boots = boots[~np.isnan(boots)]
+    boots = np.array(boots, dtype=float)
     if boots.size == 0:
         return float("nan"), float("nan"), float("nan"), float("nan"), boots
 
@@ -193,7 +213,7 @@ def bootstrap_metric(y_true: np.ndarray, y_pred: np.ndarray, metric_fn, n_bootst
 
 
 # -------------------------
-# Main workflow (modified)
+# Main workflow
 # -------------------------
 def run_evaluation(
     trained_model,
@@ -204,7 +224,6 @@ def run_evaluation(
     n_bootstrap: int = 1000,
     bootstrap_seed: int = 12345,
 ):
-
     total_start = time.time()
 
     # Load config
@@ -233,22 +252,26 @@ def run_evaluation(
     cost_histories_all_samples = []
     times_all_samples = []
 
+    # maintain legacy seeding for reproducibility; bootstrap uses its own RNG
     np.random.seed(seed)
 
     with open(log_file_path, "w") as log_f:
-
-        log_and_print(f"=== Held-Out Evaluation ===\n", log_f)
-        log_and_print(f"Samples: {len(X_test)}\nReplicas per sample: {n_replicas}\n", log_f)
+        log_and_print(f"=== Held-Out Evaluation ===", log_f)
+        log_and_print(f"Samples: {len(X_test)}  Replicas per sample: {n_replicas}", log_f)
 
         # ---------------------------------------------------
         # Iterate test samples
         # ---------------------------------------------------
         for idx in range(len(X_test)):
-            x_row = X_test.iloc[idx]
-            target_value = float(y_test.iloc[idx])
+            # support both pandas and numpy inputs
+            x_row = X_test.iloc[idx] if hasattr(X_test, "iloc") else X_test[idx]
+            target_value = float(y_test.iloc[idx]) if hasattr(y_test, "iloc") else float(y_test[idx])
 
-            log_and_print(f"\n--- Sample {idx} (Test index {X_test.index[idx]}) ---\n", log_f)
-            log_and_print(f"Target: {target_value}\n", log_f)
+            idx_display = getattr(X_test, "index", None)
+            idx_val = idx_display[idx] if idx_display is not None else idx
+
+            log_and_print(f"\n--- Sample {idx} (Test index {idx_val}) ---", log_f)
+            log_and_print(f"Target: {target_value}", log_f)
 
             replica_predictions = []
             replica_candidates = []
@@ -264,7 +287,7 @@ def run_evaluation(
                 # Create pipeline. Keep the call signature consistent with your factory.
                 pipeline = PipelineFactory.create_pipeline(
                     pipeline_cfg,
-                    data_x=X_test,         # kept to match factory signature; pipeline should ignore if not needed
+                    data_x=X_test,
                     model=trained_model
                 )
 
@@ -274,8 +297,13 @@ def run_evaluation(
                 replica_times.append(elapsed)
 
                 candidate = result.best_candidates
-                predicted = float(trained_model.predict(np.array(candidate).reshape(1, -1))[0])
-                abs_error = abs(predicted - target_value)
+                # Validate candidate and predict
+                try:
+                    cand_arr = np.asarray(candidate, dtype=float).reshape(1, -1)
+                    predicted = float(trained_model.predict(cand_arr)[0])
+                except Exception as e:
+                    log_and_print(f"Prediction failed for candidate (replica {r+1}): {e}", log_f)
+                    predicted = float("nan")
 
                 cost_history = result.cost_history
                 if isinstance(cost_history, (float, np.float32, np.float64)):
@@ -287,25 +315,18 @@ def run_evaluation(
                 replica_candidates.append(candidate)
                 replica_costs.append(cost_history)
 
-                # Per-replica logging (similar style to your original)
                 log_and_print(
-                    f"------\nReplica: {r+1}\n"
-                    f"Candidate: {candidate}\n"
-                    f"Predicted: {predicted}\n"
-                    f"Absolute error: {abs_error}\n"
-                    f"Final cost: {cost_history[-1] if len(cost_history)>0 else 'NA'}\n"
-                    f"Evaluation time: {elapsed:.4f} sec\n------\n",
+                    f"Replica {r+1} | Predicted: {predicted} | Final cost: {cost_history[-1] if len(cost_history)>0 else 'NA'} | Time: {elapsed:.4f}s",
                     log_f
                 )
 
             # ----------------------------------------------
             # Aggregate statistics for this sample
             # ----------------------------------------------
-            preds = np.array(replica_predictions)
-            mean_pred = float(preds.mean())
-            std_pred = float(preds.std(ddof=1)) if n_replicas > 1 else 0.0
-            ci_low, ci_high = compute_ci(mean_pred, std_pred, n_replicas)
-            ci_str = format_ci(mean_pred, std_pred, ci_low, ci_high)
+            preds = np.array(replica_predictions, dtype=float)
+            mean_pred = float(np.nanmean(preds))
+            std_pred = float(np.nanstd(preds, ddof=1)) if np.sum(~np.isnan(preds)) > 1 else 0.0
+            ci_low, ci_high = compute_ci_from_samples(preds[~np.isnan(preds)]) if np.sum(~np.isnan(preds)) > 0 else (mean_pred, mean_pred)
 
             avg_cost_history = pad_and_average_costs(replica_costs)
             cost_histories_all_samples.append(avg_cost_history)
@@ -323,8 +344,8 @@ def run_evaluation(
             abs_error_mean = abs(mean_pred - target_value)
 
             candidate_records.append({
-                "test_index": int(X_test.index[idx]),
-                "inputs": x_row.tolist(),
+                "test_index": int(idx_val),
+                "inputs": list(x_row) if hasattr(x_row, "__iter__") else [float(x_row)],
                 "target": target_value,
                 "prediction_mean": mean_pred,
                 "prediction_std": std_pred,
@@ -344,35 +365,37 @@ def run_evaluation(
             all_results["candidates"].append(best_candidate)
             all_results["cost_histories"].append(avg_cost_history.tolist())
 
-            # Per-sample aggregated logging
             log_and_print(
-                f"\nSample {idx} aggregated results:\n"
-                f"  Mean prediction: {mean_pred:.6f}\n"
-                f"  Std prediction: {std_pred:.6f}\n"
-                f"  95% CI: {ci_str}\n"
-                f"  Absolute error (mean prediction): {abs_error_mean:.6f}\n"
-                f"  Mean replica eval time: {np.mean(replica_times):.4f} ± {np.std(replica_times, ddof=1) if len(replica_times)>1 else 0.0:.4f} sec\n"
-                f"  Best candidate (by final cost): {best_candidate}\n"
-                f"  Top 5 candidates (last replica):\n    " + "\n    ".join(str(c) for c in top_candidates) + "\n",
+                f"Sample {idx} aggregated: Mean prediction: {mean_pred:.6f} | Std: {std_pred:.6f} | 95% CI: [{ci_low:.6f}, {ci_high:.6f}] | Abs error (mean pred): {abs_error_mean:.6f}",
                 log_f
             )
 
         # ---------------------------------------------------
-        # Save results
+        # Save results (CSV)
         # ---------------------------------------------------
         df_candidates = pd.DataFrame(candidate_records)
+
+        # Expand inputs into columns if they are consistent vectors
+        try:
+            inputs_arr = np.vstack(df_candidates["inputs"].values)
+            for i in range(inputs_arr.shape[1]):
+                df_candidates[f"input_{i}"] = inputs_arr[:, i]
+            df_candidates.drop(columns=["inputs"], inplace=True)
+        except Exception:
+            # leave 'inputs' column intact if expansion fails
+            pass
+
         df_candidates_path = os.path.join(run_folder, "candidates.csv")
         df_candidates.to_csv(df_candidates_path, index=False)
-        log_and_print(f"\nCandidate DataFrame saved to {df_candidates_path}\n", log_f)
+        log_and_print(f"Candidate DataFrame saved to {df_candidates_path}", log_f)
 
-        # Also save a simple targets CSV (sample index, target) for convenience
         df_targets = pd.DataFrame({
             "test_index": [rec["test_index"] for rec in candidate_records],
             "target":     [rec["target"] for rec in candidate_records]
         })
         df_targets_path = os.path.join(run_folder, "targets.csv")
         df_targets.to_csv(df_targets_path, index=False)
-        log_and_print(f"Targets saved to {df_targets_path}\n", log_f)
+        log_and_print(f"Targets saved to {df_targets_path}", log_f)
 
         # Save timing summary
         max_repl = max(len(t) for t in times_all_samples) if times_all_samples else 0
@@ -380,24 +403,22 @@ def run_evaluation(
         df_time = pd.DataFrame(padded_times, columns=[f"replica_{i+1}_sec" for i in range(max_repl)])
         df_time_path = os.path.join(run_folder, "candidate_time_summary.csv")
         df_time.to_csv(df_time_path, index=False)
-        log_and_print(f"Candidate time summary saved to {df_time_path}\n", log_f)
+        log_and_print(f"Candidate time summary saved to {df_time_path}", log_f)
 
         # ---------------------------------------------------
         # Final metrics and bootstrap CIs
         # ---------------------------------------------------
-        y_true = np.array(all_results["targets"])
-        y_pred = np.array(all_results["predictions_mean"])
+        y_true = np.array(all_results["targets"], dtype=float)
+        y_pred = np.array(all_results["predictions_mean"], dtype=float)
 
         # Point metrics
         R2 = r2_score(y_true, y_pred) if len(y_true) > 1 else float("nan")
-        RMSE = np.sqrt(mean_squared_error(y_true, y_pred)) if len(y_true) > 0 else float("nan")
-        MAE = mean_absolute_error(y_true, y_pred) if len(y_true) > 0 else float("nan")
+        RMSE = float(np.sqrt(mean_squared_error(y_true, y_pred))) if len(y_true) > 0 else float("nan")
+        MAE = float(mean_absolute_error(y_true, y_pred)) if len(y_true) > 0 else float("nan")
 
         # metric functions for bootstrap
         def metric_r2(yt, yp):
-            if len(yt) <= 1:
-                return float("nan")
-            return float(r2_score(yt, yp))
+            return float(r2_score(yt, yp)) if len(yt) > 1 else float("nan")
 
         def metric_rmse(yt, yp):
             return float(np.sqrt(mean_squared_error(yt, yp)))
@@ -423,51 +444,36 @@ def run_evaluation(
         rmse_str = format_ci(rmse_mean_b, rmse_std_b, rmse_ci_low_pct, rmse_ci_high_pct)
         mae_str = format_ci(mae_mean_b, mae_std_b, mae_ci_low_pct, mae_ci_high_pct)
 
-        log_and_print(
-            f"\n=== Held-out Evaluation Summary ===\n"
-            f"Samples: {len(y_true)}\n"
-            f"Replicas per sample: {n_replicas}\n"
-            f"R²:   {r2_str}\n"
-            f"RMSE: {rmse_str}\n"
-            f"MAE:  {mae_str}\n",
-            log_f
-        )
+        log_and_print("\n=== Held-out Evaluation Summary ===", log_f)
+        log_and_print(f"Samples: {len(y_true)}  Replicas per sample: {n_replicas}", log_f)
+        log_and_print(f"R²:   {r2_str}", log_f)
+        log_and_print(f"RMSE: {rmse_str}", log_f)
+        log_and_print(f"MAE:  {mae_str}", log_f)
 
         # Also print explicit percentile CIs for clarity
-        log_and_print(
-            f"\n(Bootstrap percentile 95% CIs)\n"
-            f"R² pct CI: [{r2_ci_low_pct:.4f}, {r2_ci_high_pct:.4f}]\n"
-            f"RMSE pct CI: [{rmse_ci_low_pct:.4f}, {rmse_ci_high_pct:.4f}]\n"
-            f"MAE pct CI: [{mae_ci_low_pct:.4f}, {mae_ci_high_pct:.4f}]\n",
-            log_f
-        )
+        log_and_print("\n(Bootstrap percentile 95% CIs)", log_f)
+        log_and_print(f"R² pct CI: [{r2_ci_low_pct:.4f}, {r2_ci_high_pct:.4f}]", log_f)
+        log_and_print(f"RMSE pct CI: [{rmse_ci_low_pct:.4f}, {rmse_ci_high_pct:.4f}]", log_f)
+        log_and_print(f"MAE pct CI: [{mae_ci_low_pct:.4f}, {mae_ci_high_pct:.4f}]", log_f)
 
         # Overall timing
-        all_times_flat = np.hstack(times_all_samples) if len(times_all_samples) > 0 else np.array([])
+        all_times_flat = np.concatenate([np.asarray(t) for t in times_all_samples]) if times_all_samples else np.array([])
         if all_times_flat.size > 0:
             overall_mean_time = float(np.mean(all_times_flat))
             overall_std_time = float(np.std(all_times_flat, ddof=1)) if all_times_flat.size > 1 else 0.0
-            log_and_print(
-                f"\nOverall candidate evaluation time (all replicas & samples): {overall_mean_time:.4f} ± {overall_std_time:.4f} sec\n",
-                log_f
-            )
+            log_and_print(f"\nOverall candidate evaluation time (all replicas & samples): {overall_mean_time:.4f} ± {overall_std_time:.4f} sec", log_f)
 
         total_elapsed = time.time() - total_start
-        log_and_print(f"Total optimizer evaluation run time: {total_elapsed:.2f} sec\n", log_f)
+        log_and_print(f"Total optimizer evaluation run time: {total_elapsed:.2f} sec", log_f)
 
     # ---------------------------------------------------
     # Plotting (adapter + spaghetti)
     # ---------------------------------------------------
-    # Build adapter for legacy plot_target_vs_prediction_per_fold
     try:
-        # Compute per-sample mean from predictions_replicas to ensure the
-        # scatter in the target-vs-prediction plot uses the replica mean.
         preds_replicas_all = all_results.get("predictions_replicas", [])
-        # preds_replicas_all[sample_idx] = [rep1_pred, rep2_pred, ...]
         if preds_replicas_all:
             preds_mean_from_replicas = []
             for sample_preds in preds_replicas_all:
-                # use numpy nanmean to be robust in case some replicas are missing
                 try:
                     mean_val = float(np.nanmean(np.array(sample_preds, dtype=float)))
                 except Exception:
@@ -478,22 +484,20 @@ def run_evaluation(
 
         plot_results = {
             "targets": all_results.get("targets", []),
-            # use replica mean for the scatter plot (this is the requested change)
             "predictions": preds_mean_from_replicas,
             "predictions_replicas": all_results.get("predictions_replicas", []),
             "candidates": all_results.get("candidates", []),
             "cost_histories": all_results.get("cost_histories", []),
         }
 
-
         plot_target_vs_prediction(
             plot_results,
             optimizer_name,
-            float(r2_mean_b),
+            float(r2_mean_b) if np.isfinite(r2_mean_b) else float("nan"),
             save_path=os.path.join(plots_folder, "target_vs_prediction.png")
         )
     except Exception as e:
-        print(f"Warning: plot_target_vs_prediction_per_fold failed: {e}")
+        print(f"Warning: plot_target_vs_prediction failed: {e}")
 
     # Spaghetti plot: one line per replica across samples
     try:
