@@ -1,0 +1,162 @@
+=== Optimizer Hyperparameter Tuning: Differential Evolution ===
+Total combinations: 144
+Number of target evaluations: 76
+
+1/144 | MAE: 6.128 ± 9.198 | RMSE: 6.128 ± 9.198 | R²: 0.885 | params: {'population_size': 30, 'generations': 80, 'crossover_rate': 0.6, 'mutation_factor': 0.3}
+2/144 | MAE: 5.508 ± 9.085 | RMSE: 5.508 ± 9.085 | R²: 0.894 | params: {'population_size': 30, 'generations': 80, 'crossover_rate': 0.6, 'mutation_factor': 0.45}
+3/144 | MAE: 5.621 ± 8.789 | RMSE: 5.621 ± 8.789 | R²: 0.898 | params: {'population_size': 30, 'generations': 80, 'crossover_rate': 0.6, 'mutation_factor': 0.6}
+4/144 | MAE: 5.337 ± 8.689 | RMSE: 5.337 ± 8.689 | R²: 0.903 | params: {'population_size': 30, 'generations': 80, 'crossover_rate': 0.6, 'mutation_factor': 0.75}
+5/144 | MAE: 5.829 ± 8.989 | RMSE: 5.829 ± 8.989 | R²: 0.892 | params: {'population_size': 30, 'generations': 80, 'crossover_rate': 0.75, 'mutation_factor': 0.3}
+6/144 | MAE: 5.626 ± 9.073 | RMSE: 5.626 ± 9.073 | R²: 0.893 | params: {'population_size': 30, 'generations': 80, 'crossover_rate': 0.75, 'mutation_factor': 0.45}
+7/144 | MAE: 5.901 ± 9.030 | RMSE: 5.901 ± 9.030 | R²: 0.891 | params: {'population_size': 30, 'generations': 80, 'crossover_rate': 0.75, 'mutation_factor': 0.6}
+8/144 | MAE: 5.555 ± 8.908 | RMSE: 5.555 ± 8.908 | R²: 0.897 | params: {'population_size': 30, 'generations': 80, 'crossover_rate': 0.75, 'mutation_factor': 0.75}
+9/144 | MAE: 6.076 ± 9.454 | RMSE: 6.076 ± 9.454 | R²: 0.882 | params: {'population_size': 30, 'generations': 80, 'crossover_rate': 0.9, 'mutation_factor': 0.3}
+10/144 | MAE: 5.877 ± 9.032 | RMSE: 5.877 ± 9.032 | R²: 0.891 | params: {'population_size': 30, 'generations': 80, 'crossover_rate': 0.9, 'mutation_factor': 0.45}
+11/144 | MAE: 6.244 ± 9.418 | RMSE: 6.244 ± 9.418 | R²: 0.880 | params: {'population_size': 30, 'generations': 80, 'crossover_rate': 0.9, 'mutation_factor': 0.6}
+12/144 | MAE: 6.077 ± 8.981 | RMSE: 6.077 ± 8.981 | R²: 0.890 | params: {'population_size': 30, 'generations': 80, 'crossover_rate': 0.9, 'mutation_factor': 0.75}
+13/144 | MAE: 5.629 ± 9.210 | RMSE: 5.629 ± 9.210 | R²: 0.891 | params: {'population_size': 30, 'generations': 110, 'crossover_rate': 0.6, 'mutation_factor': 0.3}
+14/144 | MAE: 5.629 ± 8.999 | RMSE: 5.629 ± 8.999 | R²: 0.894 | params: {'population_size': 30, 'generations': 110, 'crossover_rate': 0.6, 'mutation_factor': 0.45}
+15/144 | MAE: 5.743 ± 8.895 | RMSE: 5.743 ± 8.895 | R²: 0.895 | params: {'population_size': 30, 'generations': 110, 'crossover_rate': 0.6, 'mutation_factor': 0.6}
+16/144 | MAE: 5.089 ± 8.705 | RMSE: 5.089 ± 8.705 | R²: 0.905 | params: {'population_size': 30, 'generations': 110, 'crossover_rate': 0.6, 'mutation_factor': 0.75}
+17/144 | MAE: 5.669 ± 8.892 | RMSE: 5.669 ± 8.892 | R²: 0.896 | params: {'population_size': 30, 'generations': 110, 'crossover_rate': 0.75, 'mutation_factor': 0.3}
+18/144 | MAE: 5.593 ± 9.163 | RMSE: 5.593 ± 9.163 | R²: 0.892 | params: {'population_size': 30, 'generations': 110, 'crossover_rate': 0.75, 'mutation_factor': 0.45}
+19/144 | MAE: 5.821 ± 8.958 | RMSE: 5.821 ± 8.958 | R²: 0.893 | params: {'population_size': 30, 'generations': 110, 'crossover_rate': 0.75, 'mutation_factor': 0.6}
+20/144 | MAE: 5.684 ± 8.752 | RMSE: 5.684 ± 8.752 | R²: 0.898 | params: {'population_size': 30, 'generations': 110, 'crossover_rate': 0.75, 'mutation_factor': 0.75}
+21/144 | MAE: 6.120 ± 9.345 | RMSE: 6.120 ± 9.345 | R²: 0.883 | params: {'population_size': 30, 'generations': 110, 'crossover_rate': 0.9, 'mutation_factor': 0.3}
+22/144 | MAE: 5.832 ± 9.232 | RMSE: 5.832 ± 9.232 | R²: 0.888 | params: {'population_size': 30, 'generations': 110, 'crossover_rate': 0.9, 'mutation_factor': 0.45}
+23/144 | MAE: 6.116 ± 8.974 | RMSE: 6.116 ± 8.974 | R²: 0.889 | params: {'population_size': 30, 'generations': 110, 'crossover_rate': 0.9, 'mutation_factor': 0.6}
+24/144 | MAE: 5.774 ± 8.880 | RMSE: 5.774 ± 8.880 | R²: 0.895 | params: {'population_size': 30, 'generations': 110, 'crossover_rate': 0.9, 'mutation_factor': 0.75}
+25/144 | MAE: 5.494 ± 8.844 | RMSE: 5.494 ± 8.844 | R²: 0.898 | params: {'population_size': 30, 'generations': 140, 'crossover_rate': 0.6, 'mutation_factor': 0.3}
+26/144 | MAE: 5.482 ± 8.920 | RMSE: 5.482 ± 8.920 | R²: 0.897 | params: {'population_size': 30, 'generations': 140, 'crossover_rate': 0.6, 'mutation_factor': 0.45}
+27/144 | MAE: 5.607 ± 8.839 | RMSE: 5.607 ± 8.839 | R²: 0.897 | params: {'population_size': 30, 'generations': 140, 'crossover_rate': 0.6, 'mutation_factor': 0.6}
+28/144 | MAE: 5.657 ± 8.985 | RMSE: 5.657 ± 8.985 | R²: 0.894 | params: {'population_size': 30, 'generations': 140, 'crossover_rate': 0.6, 'mutation_factor': 0.75}
+29/144 | MAE: 5.789 ± 9.337 | RMSE: 5.789 ± 9.337 | R²: 0.887 | params: {'population_size': 30, 'generations': 140, 'crossover_rate': 0.75, 'mutation_factor': 0.3}
+30/144 | MAE: 5.515 ± 8.724 | RMSE: 5.515 ± 8.724 | R²: 0.900 | params: {'population_size': 30, 'generations': 140, 'crossover_rate': 0.75, 'mutation_factor': 0.45}
+31/144 | MAE: 5.537 ± 8.686 | RMSE: 5.537 ± 8.686 | R²: 0.900 | params: {'population_size': 30, 'generations': 140, 'crossover_rate': 0.75, 'mutation_factor': 0.6}
+32/144 | MAE: 5.856 ± 8.941 | RMSE: 5.856 ± 8.941 | R²: 0.893 | params: {'population_size': 30, 'generations': 140, 'crossover_rate': 0.75, 'mutation_factor': 0.75}
+33/144 | MAE: 6.019 ± 9.295 | RMSE: 6.019 ± 9.295 | R²: 0.885 | params: {'population_size': 30, 'generations': 140, 'crossover_rate': 0.9, 'mutation_factor': 0.3}
+34/144 | MAE: 6.109 ± 9.080 | RMSE: 6.109 ± 9.080 | R²: 0.888 | params: {'population_size': 30, 'generations': 140, 'crossover_rate': 0.9, 'mutation_factor': 0.45}
+35/144 | MAE: 5.850 ± 8.940 | RMSE: 5.850 ± 8.940 | R²: 0.893 | params: {'population_size': 30, 'generations': 140, 'crossover_rate': 0.9, 'mutation_factor': 0.6}
+36/144 | MAE: 5.707 ± 9.136 | RMSE: 5.707 ± 9.136 | R²: 0.891 | params: {'population_size': 30, 'generations': 140, 'crossover_rate': 0.9, 'mutation_factor': 0.75}
+37/144 | MAE: 6.142 ± 9.183 | RMSE: 6.142 ± 9.183 | R²: 0.886 | params: {'population_size': 30, 'generations': 170, 'crossover_rate': 0.6, 'mutation_factor': 0.3}
+38/144 | MAE: 5.620 ± 9.047 | RMSE: 5.620 ± 9.047 | R²: 0.894 | params: {'population_size': 30, 'generations': 170, 'crossover_rate': 0.6, 'mutation_factor': 0.45}
+39/144 | MAE: 5.612 ± 8.892 | RMSE: 5.612 ± 8.892 | R²: 0.896 | params: {'population_size': 30, 'generations': 170, 'crossover_rate': 0.6, 'mutation_factor': 0.6}
+40/144 | MAE: 5.847 ± 9.538 | RMSE: 5.847 ± 9.538 | R²: 0.883 | params: {'population_size': 30, 'generations': 170, 'crossover_rate': 0.6, 'mutation_factor': 0.75}
+41/144 | MAE: 5.683 ± 9.139 | RMSE: 5.683 ± 9.139 | R²: 0.891 | params: {'population_size': 30, 'generations': 170, 'crossover_rate': 0.75, 'mutation_factor': 0.3}
+42/144 | MAE: 5.891 ± 9.013 | RMSE: 5.891 ± 9.013 | R²: 0.891 | params: {'population_size': 30, 'generations': 170, 'crossover_rate': 0.75, 'mutation_factor': 0.45}
+43/144 | MAE: 5.626 ± 8.877 | RMSE: 5.626 ± 8.877 | R²: 0.896 | params: {'population_size': 30, 'generations': 170, 'crossover_rate': 0.75, 'mutation_factor': 0.6}
+44/144 | MAE: 5.575 ± 8.698 | RMSE: 5.575 ± 8.698 | R²: 0.900 | params: {'population_size': 30, 'generations': 170, 'crossover_rate': 0.75, 'mutation_factor': 0.75}
+45/144 | MAE: 6.013 ± 8.998 | RMSE: 6.013 ± 8.998 | R²: 0.890 | params: {'population_size': 30, 'generations': 170, 'crossover_rate': 0.9, 'mutation_factor': 0.3}
+46/144 | MAE: 6.034 ± 9.153 | RMSE: 6.034 ± 9.153 | R²: 0.887 | params: {'population_size': 30, 'generations': 170, 'crossover_rate': 0.9, 'mutation_factor': 0.45}
+47/144 | MAE: 6.136 ± 9.146 | RMSE: 6.136 ± 9.146 | R²: 0.886 | params: {'population_size': 30, 'generations': 170, 'crossover_rate': 0.9, 'mutation_factor': 0.6}
+48/144 | MAE: 5.980 ± 9.115 | RMSE: 5.980 ± 9.115 | R²: 0.889 | params: {'population_size': 30, 'generations': 170, 'crossover_rate': 0.9, 'mutation_factor': 0.75}
+49/144 | MAE: 5.516 ± 8.911 | RMSE: 5.516 ± 8.911 | R²: 0.897 | params: {'population_size': 50, 'generations': 80, 'crossover_rate': 0.6, 'mutation_factor': 0.3}
+50/144 | MAE: 5.545 ± 8.906 | RMSE: 5.545 ± 8.906 | R²: 0.897 | params: {'population_size': 50, 'generations': 80, 'crossover_rate': 0.6, 'mutation_factor': 0.45}
+51/144 | MAE: 5.210 ± 8.785 | RMSE: 5.210 ± 8.785 | R²: 0.902 | params: {'population_size': 50, 'generations': 80, 'crossover_rate': 0.6, 'mutation_factor': 0.6}
+52/144 | MAE: 5.294 ± 8.829 | RMSE: 5.294 ± 8.829 | R²: 0.901 | params: {'population_size': 50, 'generations': 80, 'crossover_rate': 0.6, 'mutation_factor': 0.75}
+53/144 | MAE: 5.369 ± 8.735 | RMSE: 5.369 ± 8.735 | R²: 0.901 | params: {'population_size': 50, 'generations': 80, 'crossover_rate': 0.75, 'mutation_factor': 0.3}
+54/144 | MAE: 5.163 ± 8.629 | RMSE: 5.163 ± 8.629 | R²: 0.905 | params: {'population_size': 50, 'generations': 80, 'crossover_rate': 0.75, 'mutation_factor': 0.45}
+55/144 | MAE: 5.449 ± 9.184 | RMSE: 5.449 ± 9.184 | R²: 0.893 | params: {'population_size': 50, 'generations': 80, 'crossover_rate': 0.75, 'mutation_factor': 0.6}
+56/144 | MAE: 5.523 ± 8.858 | RMSE: 5.523 ± 8.858 | R²: 0.898 | params: {'population_size': 50, 'generations': 80, 'crossover_rate': 0.75, 'mutation_factor': 0.75}
+57/144 | MAE: 5.586 ± 8.796 | RMSE: 5.586 ± 8.796 | R²: 0.898 | params: {'population_size': 50, 'generations': 80, 'crossover_rate': 0.9, 'mutation_factor': 0.3}
+58/144 | MAE: 5.551 ± 8.882 | RMSE: 5.551 ± 8.882 | R²: 0.897 | params: {'population_size': 50, 'generations': 80, 'crossover_rate': 0.9, 'mutation_factor': 0.45}
+59/144 | MAE: 5.487 ± 8.708 | RMSE: 5.487 ± 8.708 | R²: 0.901 | params: {'population_size': 50, 'generations': 80, 'crossover_rate': 0.9, 'mutation_factor': 0.6}
+60/144 | MAE: 5.295 ± 8.559 | RMSE: 5.295 ± 8.559 | R²: 0.905 | params: {'population_size': 50, 'generations': 80, 'crossover_rate': 0.9, 'mutation_factor': 0.75}
+61/144 | MAE: 5.600 ± 8.811 | RMSE: 5.600 ± 8.811 | R²: 0.898 | params: {'population_size': 50, 'generations': 110, 'crossover_rate': 0.6, 'mutation_factor': 0.3}
+62/144 | MAE: 5.306 ± 8.882 | RMSE: 5.306 ± 8.882 | R²: 0.900 | params: {'population_size': 50, 'generations': 110, 'crossover_rate': 0.6, 'mutation_factor': 0.45}
+63/144 | MAE: 5.292 ± 8.660 | RMSE: 5.292 ± 8.660 | R²: 0.903 | params: {'population_size': 50, 'generations': 110, 'crossover_rate': 0.6, 'mutation_factor': 0.6}
+64/144 | MAE: 5.136 ± 8.743 | RMSE: 5.136 ± 8.743 | R²: 0.904 | params: {'population_size': 50, 'generations': 110, 'crossover_rate': 0.6, 'mutation_factor': 0.75}
+65/144 | MAE: 5.427 ± 8.864 | RMSE: 5.427 ± 8.864 | R²: 0.899 | params: {'population_size': 50, 'generations': 110, 'crossover_rate': 0.75, 'mutation_factor': 0.3}
+66/144 | MAE: 5.387 ± 8.741 | RMSE: 5.387 ± 8.741 | R²: 0.901 | params: {'population_size': 50, 'generations': 110, 'crossover_rate': 0.75, 'mutation_factor': 0.45}
+67/144 | MAE: 5.148 ± 8.644 | RMSE: 5.148 ± 8.644 | R²: 0.905 | params: {'population_size': 50, 'generations': 110, 'crossover_rate': 0.75, 'mutation_factor': 0.6}
+68/144 | MAE: 5.226 ± 8.918 | RMSE: 5.226 ± 8.918 | R²: 0.900 | params: {'population_size': 50, 'generations': 110, 'crossover_rate': 0.75, 'mutation_factor': 0.75}
+69/144 | MAE: 5.465 ± 8.915 | RMSE: 5.465 ± 8.915 | R²: 0.897 | params: {'population_size': 50, 'generations': 110, 'crossover_rate': 0.9, 'mutation_factor': 0.3}
+70/144 | MAE: 5.338 ± 8.928 | RMSE: 5.338 ± 8.928 | R²: 0.899 | params: {'population_size': 50, 'generations': 110, 'crossover_rate': 0.9, 'mutation_factor': 0.45}
+71/144 | MAE: 5.558 ± 8.830 | RMSE: 5.558 ± 8.830 | R²: 0.898 | params: {'population_size': 50, 'generations': 110, 'crossover_rate': 0.9, 'mutation_factor': 0.6}
+72/144 | MAE: 5.353 ± 8.834 | RMSE: 5.353 ± 8.834 | R²: 0.900 | params: {'population_size': 50, 'generations': 110, 'crossover_rate': 0.9, 'mutation_factor': 0.75}
+73/144 | MAE: 5.232 ± 8.767 | RMSE: 5.232 ± 8.767 | R²: 0.902 | params: {'population_size': 50, 'generations': 140, 'crossover_rate': 0.6, 'mutation_factor': 0.3}
+74/144 | MAE: 5.225 ± 8.841 | RMSE: 5.225 ± 8.841 | R²: 0.901 | params: {'population_size': 50, 'generations': 140, 'crossover_rate': 0.6, 'mutation_factor': 0.45}
+75/144 | MAE: 5.294 ± 8.772 | RMSE: 5.294 ± 8.772 | R²: 0.902 | params: {'population_size': 50, 'generations': 140, 'crossover_rate': 0.6, 'mutation_factor': 0.6}
+76/144 | MAE: 5.240 ± 8.754 | RMSE: 5.240 ± 8.754 | R²: 0.902 | params: {'population_size': 50, 'generations': 140, 'crossover_rate': 0.6, 'mutation_factor': 0.75}
+77/144 | MAE: 5.699 ± 9.058 | RMSE: 5.699 ± 9.058 | R²: 0.893 | params: {'population_size': 50, 'generations': 140, 'crossover_rate': 0.75, 'mutation_factor': 0.3}
+78/144 | MAE: 5.538 ± 8.999 | RMSE: 5.538 ± 8.999 | R²: 0.895 | params: {'population_size': 50, 'generations': 140, 'crossover_rate': 0.75, 'mutation_factor': 0.45}
+79/144 | MAE: 5.301 ± 8.705 | RMSE: 5.301 ± 8.705 | R²: 0.903 | params: {'population_size': 50, 'generations': 140, 'crossover_rate': 0.75, 'mutation_factor': 0.6}
+80/144 | MAE: 5.291 ± 8.696 | RMSE: 5.291 ± 8.696 | R²: 0.903 | params: {'population_size': 50, 'generations': 140, 'crossover_rate': 0.75, 'mutation_factor': 0.75}
+81/144 | MAE: 5.672 ± 8.960 | RMSE: 5.672 ± 8.960 | R²: 0.895 | params: {'population_size': 50, 'generations': 140, 'crossover_rate': 0.9, 'mutation_factor': 0.3}
+82/144 | MAE: 5.333 ± 8.704 | RMSE: 5.333 ± 8.704 | R²: 0.902 | params: {'population_size': 50, 'generations': 140, 'crossover_rate': 0.9, 'mutation_factor': 0.45}
+83/144 | MAE: 5.202 ± 8.720 | RMSE: 5.202 ± 8.720 | R²: 0.903 | params: {'population_size': 50, 'generations': 140, 'crossover_rate': 0.9, 'mutation_factor': 0.6}
+84/144 | MAE: 5.473 ± 8.949 | RMSE: 5.473 ± 8.949 | R²: 0.897 | params: {'population_size': 50, 'generations': 140, 'crossover_rate': 0.9, 'mutation_factor': 0.75}
+85/144 | MAE: 5.921 ± 9.161 | RMSE: 5.921 ± 9.161 | R²: 0.888 | params: {'population_size': 50, 'generations': 170, 'crossover_rate': 0.6, 'mutation_factor': 0.3}
+86/144 | MAE: 5.343 ± 8.868 | RMSE: 5.343 ± 8.868 | R²: 0.900 | params: {'population_size': 50, 'generations': 170, 'crossover_rate': 0.6, 'mutation_factor': 0.45}
+87/144 | MAE: 5.180 ± 8.725 | RMSE: 5.180 ± 8.725 | R²: 0.903 | params: {'population_size': 50, 'generations': 170, 'crossover_rate': 0.6, 'mutation_factor': 0.6}
+88/144 | MAE: 5.231 ± 8.833 | RMSE: 5.231 ± 8.833 | R²: 0.901 | params: {'population_size': 50, 'generations': 170, 'crossover_rate': 0.6, 'mutation_factor': 0.75}
+89/144 | MAE: 5.533 ± 8.963 | RMSE: 5.533 ± 8.963 | R²: 0.896 | params: {'population_size': 50, 'generations': 170, 'crossover_rate': 0.75, 'mutation_factor': 0.3}
+90/144 | MAE: 5.344 ± 8.848 | RMSE: 5.344 ± 8.848 | R²: 0.900 | params: {'population_size': 50, 'generations': 170, 'crossover_rate': 0.75, 'mutation_factor': 0.45}
+91/144 | MAE: 5.398 ± 9.008 | RMSE: 5.398 ± 9.008 | R²: 0.897 | params: {'population_size': 50, 'generations': 170, 'crossover_rate': 0.75, 'mutation_factor': 0.6}
+92/144 | MAE: 5.582 ± 8.875 | RMSE: 5.582 ± 8.875 | R²: 0.897 | params: {'population_size': 50, 'generations': 170, 'crossover_rate': 0.75, 'mutation_factor': 0.75}
+93/144 | MAE: 5.455 ± 9.068 | RMSE: 5.455 ± 9.068 | R²: 0.895 | params: {'population_size': 50, 'generations': 170, 'crossover_rate': 0.9, 'mutation_factor': 0.3}
+94/144 | MAE: 5.359 ± 8.877 | RMSE: 5.359 ± 8.877 | R²: 0.899 | params: {'population_size': 50, 'generations': 170, 'crossover_rate': 0.9, 'mutation_factor': 0.45}
+95/144 | MAE: 5.362 ± 8.870 | RMSE: 5.362 ± 8.870 | R²: 0.899 | params: {'population_size': 50, 'generations': 170, 'crossover_rate': 0.9, 'mutation_factor': 0.6}
+96/144 | MAE: 5.450 ± 8.704 | RMSE: 5.450 ± 8.704 | R²: 0.901 | params: {'population_size': 50, 'generations': 170, 'crossover_rate': 0.9, 'mutation_factor': 0.75}
+97/144 | MAE: 5.397 ± 8.782 | RMSE: 5.397 ± 8.782 | R²: 0.900 | params: {'population_size': 70, 'generations': 80, 'crossover_rate': 0.6, 'mutation_factor': 0.3}
+98/144 | MAE: 5.120 ± 8.889 | RMSE: 5.120 ± 8.889 | R²: 0.901 | params: {'population_size': 70, 'generations': 80, 'crossover_rate': 0.6, 'mutation_factor': 0.45}
+99/144 | MAE: 5.103 ± 8.847 | RMSE: 5.103 ± 8.847 | R²: 0.902 | params: {'population_size': 70, 'generations': 80, 'crossover_rate': 0.6, 'mutation_factor': 0.6}
+100/144 | MAE: 5.110 ± 8.784 | RMSE: 5.110 ± 8.784 | R²: 0.903 | params: {'population_size': 70, 'generations': 80, 'crossover_rate': 0.6, 'mutation_factor': 0.75}
+101/144 | MAE: 5.325 ± 8.852 | RMSE: 5.325 ± 8.852 | R²: 0.900 | params: {'population_size': 70, 'generations': 80, 'crossover_rate': 0.75, 'mutation_factor': 0.3}
+102/144 | MAE: 5.302 ± 8.811 | RMSE: 5.302 ± 8.811 | R²: 0.901 | params: {'population_size': 70, 'generations': 80, 'crossover_rate': 0.75, 'mutation_factor': 0.45}
+103/144 | MAE: 5.195 ± 8.694 | RMSE: 5.195 ± 8.694 | R²: 0.904 | params: {'population_size': 70, 'generations': 80, 'crossover_rate': 0.75, 'mutation_factor': 0.6}
+104/144 | MAE: 5.211 ± 8.901 | RMSE: 5.211 ± 8.901 | R²: 0.900 | params: {'population_size': 70, 'generations': 80, 'crossover_rate': 0.75, 'mutation_factor': 0.75}
+105/144 | MAE: 5.344 ± 8.817 | RMSE: 5.344 ± 8.817 | R²: 0.900 | params: {'population_size': 70, 'generations': 80, 'crossover_rate': 0.9, 'mutation_factor': 0.3}
+106/144 | MAE: 5.210 ± 8.673 | RMSE: 5.210 ± 8.673 | R²: 0.904 | params: {'population_size': 70, 'generations': 80, 'crossover_rate': 0.9, 'mutation_factor': 0.45}
+107/144 | MAE: 5.174 ± 8.785 | RMSE: 5.174 ± 8.785 | R²: 0.903 | params: {'population_size': 70, 'generations': 80, 'crossover_rate': 0.9, 'mutation_factor': 0.6}
+108/144 | MAE: 5.130 ± 8.648 | RMSE: 5.130 ± 8.648 | R²: 0.905 | params: {'population_size': 70, 'generations': 80, 'crossover_rate': 0.9, 'mutation_factor': 0.75}
+109/144 | MAE: 5.182 ± 8.737 | RMSE: 5.182 ± 8.737 | R²: 0.903 | params: {'population_size': 70, 'generations': 110, 'crossover_rate': 0.6, 'mutation_factor': 0.3}
+110/144 | MAE: 5.087 ± 8.691 | RMSE: 5.087 ± 8.691 | R²: 0.905 | params: {'population_size': 70, 'generations': 110, 'crossover_rate': 0.6, 'mutation_factor': 0.45}
+111/144 | MAE: 5.257 ± 8.833 | RMSE: 5.257 ± 8.833 | R²: 0.901 | params: {'population_size': 70, 'generations': 110, 'crossover_rate': 0.6, 'mutation_factor': 0.6}
+112/144 | MAE: 5.040 ± 8.755 | RMSE: 5.040 ± 8.755 | R²: 0.904 | params: {'population_size': 70, 'generations': 110, 'crossover_rate': 0.6, 'mutation_factor': 0.75}
+113/144 | MAE: 5.365 ± 8.878 | RMSE: 5.365 ± 8.878 | R²: 0.899 | params: {'population_size': 70, 'generations': 110, 'crossover_rate': 0.75, 'mutation_factor': 0.3}
+114/144 | MAE: 5.041 ± 8.614 | RMSE: 5.041 ± 8.614 | R²: 0.907 | params: {'population_size': 70, 'generations': 110, 'crossover_rate': 0.75, 'mutation_factor': 0.45}
+115/144 | MAE: 5.184 ± 8.719 | RMSE: 5.184 ± 8.719 | R²: 0.904 | params: {'population_size': 70, 'generations': 110, 'crossover_rate': 0.75, 'mutation_factor': 0.6}
+116/144 | MAE: 5.040 ± 8.650 | RMSE: 5.040 ± 8.650 | R²: 0.906 | params: {'population_size': 70, 'generations': 110, 'crossover_rate': 0.75, 'mutation_factor': 0.75}
+117/144 | MAE: 5.410 ± 8.951 | RMSE: 5.410 ± 8.951 | R²: 0.897 | params: {'population_size': 70, 'generations': 110, 'crossover_rate': 0.9, 'mutation_factor': 0.3}
+118/144 | MAE: 5.302 ± 8.798 | RMSE: 5.302 ± 8.798 | R²: 0.901 | params: {'population_size': 70, 'generations': 110, 'crossover_rate': 0.9, 'mutation_factor': 0.45}
+119/144 | MAE: 5.336 ± 8.830 | RMSE: 5.336 ± 8.830 | R²: 0.900 | params: {'population_size': 70, 'generations': 110, 'crossover_rate': 0.9, 'mutation_factor': 0.6}
+120/144 | MAE: 5.088 ± 8.680 | RMSE: 5.088 ± 8.680 | R²: 0.905 | params: {'population_size': 70, 'generations': 110, 'crossover_rate': 0.9, 'mutation_factor': 0.75}
+121/144 | MAE: 5.305 ± 8.772 | RMSE: 5.305 ± 8.772 | R²: 0.901 | params: {'population_size': 70, 'generations': 140, 'crossover_rate': 0.6, 'mutation_factor': 0.3}
+122/144 | MAE: 5.412 ± 8.945 | RMSE: 5.412 ± 8.945 | R²: 0.898 | params: {'population_size': 70, 'generations': 140, 'crossover_rate': 0.6, 'mutation_factor': 0.45}
+123/144 | MAE: 5.051 ± 8.664 | RMSE: 5.051 ± 8.664 | R²: 0.906 | params: {'population_size': 70, 'generations': 140, 'crossover_rate': 0.6, 'mutation_factor': 0.6}
+124/144 | MAE: 5.055 ± 8.884 | RMSE: 5.055 ± 8.884 | R²: 0.902 | params: {'population_size': 70, 'generations': 140, 'crossover_rate': 0.6, 'mutation_factor': 0.75}
+125/144 | MAE: 5.223 ± 8.744 | RMSE: 5.223 ± 8.744 | R²: 0.903 | params: {'population_size': 70, 'generations': 140, 'crossover_rate': 0.75, 'mutation_factor': 0.3}
+126/144 | MAE: 5.083 ± 8.711 | RMSE: 5.083 ± 8.711 | R²: 0.905 | params: {'population_size': 70, 'generations': 140, 'crossover_rate': 0.75, 'mutation_factor': 0.45}
+127/144 | MAE: 5.193 ± 8.745 | RMSE: 5.193 ± 8.745 | R²: 0.903 | params: {'population_size': 70, 'generations': 140, 'crossover_rate': 0.75, 'mutation_factor': 0.6}
+128/144 | MAE: 5.026 ± 8.627 | RMSE: 5.026 ± 8.627 | R²: 0.907 | params: {'population_size': 70, 'generations': 140, 'crossover_rate': 0.75, 'mutation_factor': 0.75}
+129/144 | MAE: 5.455 ± 8.739 | RMSE: 5.455 ± 8.739 | R²: 0.900 | params: {'population_size': 70, 'generations': 140, 'crossover_rate': 0.9, 'mutation_factor': 0.3}
+130/144 | MAE: 5.239 ± 8.611 | RMSE: 5.239 ± 8.611 | R²: 0.905 | params: {'population_size': 70, 'generations': 140, 'crossover_rate': 0.9, 'mutation_factor': 0.45}
+131/144 | MAE: 5.365 ± 8.750 | RMSE: 5.365 ± 8.750 | R²: 0.901 | params: {'population_size': 70, 'generations': 140, 'crossover_rate': 0.9, 'mutation_factor': 0.6}
+132/144 | MAE: 5.102 ± 8.608 | RMSE: 5.102 ± 8.608 | R²: 0.906 | params: {'population_size': 70, 'generations': 140, 'crossover_rate': 0.9, 'mutation_factor': 0.75}
+133/144 | MAE: 5.059 ± 8.678 | RMSE: 5.059 ± 8.678 | R²: 0.905 | params: {'population_size': 70, 'generations': 170, 'crossover_rate': 0.6, 'mutation_factor': 0.3}
+134/144 | MAE: 5.150 ± 8.837 | RMSE: 5.150 ± 8.837 | R²: 0.902 | params: {'population_size': 70, 'generations': 170, 'crossover_rate': 0.6, 'mutation_factor': 0.45}
+135/144 | MAE: 4.991 ± 8.607 | RMSE: 4.991 ± 8.607 | R²: 0.907 | params: {'population_size': 70, 'generations': 170, 'crossover_rate': 0.6, 'mutation_factor': 0.6}
+136/144 | MAE: 5.021 ± 8.638 | RMSE: 5.021 ± 8.638 | R²: 0.906 | params: {'population_size': 70, 'generations': 170, 'crossover_rate': 0.6, 'mutation_factor': 0.75}
+137/144 | MAE: 5.312 ± 8.853 | RMSE: 5.312 ± 8.853 | R²: 0.900 | params: {'population_size': 70, 'generations': 170, 'crossover_rate': 0.75, 'mutation_factor': 0.3}
+138/144 | MAE: 5.506 ± 8.846 | RMSE: 5.506 ± 8.846 | R²: 0.898 | params: {'population_size': 70, 'generations': 170, 'crossover_rate': 0.75, 'mutation_factor': 0.45}
+139/144 | MAE: 5.207 ± 8.767 | RMSE: 5.207 ± 8.767 | R²: 0.903 | params: {'population_size': 70, 'generations': 170, 'crossover_rate': 0.75, 'mutation_factor': 0.6}
+140/144 | MAE: 5.038 ± 8.660 | RMSE: 5.038 ± 8.660 | R²: 0.906 | params: {'population_size': 70, 'generations': 170, 'crossover_rate': 0.75, 'mutation_factor': 0.75}
+141/144 | MAE: 5.392 ± 9.002 | RMSE: 5.392 ± 9.002 | R²: 0.897 | params: {'population_size': 70, 'generations': 170, 'crossover_rate': 0.9, 'mutation_factor': 0.3}
+142/144 | MAE: 5.179 ± 8.778 | RMSE: 5.179 ± 8.778 | R²: 0.903 | params: {'population_size': 70, 'generations': 170, 'crossover_rate': 0.9, 'mutation_factor': 0.45}
+143/144 | MAE: 5.094 ± 8.724 | RMSE: 5.094 ± 8.724 | R²: 0.904 | params: {'population_size': 70, 'generations': 170, 'crossover_rate': 0.9, 'mutation_factor': 0.6}
+144/144 | MAE: 5.313 ± 8.788 | RMSE: 5.313 ± 8.788 | R²: 0.901 | params: {'population_size': 70, 'generations': 170, 'crossover_rate': 0.9, 'mutation_factor': 0.75}
+
+=== Best Optimizer Hyperparameters ===
+{'population_size': 70, 'generations': 170, 'crossover_rate': 0.6, 'mutation_factor': 0.6}
+
+Validation metrics (mean ± std):
+MAE:  4.991 ± 8.607
+RMSE: 4.991 ± 8.607
+R²:   0.907
+
+Raw values:
+MAE mean: 4.991
+MAE std:  8.607
+RMSE mean: 4.991
+RMSE std:  8.607

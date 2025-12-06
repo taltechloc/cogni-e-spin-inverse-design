@@ -1,0 +1,168 @@
+=== Optimizer Hyperparameter Tuning: Simulated Annealing ===
+Total combinations: 150
+Number of target evaluations: 76
+
+1/150 | MAE: 21.158 ± 21.181 | RMSE: 21.158 ± 21.181 | R²: 0.157 | params: {'initial_temperature': 50, 'cooling_rate': 0.8, 'iterations_per_temp': 20, 'step_size': 0.1}
+2/150 | MAE: 20.996 ± 20.079 | RMSE: 20.996 ± 20.079 | R²: 0.206 | params: {'initial_temperature': 50, 'cooling_rate': 0.8, 'iterations_per_temp': 20, 'step_size': 0.2}
+3/150 | MAE: 18.033 ± 17.256 | RMSE: 18.033 ± 17.256 | R²: 0.414 | params: {'initial_temperature': 50, 'cooling_rate': 0.8, 'iterations_per_temp': 50, 'step_size': 0.1}
+4/150 | MAE: 16.168 ± 17.545 | RMSE: 16.168 ± 17.545 | R²: 0.465 | params: {'initial_temperature': 50, 'cooling_rate': 0.8, 'iterations_per_temp': 50, 'step_size': 0.2}
+5/150 | MAE: 18.941 ± 18.443 | RMSE: 18.941 ± 18.443 | R²: 0.343 | params: {'initial_temperature': 50, 'cooling_rate': 0.8, 'iterations_per_temp': 100, 'step_size': 0.1}
+6/150 | MAE: 16.610 ± 17.434 | RMSE: 16.610 ± 17.434 | R²: 0.455 | params: {'initial_temperature': 50, 'cooling_rate': 0.8, 'iterations_per_temp': 100, 'step_size': 0.2}
+7/150 | MAE: 18.190 ± 19.264 | RMSE: 18.190 ± 19.264 | R²: 0.340 | params: {'initial_temperature': 50, 'cooling_rate': 0.85, 'iterations_per_temp': 20, 'step_size': 0.1}
+8/150 | MAE: 16.417 ± 17.627 | RMSE: 16.417 ± 17.627 | R²: 0.455 | params: {'initial_temperature': 50, 'cooling_rate': 0.85, 'iterations_per_temp': 20, 'step_size': 0.2}
+9/150 | MAE: 21.562 ± 20.610 | RMSE: 21.562 ± 20.610 | R²: 0.163 | params: {'initial_temperature': 50, 'cooling_rate': 0.85, 'iterations_per_temp': 50, 'step_size': 0.1}
+10/150 | MAE: 17.557 ± 18.798 | RMSE: 17.557 ± 18.798 | R²: 0.378 | params: {'initial_temperature': 50, 'cooling_rate': 0.85, 'iterations_per_temp': 50, 'step_size': 0.2}
+11/150 | MAE: 22.786 ± 20.017 | RMSE: 22.786 ± 20.017 | R²: 0.134 | params: {'initial_temperature': 50, 'cooling_rate': 0.85, 'iterations_per_temp': 100, 'step_size': 0.1}
+12/150 | MAE: 15.930 ± 15.745 | RMSE: 15.930 ± 15.745 | R²: 0.528 | params: {'initial_temperature': 50, 'cooling_rate': 0.85, 'iterations_per_temp': 100, 'step_size': 0.2}
+13/150 | MAE: 20.897 ± 20.383 | RMSE: 20.897 ± 20.383 | R²: 0.198 | params: {'initial_temperature': 50, 'cooling_rate': 0.9, 'iterations_per_temp': 20, 'step_size': 0.1}
+14/150 | MAE: 17.680 ± 19.115 | RMSE: 17.680 ± 19.115 | R²: 0.363 | params: {'initial_temperature': 50, 'cooling_rate': 0.9, 'iterations_per_temp': 20, 'step_size': 0.2}
+15/150 | MAE: 19.268 ± 17.336 | RMSE: 19.268 ± 17.336 | R²: 0.368 | params: {'initial_temperature': 50, 'cooling_rate': 0.9, 'iterations_per_temp': 50, 'step_size': 0.1}
+16/150 | MAE: 18.381 ± 20.669 | RMSE: 18.381 ± 20.669 | R²: 0.281 | params: {'initial_temperature': 50, 'cooling_rate': 0.9, 'iterations_per_temp': 50, 'step_size': 0.2}
+17/150 | MAE: 21.189 ± 19.319 | RMSE: 21.189 ± 19.319 | R²: 0.226 | params: {'initial_temperature': 50, 'cooling_rate': 0.9, 'iterations_per_temp': 100, 'step_size': 0.1}
+18/150 | MAE: 18.880 ± 20.029 | RMSE: 18.880 ± 20.029 | R²: 0.288 | params: {'initial_temperature': 50, 'cooling_rate': 0.9, 'iterations_per_temp': 100, 'step_size': 0.2}
+19/150 | MAE: 23.041 ± 20.143 | RMSE: 23.041 ± 20.143 | R²: 0.118 | params: {'initial_temperature': 50, 'cooling_rate': 0.95, 'iterations_per_temp': 20, 'step_size': 0.1}
+20/150 | MAE: 15.618 ± 16.559 | RMSE: 15.618 ± 16.559 | R²: 0.513 | params: {'initial_temperature': 50, 'cooling_rate': 0.95, 'iterations_per_temp': 20, 'step_size': 0.2}
+21/150 | MAE: 20.518 ± 19.397 | RMSE: 20.518 ± 19.397 | R²: 0.250 | params: {'initial_temperature': 50, 'cooling_rate': 0.95, 'iterations_per_temp': 50, 'step_size': 0.1}
+22/150 | MAE: 17.355 ± 19.388 | RMSE: 17.355 ± 19.388 | R²: 0.364 | params: {'initial_temperature': 50, 'cooling_rate': 0.95, 'iterations_per_temp': 50, 'step_size': 0.2}
+23/150 | MAE: 22.451 ± 18.557 | RMSE: 22.451 ± 18.557 | R²: 0.201 | params: {'initial_temperature': 50, 'cooling_rate': 0.95, 'iterations_per_temp': 100, 'step_size': 0.1}
+24/150 | MAE: 19.877 ± 19.043 | RMSE: 19.877 ± 19.043 | R²: 0.287 | params: {'initial_temperature': 50, 'cooling_rate': 0.95, 'iterations_per_temp': 100, 'step_size': 0.2}
+25/150 | MAE: 23.330 ± 20.020 | RMSE: 23.330 ± 20.020 | R²: 0.110 | params: {'initial_temperature': 50, 'cooling_rate': 0.98, 'iterations_per_temp': 20, 'step_size': 0.1}
+26/150 | MAE: 16.715 ± 18.311 | RMSE: 16.715 ± 18.311 | R²: 0.422 | params: {'initial_temperature': 50, 'cooling_rate': 0.98, 'iterations_per_temp': 20, 'step_size': 0.2}
+27/150 | MAE: 22.286 ± 20.705 | RMSE: 22.286 ± 20.705 | R²: 0.129 | params: {'initial_temperature': 50, 'cooling_rate': 0.98, 'iterations_per_temp': 50, 'step_size': 0.1}
+28/150 | MAE: 17.489 ± 19.057 | RMSE: 17.489 ± 19.057 | R²: 0.371 | params: {'initial_temperature': 50, 'cooling_rate': 0.98, 'iterations_per_temp': 50, 'step_size': 0.2}
+29/150 | MAE: 20.688 ± 19.606 | RMSE: 20.688 ± 19.606 | R²: 0.236 | params: {'initial_temperature': 50, 'cooling_rate': 0.98, 'iterations_per_temp': 100, 'step_size': 0.1}
+30/150 | MAE: 14.846 ± 17.608 | RMSE: 14.846 ± 17.608 | R²: 0.502 | params: {'initial_temperature': 50, 'cooling_rate': 0.98, 'iterations_per_temp': 100, 'step_size': 0.2}
+31/150 | MAE: 20.145 ± 20.956 | RMSE: 20.145 ± 20.956 | R²: 0.206 | params: {'initial_temperature': 100, 'cooling_rate': 0.8, 'iterations_per_temp': 20, 'step_size': 0.1}
+32/150 | MAE: 17.646 ± 17.968 | RMSE: 17.646 ± 17.968 | R²: 0.404 | params: {'initial_temperature': 100, 'cooling_rate': 0.8, 'iterations_per_temp': 20, 'step_size': 0.2}
+33/150 | MAE: 21.149 ± 19.963 | RMSE: 21.149 ± 19.963 | R²: 0.204 | params: {'initial_temperature': 100, 'cooling_rate': 0.8, 'iterations_per_temp': 50, 'step_size': 0.1}
+34/150 | MAE: 17.285 ± 19.319 | RMSE: 17.285 ± 19.319 | R²: 0.369 | params: {'initial_temperature': 100, 'cooling_rate': 0.8, 'iterations_per_temp': 50, 'step_size': 0.2}
+35/150 | MAE: 20.366 ± 17.508 | RMSE: 20.366 ± 17.508 | R²: 0.321 | params: {'initial_temperature': 100, 'cooling_rate': 0.8, 'iterations_per_temp': 100, 'step_size': 0.1}
+36/150 | MAE: 15.361 ± 16.920 | RMSE: 15.361 ± 16.920 | R²: 0.509 | params: {'initial_temperature': 100, 'cooling_rate': 0.8, 'iterations_per_temp': 100, 'step_size': 0.2}
+37/150 | MAE: 21.020 ± 18.147 | RMSE: 21.020 ± 18.147 | R²: 0.274 | params: {'initial_temperature': 100, 'cooling_rate': 0.85, 'iterations_per_temp': 20, 'step_size': 0.1}
+38/150 | MAE: 18.869 ± 19.194 | RMSE: 18.869 ± 19.194 | R²: 0.319 | params: {'initial_temperature': 100, 'cooling_rate': 0.85, 'iterations_per_temp': 20, 'step_size': 0.2}
+39/150 | MAE: 21.549 ± 18.644 | RMSE: 21.549 ± 18.644 | R²: 0.236 | params: {'initial_temperature': 100, 'cooling_rate': 0.85, 'iterations_per_temp': 50, 'step_size': 0.1}
+40/150 | MAE: 17.788 ± 20.267 | RMSE: 17.788 ± 20.267 | R²: 0.317 | params: {'initial_temperature': 100, 'cooling_rate': 0.85, 'iterations_per_temp': 50, 'step_size': 0.2}
+41/150 | MAE: 18.442 ± 18.980 | RMSE: 18.442 ± 18.980 | R²: 0.341 | params: {'initial_temperature': 100, 'cooling_rate': 0.85, 'iterations_per_temp': 100, 'step_size': 0.1}
+42/150 | MAE: 17.980 ± 18.173 | RMSE: 17.980 ± 18.173 | R²: 0.385 | params: {'initial_temperature': 100, 'cooling_rate': 0.85, 'iterations_per_temp': 100, 'step_size': 0.2}
+43/150 | MAE: 22.184 ± 20.188 | RMSE: 22.184 ± 20.188 | R²: 0.153 | params: {'initial_temperature': 100, 'cooling_rate': 0.9, 'iterations_per_temp': 20, 'step_size': 0.1}
+44/150 | MAE: 19.039 ± 21.827 | RMSE: 19.039 ± 21.827 | R²: 0.212 | params: {'initial_temperature': 100, 'cooling_rate': 0.9, 'iterations_per_temp': 20, 'step_size': 0.2}
+45/150 | MAE: 19.632 ± 20.212 | RMSE: 19.632 ± 20.212 | R²: 0.254 | params: {'initial_temperature': 100, 'cooling_rate': 0.9, 'iterations_per_temp': 50, 'step_size': 0.1}
+46/150 | MAE: 16.603 ± 18.116 | RMSE: 16.603 ± 18.116 | R²: 0.432 | params: {'initial_temperature': 100, 'cooling_rate': 0.9, 'iterations_per_temp': 50, 'step_size': 0.2}
+47/150 | MAE: 19.422 ± 20.884 | RMSE: 19.422 ± 20.884 | R²: 0.235 | params: {'initial_temperature': 100, 'cooling_rate': 0.9, 'iterations_per_temp': 100, 'step_size': 0.1}
+48/150 | MAE: 17.998 ± 18.692 | RMSE: 17.998 ± 18.692 | R²: 0.367 | params: {'initial_temperature': 100, 'cooling_rate': 0.9, 'iterations_per_temp': 100, 'step_size': 0.2}
+49/150 | MAE: 19.119 ± 18.796 | RMSE: 19.119 ± 18.796 | R²: 0.324 | params: {'initial_temperature': 100, 'cooling_rate': 0.95, 'iterations_per_temp': 20, 'step_size': 0.1}
+50/150 | MAE: 17.871 ± 18.612 | RMSE: 17.871 ± 18.612 | R²: 0.374 | params: {'initial_temperature': 100, 'cooling_rate': 0.95, 'iterations_per_temp': 20, 'step_size': 0.2}
+51/150 | MAE: 20.886 ± 16.849 | RMSE: 20.886 ± 16.849 | R²: 0.322 | params: {'initial_temperature': 100, 'cooling_rate': 0.95, 'iterations_per_temp': 50, 'step_size': 0.1}
+52/150 | MAE: 18.441 ± 17.830 | RMSE: 18.441 ± 17.830 | R²: 0.381 | params: {'initial_temperature': 100, 'cooling_rate': 0.95, 'iterations_per_temp': 50, 'step_size': 0.2}
+53/150 | MAE: 23.493 ± 18.244 | RMSE: 23.493 ± 18.244 | R²: 0.167 | params: {'initial_temperature': 100, 'cooling_rate': 0.95, 'iterations_per_temp': 100, 'step_size': 0.1}
+54/150 | MAE: 17.606 ± 19.976 | RMSE: 17.606 ± 19.976 | R²: 0.334 | params: {'initial_temperature': 100, 'cooling_rate': 0.95, 'iterations_per_temp': 100, 'step_size': 0.2}
+55/150 | MAE: 20.600 ± 17.771 | RMSE: 20.600 ± 17.771 | R²: 0.303 | params: {'initial_temperature': 100, 'cooling_rate': 0.98, 'iterations_per_temp': 20, 'step_size': 0.1}
+56/150 | MAE: 18.123 ± 17.159 | RMSE: 18.123 ± 17.159 | R²: 0.414 | params: {'initial_temperature': 100, 'cooling_rate': 0.98, 'iterations_per_temp': 20, 'step_size': 0.2}
+57/150 | MAE: 22.948 ± 20.336 | RMSE: 22.948 ± 20.336 | R²: 0.115 | params: {'initial_temperature': 100, 'cooling_rate': 0.98, 'iterations_per_temp': 50, 'step_size': 0.1}
+58/150 | MAE: 19.818 ± 17.640 | RMSE: 19.818 ± 17.640 | R²: 0.337 | params: {'initial_temperature': 100, 'cooling_rate': 0.98, 'iterations_per_temp': 50, 'step_size': 0.2}
+59/150 | MAE: 23.568 ± 19.465 | RMSE: 23.568 ± 19.465 | R²: 0.120 | params: {'initial_temperature': 100, 'cooling_rate': 0.98, 'iterations_per_temp': 100, 'step_size': 0.1}
+60/150 | MAE: 20.296 ± 20.012 | RMSE: 20.296 ± 20.012 | R²: 0.236 | params: {'initial_temperature': 100, 'cooling_rate': 0.98, 'iterations_per_temp': 100, 'step_size': 0.2}
+61/150 | MAE: 21.713 ± 22.294 | RMSE: 21.713 ± 22.294 | R²: 0.089 | params: {'initial_temperature': 150, 'cooling_rate': 0.8, 'iterations_per_temp': 20, 'step_size': 0.1}
+62/150 | MAE: 19.688 ± 16.965 | RMSE: 19.688 ± 16.965 | R²: 0.364 | params: {'initial_temperature': 150, 'cooling_rate': 0.8, 'iterations_per_temp': 20, 'step_size': 0.2}
+63/150 | MAE: 19.287 ± 17.716 | RMSE: 19.287 ± 17.716 | R²: 0.355 | params: {'initial_temperature': 150, 'cooling_rate': 0.8, 'iterations_per_temp': 50, 'step_size': 0.1}
+64/150 | MAE: 14.549 ± 16.094 | RMSE: 14.549 ± 16.094 | R²: 0.558 | params: {'initial_temperature': 150, 'cooling_rate': 0.8, 'iterations_per_temp': 50, 'step_size': 0.2}
+65/150 | MAE: 22.378 ± 20.904 | RMSE: 22.378 ± 20.904 | R²: 0.118 | params: {'initial_temperature': 150, 'cooling_rate': 0.8, 'iterations_per_temp': 100, 'step_size': 0.1}
+66/150 | MAE: 16.892 ± 17.765 | RMSE: 16.892 ± 17.765 | R²: 0.435 | params: {'initial_temperature': 150, 'cooling_rate': 0.8, 'iterations_per_temp': 100, 'step_size': 0.2}
+67/150 | MAE: 22.677 ± 19.888 | RMSE: 22.677 ± 19.888 | R²: 0.144 | params: {'initial_temperature': 150, 'cooling_rate': 0.85, 'iterations_per_temp': 20, 'step_size': 0.1}
+68/150 | MAE: 19.298 ± 19.215 | RMSE: 19.298 ± 19.215 | R²: 0.303 | params: {'initial_temperature': 150, 'cooling_rate': 0.85, 'iterations_per_temp': 20, 'step_size': 0.2}
+69/150 | MAE: 21.815 ± 18.935 | RMSE: 21.815 ± 18.935 | R²: 0.215 | params: {'initial_temperature': 150, 'cooling_rate': 0.85, 'iterations_per_temp': 50, 'step_size': 0.1}
+70/150 | MAE: 20.681 ± 18.656 | RMSE: 20.681 ± 18.656 | R²: 0.270 | params: {'initial_temperature': 150, 'cooling_rate': 0.85, 'iterations_per_temp': 50, 'step_size': 0.2}
+71/150 | MAE: 19.221 ± 18.469 | RMSE: 19.221 ± 18.469 | R²: 0.332 | params: {'initial_temperature': 150, 'cooling_rate': 0.85, 'iterations_per_temp': 100, 'step_size': 0.1}
+72/150 | MAE: 16.096 ± 16.325 | RMSE: 16.096 ± 16.325 | R²: 0.506 | params: {'initial_temperature': 150, 'cooling_rate': 0.85, 'iterations_per_temp': 100, 'step_size': 0.2}
+73/150 | MAE: 22.722 ± 18.470 | RMSE: 22.722 ± 18.470 | R²: 0.193 | params: {'initial_temperature': 150, 'cooling_rate': 0.9, 'iterations_per_temp': 20, 'step_size': 0.1}
+74/150 | MAE: 16.927 ± 18.496 | RMSE: 16.927 ± 18.496 | R²: 0.409 | params: {'initial_temperature': 150, 'cooling_rate': 0.9, 'iterations_per_temp': 20, 'step_size': 0.2}
+75/150 | MAE: 21.516 ± 20.773 | RMSE: 21.516 ± 20.773 | R²: 0.159 | params: {'initial_temperature': 150, 'cooling_rate': 0.9, 'iterations_per_temp': 50, 'step_size': 0.1}
+76/150 | MAE: 15.945 ± 20.934 | RMSE: 15.945 ± 20.934 | R²: 0.350 | params: {'initial_temperature': 150, 'cooling_rate': 0.9, 'iterations_per_temp': 50, 'step_size': 0.2}
+77/150 | MAE: 18.316 ± 19.501 | RMSE: 18.316 ± 19.501 | R²: 0.327 | params: {'initial_temperature': 150, 'cooling_rate': 0.9, 'iterations_per_temp': 100, 'step_size': 0.1}
+78/150 | MAE: 17.325 ± 18.357 | RMSE: 17.325 ± 18.357 | R²: 0.401 | params: {'initial_temperature': 150, 'cooling_rate': 0.9, 'iterations_per_temp': 100, 'step_size': 0.2}
+79/150 | MAE: 22.716 ± 22.294 | RMSE: 22.716 ± 22.294 | R²: 0.047 | params: {'initial_temperature': 150, 'cooling_rate': 0.95, 'iterations_per_temp': 20, 'step_size': 0.1}
+80/150 | MAE: 18.240 ± 20.615 | RMSE: 18.240 ± 20.615 | R²: 0.288 | params: {'initial_temperature': 150, 'cooling_rate': 0.95, 'iterations_per_temp': 20, 'step_size': 0.2}
+81/150 | MAE: 20.609 ± 18.904 | RMSE: 20.609 ± 18.904 | R²: 0.264 | params: {'initial_temperature': 150, 'cooling_rate': 0.95, 'iterations_per_temp': 50, 'step_size': 0.1}
+82/150 | MAE: 18.661 ± 20.465 | RMSE: 18.661 ± 20.465 | R²: 0.279 | params: {'initial_temperature': 150, 'cooling_rate': 0.95, 'iterations_per_temp': 50, 'step_size': 0.2}
+83/150 | MAE: 19.317 ± 19.468 | RMSE: 19.317 ± 19.468 | R²: 0.293 | params: {'initial_temperature': 150, 'cooling_rate': 0.95, 'iterations_per_temp': 100, 'step_size': 0.1}
+84/150 | MAE: 19.214 ± 19.233 | RMSE: 19.214 ± 19.233 | R²: 0.305 | params: {'initial_temperature': 150, 'cooling_rate': 0.95, 'iterations_per_temp': 100, 'step_size': 0.2}
+85/150 | MAE: 20.674 ± 20.185 | RMSE: 20.674 ± 20.185 | R²: 0.215 | params: {'initial_temperature': 150, 'cooling_rate': 0.98, 'iterations_per_temp': 20, 'step_size': 0.1}
+86/150 | MAE: 17.420 ± 20.484 | RMSE: 17.420 ± 20.484 | R²: 0.321 | params: {'initial_temperature': 150, 'cooling_rate': 0.98, 'iterations_per_temp': 20, 'step_size': 0.2}
+87/150 | MAE: 19.531 ± 20.224 | RMSE: 19.531 ± 20.224 | R²: 0.257 | params: {'initial_temperature': 150, 'cooling_rate': 0.98, 'iterations_per_temp': 50, 'step_size': 0.1}
+88/150 | MAE: 16.764 ± 19.905 | RMSE: 16.764 ± 19.905 | R²: 0.364 | params: {'initial_temperature': 150, 'cooling_rate': 0.98, 'iterations_per_temp': 50, 'step_size': 0.2}
+89/150 | MAE: 23.824 ± 21.109 | RMSE: 23.824 ± 21.109 | R²: 0.046 | params: {'initial_temperature': 150, 'cooling_rate': 0.98, 'iterations_per_temp': 100, 'step_size': 0.1}
+90/150 | MAE: 18.748 ± 20.026 | RMSE: 18.748 ± 20.026 | R²: 0.293 | params: {'initial_temperature': 150, 'cooling_rate': 0.98, 'iterations_per_temp': 100, 'step_size': 0.2}
+91/150 | MAE: 20.318 ± 19.148 | RMSE: 20.318 ± 19.148 | R²: 0.267 | params: {'initial_temperature': 200, 'cooling_rate': 0.8, 'iterations_per_temp': 20, 'step_size': 0.1}
+92/150 | MAE: 16.733 ± 17.857 | RMSE: 16.733 ± 17.857 | R²: 0.437 | params: {'initial_temperature': 200, 'cooling_rate': 0.8, 'iterations_per_temp': 20, 'step_size': 0.2}
+93/150 | MAE: 23.230 ± 21.225 | RMSE: 23.230 ± 21.225 | R²: 0.068 | params: {'initial_temperature': 200, 'cooling_rate': 0.8, 'iterations_per_temp': 50, 'step_size': 0.1}
+94/150 | MAE: 16.830 ± 17.152 | RMSE: 16.830 ± 17.152 | R²: 0.457 | params: {'initial_temperature': 200, 'cooling_rate': 0.8, 'iterations_per_temp': 50, 'step_size': 0.2}
+95/150 | MAE: 22.186 ± 19.191 | RMSE: 22.186 ± 19.191 | R²: 0.190 | params: {'initial_temperature': 200, 'cooling_rate': 0.8, 'iterations_per_temp': 100, 'step_size': 0.1}
+96/150 | MAE: 14.273 ± 17.154 | RMSE: 14.273 ± 17.154 | R²: 0.532 | params: {'initial_temperature': 200, 'cooling_rate': 0.8, 'iterations_per_temp': 100, 'step_size': 0.2}
+97/150 | MAE: 21.399 ± 22.360 | RMSE: 21.399 ± 22.360 | R²: 0.099 | params: {'initial_temperature': 200, 'cooling_rate': 0.85, 'iterations_per_temp': 20, 'step_size': 0.1}
+98/150 | MAE: 14.422 ± 14.967 | RMSE: 14.422 ± 14.967 | R²: 0.594 | params: {'initial_temperature': 200, 'cooling_rate': 0.85, 'iterations_per_temp': 20, 'step_size': 0.2}
+99/150 | MAE: 19.119 ± 18.766 | RMSE: 19.119 ± 18.766 | R²: 0.325 | params: {'initial_temperature': 200, 'cooling_rate': 0.85, 'iterations_per_temp': 50, 'step_size': 0.1}
+100/150 | MAE: 16.334 ± 16.115 | RMSE: 16.334 ± 16.115 | R²: 0.505 | params: {'initial_temperature': 200, 'cooling_rate': 0.85, 'iterations_per_temp': 50, 'step_size': 0.2}
+101/150 | MAE: 21.577 ± 19.688 | RMSE: 21.577 ± 19.688 | R²: 0.197 | params: {'initial_temperature': 200, 'cooling_rate': 0.85, 'iterations_per_temp': 100, 'step_size': 0.1}
+102/150 | MAE: 18.309 ± 18.013 | RMSE: 18.309 ± 18.013 | R²: 0.380 | params: {'initial_temperature': 200, 'cooling_rate': 0.85, 'iterations_per_temp': 100, 'step_size': 0.2}
+103/150 | MAE: 19.469 ± 19.356 | RMSE: 19.469 ± 19.356 | R²: 0.291 | params: {'initial_temperature': 200, 'cooling_rate': 0.9, 'iterations_per_temp': 20, 'step_size': 0.1}
+104/150 | MAE: 17.687 ± 20.224 | RMSE: 17.687 ± 20.224 | R²: 0.322 | params: {'initial_temperature': 200, 'cooling_rate': 0.9, 'iterations_per_temp': 20, 'step_size': 0.2}
+105/150 | MAE: 20.264 ± 19.384 | RMSE: 20.264 ± 19.384 | R²: 0.260 | params: {'initial_temperature': 200, 'cooling_rate': 0.9, 'iterations_per_temp': 50, 'step_size': 0.1}
+106/150 | MAE: 15.886 ± 15.836 | RMSE: 15.886 ± 15.836 | R²: 0.527 | params: {'initial_temperature': 200, 'cooling_rate': 0.9, 'iterations_per_temp': 50, 'step_size': 0.2}
+107/150 | MAE: 20.247 ± 20.878 | RMSE: 20.247 ± 20.878 | R²: 0.205 | params: {'initial_temperature': 200, 'cooling_rate': 0.9, 'iterations_per_temp': 100, 'step_size': 0.1}
+108/150 | MAE: 15.673 ± 16.254 | RMSE: 15.673 ± 16.254 | R²: 0.521 | params: {'initial_temperature': 200, 'cooling_rate': 0.9, 'iterations_per_temp': 100, 'step_size': 0.2}
+109/150 | MAE: 20.105 ± 16.449 | RMSE: 20.105 ± 16.449 | R²: 0.365 | params: {'initial_temperature': 200, 'cooling_rate': 0.95, 'iterations_per_temp': 20, 'step_size': 0.1}
+110/150 | MAE: 16.158 ± 15.806 | RMSE: 16.158 ± 15.806 | R²: 0.519 | params: {'initial_temperature': 200, 'cooling_rate': 0.95, 'iterations_per_temp': 20, 'step_size': 0.2}
+111/150 | MAE: 21.377 ± 19.206 | RMSE: 21.377 ± 19.206 | R²: 0.223 | params: {'initial_temperature': 200, 'cooling_rate': 0.95, 'iterations_per_temp': 50, 'step_size': 0.1}
+112/150 | MAE: 18.806 ± 19.661 | RMSE: 18.806 ± 19.661 | R²: 0.304 | params: {'initial_temperature': 200, 'cooling_rate': 0.95, 'iterations_per_temp': 50, 'step_size': 0.2}
+113/150 | MAE: 23.483 ± 21.017 | RMSE: 23.483 ± 21.017 | R²: 0.065 | params: {'initial_temperature': 200, 'cooling_rate': 0.95, 'iterations_per_temp': 100, 'step_size': 0.1}
+114/150 | MAE: 16.845 ± 18.189 | RMSE: 16.845 ± 18.189 | R²: 0.422 | params: {'initial_temperature': 200, 'cooling_rate': 0.95, 'iterations_per_temp': 100, 'step_size': 0.2}
+115/150 | MAE: 23.603 ± 19.468 | RMSE: 23.603 ± 19.468 | R²: 0.119 | params: {'initial_temperature': 200, 'cooling_rate': 0.98, 'iterations_per_temp': 20, 'step_size': 0.1}
+116/150 | MAE: 20.732 ± 21.655 | RMSE: 20.732 ± 21.655 | R²: 0.155 | params: {'initial_temperature': 200, 'cooling_rate': 0.98, 'iterations_per_temp': 20, 'step_size': 0.2}
+117/150 | MAE: 18.984 ± 17.372 | RMSE: 18.984 ± 17.372 | R²: 0.377 | params: {'initial_temperature': 200, 'cooling_rate': 0.98, 'iterations_per_temp': 50, 'step_size': 0.1}
+118/150 | MAE: 14.239 ± 16.482 | RMSE: 14.239 ± 16.482 | R²: 0.554 | params: {'initial_temperature': 200, 'cooling_rate': 0.98, 'iterations_per_temp': 50, 'step_size': 0.2}
+119/150 | MAE: 19.930 ± 18.313 | RMSE: 19.930 ± 18.313 | R²: 0.311 | params: {'initial_temperature': 200, 'cooling_rate': 0.98, 'iterations_per_temp': 100, 'step_size': 0.1}
+120/150 | MAE: 16.974 ± 17.214 | RMSE: 16.974 ± 17.214 | R²: 0.450 | params: {'initial_temperature': 200, 'cooling_rate': 0.98, 'iterations_per_temp': 100, 'step_size': 0.2}
+121/150 | MAE: 20.023 ± 20.618 | RMSE: 20.023 ± 20.618 | R²: 0.223 | params: {'initial_temperature': 300, 'cooling_rate': 0.8, 'iterations_per_temp': 20, 'step_size': 0.1}
+122/150 | MAE: 19.244 ± 20.255 | RMSE: 19.244 ± 20.255 | R²: 0.266 | params: {'initial_temperature': 300, 'cooling_rate': 0.8, 'iterations_per_temp': 20, 'step_size': 0.2}
+123/150 | MAE: 21.926 ± 20.855 | RMSE: 21.926 ± 20.855 | R²: 0.139 | params: {'initial_temperature': 300, 'cooling_rate': 0.8, 'iterations_per_temp': 50, 'step_size': 0.1}
+124/150 | MAE: 18.093 ± 18.289 | RMSE: 18.093 ± 18.289 | R²: 0.378 | params: {'initial_temperature': 300, 'cooling_rate': 0.8, 'iterations_per_temp': 50, 'step_size': 0.2}
+125/150 | MAE: 24.385 ± 20.548 | RMSE: 24.385 ± 20.548 | R²: 0.043 | params: {'initial_temperature': 300, 'cooling_rate': 0.8, 'iterations_per_temp': 100, 'step_size': 0.1}
+126/150 | MAE: 16.251 ± 18.223 | RMSE: 16.251 ± 18.223 | R²: 0.440 | params: {'initial_temperature': 300, 'cooling_rate': 0.8, 'iterations_per_temp': 100, 'step_size': 0.2}
+127/150 | MAE: 21.182 ± 20.111 | RMSE: 21.182 ± 20.111 | R²: 0.197 | params: {'initial_temperature': 300, 'cooling_rate': 0.85, 'iterations_per_temp': 20, 'step_size': 0.1}
+128/150 | MAE: 17.226 ± 19.205 | RMSE: 17.226 ± 19.205 | R²: 0.375 | params: {'initial_temperature': 300, 'cooling_rate': 0.85, 'iterations_per_temp': 20, 'step_size': 0.2}
+129/150 | MAE: 19.607 ± 19.834 | RMSE: 19.607 ± 19.834 | R²: 0.269 | params: {'initial_temperature': 300, 'cooling_rate': 0.85, 'iterations_per_temp': 50, 'step_size': 0.1}
+130/150 | MAE: 16.158 ± 17.554 | RMSE: 16.158 ± 17.554 | R²: 0.465 | params: {'initial_temperature': 300, 'cooling_rate': 0.85, 'iterations_per_temp': 50, 'step_size': 0.2}
+131/150 | MAE: 20.231 ± 20.348 | RMSE: 20.231 ± 20.348 | R²: 0.226 | params: {'initial_temperature': 300, 'cooling_rate': 0.85, 'iterations_per_temp': 100, 'step_size': 0.1}
+132/150 | MAE: 18.069 ± 16.939 | RMSE: 18.069 ± 16.939 | R²: 0.423 | params: {'initial_temperature': 300, 'cooling_rate': 0.85, 'iterations_per_temp': 100, 'step_size': 0.2}
+133/150 | MAE: 21.058 ± 19.066 | RMSE: 21.058 ± 19.066 | R²: 0.241 | params: {'initial_temperature': 300, 'cooling_rate': 0.9, 'iterations_per_temp': 20, 'step_size': 0.1}
+134/150 | MAE: 15.924 ± 15.879 | RMSE: 15.924 ± 15.879 | R²: 0.524 | params: {'initial_temperature': 300, 'cooling_rate': 0.9, 'iterations_per_temp': 20, 'step_size': 0.2}
+135/150 | MAE: 21.142 ± 17.453 | RMSE: 21.142 ± 17.453 | R²: 0.292 | params: {'initial_temperature': 300, 'cooling_rate': 0.9, 'iterations_per_temp': 50, 'step_size': 0.1}
+136/150 | MAE: 15.366 ± 16.704 | RMSE: 15.366 ± 16.704 | R²: 0.516 | params: {'initial_temperature': 300, 'cooling_rate': 0.9, 'iterations_per_temp': 50, 'step_size': 0.2}
+137/150 | MAE: 21.086 ± 21.308 | RMSE: 21.086 ± 21.308 | R²: 0.155 | params: {'initial_temperature': 300, 'cooling_rate': 0.9, 'iterations_per_temp': 100, 'step_size': 0.1}
+138/150 | MAE: 19.676 ± 18.413 | RMSE: 19.676 ± 18.413 | R²: 0.317 | params: {'initial_temperature': 300, 'cooling_rate': 0.9, 'iterations_per_temp': 100, 'step_size': 0.2}
+139/150 | MAE: 21.189 ± 19.589 | RMSE: 21.189 ± 19.589 | R²: 0.216 | params: {'initial_temperature': 300, 'cooling_rate': 0.95, 'iterations_per_temp': 20, 'step_size': 0.1}
+140/150 | MAE: 15.550 ± 19.117 | RMSE: 15.550 ± 19.117 | R²: 0.430 | params: {'initial_temperature': 300, 'cooling_rate': 0.95, 'iterations_per_temp': 20, 'step_size': 0.2}
+141/150 | MAE: 20.242 ± 20.775 | RMSE: 20.242 ± 20.775 | R²: 0.209 | params: {'initial_temperature': 300, 'cooling_rate': 0.95, 'iterations_per_temp': 50, 'step_size': 0.1}
+142/150 | MAE: 17.614 ± 21.204 | RMSE: 17.614 ± 21.204 | R²: 0.286 | params: {'initial_temperature': 300, 'cooling_rate': 0.95, 'iterations_per_temp': 50, 'step_size': 0.2}
+143/150 | MAE: 21.649 ± 19.339 | RMSE: 21.649 ± 19.339 | R²: 0.207 | params: {'initial_temperature': 300, 'cooling_rate': 0.95, 'iterations_per_temp': 100, 'step_size': 0.1}
+144/150 | MAE: 15.565 ± 15.093 | RMSE: 15.565 ± 15.093 | R²: 0.558 | params: {'initial_temperature': 300, 'cooling_rate': 0.95, 'iterations_per_temp': 100, 'step_size': 0.2}
+145/150 | MAE: 20.144 ± 18.713 | RMSE: 20.144 ± 18.713 | R²: 0.289 | params: {'initial_temperature': 300, 'cooling_rate': 0.98, 'iterations_per_temp': 20, 'step_size': 0.1}
+146/150 | MAE: 14.459 ± 16.827 | RMSE: 14.459 ± 16.827 | R²: 0.538 | params: {'initial_temperature': 300, 'cooling_rate': 0.98, 'iterations_per_temp': 20, 'step_size': 0.2}
+147/150 | MAE: 23.898 ± 20.457 | RMSE: 23.898 ± 20.457 | R²: 0.068 | params: {'initial_temperature': 300, 'cooling_rate': 0.98, 'iterations_per_temp': 50, 'step_size': 0.1}
+148/150 | MAE: 14.523 ± 18.019 | RMSE: 14.523 ± 18.019 | R²: 0.497 | params: {'initial_temperature': 300, 'cooling_rate': 0.98, 'iterations_per_temp': 50, 'step_size': 0.2}
+149/150 | MAE: 19.877 ± 19.775 | RMSE: 19.877 ± 19.775 | R²: 0.261 | params: {'initial_temperature': 300, 'cooling_rate': 0.98, 'iterations_per_temp': 100, 'step_size': 0.1}
+150/150 | MAE: 19.614 ± 20.492 | RMSE: 19.614 ± 20.492 | R²: 0.244 | params: {'initial_temperature': 300, 'cooling_rate': 0.98, 'iterations_per_temp': 100, 'step_size': 0.2}
+
+=== Best Optimizer Hyperparameters ===
+{'initial_temperature': 200, 'cooling_rate': 0.98, 'iterations_per_temp': 50, 'step_size': 0.2}
+
+Validation metrics (mean ± std):
+MAE:  14.239 ± 16.482
+RMSE: 14.239 ± 16.482
+R²:   0.554
+
+Raw values:
+MAE mean: 14.239
+MAE std:  16.482
+RMSE mean: 14.239
+RMSE std:  16.482
