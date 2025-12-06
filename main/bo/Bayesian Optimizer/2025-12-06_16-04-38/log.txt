@@ -1,0 +1,23 @@
+=== Held-Out Evaluation ===
+Samples: 20  Replicas per sample: 5
+
+--- Sample 0 (Test index 0) ---
+Target: 342.45
+Replica 1 | Predicted: 322.4476318359375 | Final cost: 400.09521484375 | Time: 30.9566s
+Replica 2 | Predicted: 309.9395446777344 | Final cost: 1056.9305419921875 | Time: 11.4863s
+Replica 3 | Predicted: 327.15643310546875 | Final cost: 233.8935546875 | Time: 20.9573s
+Replica 4 | Predicted: 327.15643310546875 | Final cost: 233.8935546875 | Time: 17.0490s
+Replica 5 | Predicted: 299.7589111328125 | Final cost: 1822.5301513671875 | Time: 21.5443s
+Sample 0 aggregated: Mean prediction: 317.291791 | Std: 12.069201 | 95% CI: [302.305899, 332.277683] | Abs error (mean pred): 25.158209
+
+--- Sample 1 (Test index 1) ---
+Target: 337.88
+Replica 1 | Predicted: 327.15643310546875 | Final cost: 114.9949951171875 | Time: 32.2821s
+Replica 2 | Predicted: 327.15643310546875 | Final cost: 114.9949951171875 | Time: 28.8229s
+Replica 3 | Predicted: 327.15643310546875 | Final cost: 114.9949951171875 | Time: 31.7912s
+Replica 4 | Predicted: 327.15643310546875 | Final cost: 114.9949951171875 | Time: 109.0968s
+Replica 5 | Predicted: 327.15643310546875 | Final cost: 114.9949951171875 | Time: 12661.6520s
+Sample 1 aggregated: Mean prediction: 327.156433 | Std: 0.000000 | 95% CI: [327.156433, 327.156433] | Abs error (mean pred): 10.723567
+
+--- Sample 2 (Test index 2) ---
+Target: 278.4

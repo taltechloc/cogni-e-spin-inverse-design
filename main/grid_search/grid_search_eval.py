@@ -1,5 +1,9 @@
-from main.evaluator import run_evaluation
+import joblib
+
+from main.evaluator.evaluator import run_evaluation
 
 
 if __name__ == "__main__":
-    run_evaluation(config_path="config.json", optimizer_name="Grid Search")
+    surrogate_model = joblib.load("../saved_models/XGBoost_model.pkl")
+
+    run_evaluation(surrogate_model, config_path="eval_config.json", optimizer_name="Grid Search")

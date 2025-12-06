@@ -511,14 +511,6 @@ def run_evaluation(
     except Exception as e:
         print(f"Warning: plot_spaghetti_predictions failed: {e}")
 
-    try:
-        plot_cost_trajectories(
-            cost_histories_all_samples,
-            optimizer_name,
-            save_path=os.path.join(plots_folder, "cost_trajectories.png")
-        )
-    except Exception as e:
-        print(f"Warning: plot_cost_trajectories failed: {e}")
 
     return {
         "run_folder": run_folder,
