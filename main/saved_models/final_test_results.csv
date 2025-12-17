@@ -1,0 +1,12 @@
+,Best_Params,RMSE_Test,MAE_Test,R2_Test,Saved_Path
+XGBoost,"{'colsample_bytree': 1.0, 'learning_rate': 0.05, 'max_depth': 3, 'n_estimators': 200, 'subsample': 0.8}",13.556842545286582,11.159954650878898,0.889817524905942,saved_models/XGBoost_model.pkl
+GradientBoosting,"{'learning_rate': 0.05, 'max_depth': 3, 'min_samples_leaf': 1, 'min_samples_split': 5, 'n_estimators': 200}",14.840674065829752,12.16526988717382,0.8679608639007992,saved_models/GradientBoosting_model.pkl
+MLP,"{'model__activation': 'relu', 'model__alpha': 0.001, 'model__hidden_layer_sizes': (50, 50), 'model__learning_rate': 'constant'}",15.8838502412613,12.85261610672815,0.8487459586424717,saved_models/MLP_model.pkl
+DecisionTree,"{'max_depth': 5, 'min_samples_leaf': 1, 'min_samples_split': 5}",16.38581878637744,13.528799999999995,0.83903490317267,saved_models/DecisionTree_model.pkl
+RandomForest,"{'max_depth': 10, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 200}",20.071045787184396,15.002039999999933,0.7584898301834972,saved_models/RandomForest_model.pkl
+KNN,"{'model__n_neighbors': 5, 'model__p': 1, 'model__weights': 'distance'}",20.32366486933952,14.63344059238138,0.7523721597894877,saved_models/KNN_model.pkl
+LinearRegression,{},20.519696855303692,15.643496308940865,0.7475721310205476,saved_models/LinearRegression_model.pkl
+Lasso,{'model__alpha': 0.01},20.528080762788054,15.644025671858007,0.7473658156681515,saved_models/Lasso_model.pkl
+ElasticNet,"{'model__alpha': 0.01, 'model__l1_ratio': 0.1}",20.628112718192778,15.65007501561315,0.744897678009136,saved_models/ElasticNet_model.pkl
+Ridge,{'model__alpha': 1},20.677400464291164,15.653041681330814,0.7436771650339151,saved_models/Ridge_model.pkl
+AdaBoost,"{'learning_rate': 0.1, 'n_estimators': 200}",20.782923174271023,17.51767901382244,0.7410543114725633,saved_models/AdaBoost_model.pkl

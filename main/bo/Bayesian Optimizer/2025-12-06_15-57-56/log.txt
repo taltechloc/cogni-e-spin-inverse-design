@@ -1,8 +1,0 @@
-=== Held-Out Evaluation ===
-Samples: 20  Replicas per sample: 5
-
---- Sample 0 (Test index 0) ---
-Target: 342.45
-Replica 1 | Predicted: 329.5343017578125 | Final cost: 166.81558227539062 | Time: 20.3940s
-Replica 2 | Predicted: 329.5343017578125 | Final cost: 166.81558227539062 | Time: 48.6746s
-Replica 3 | Predicted: 329.5343017578125 | Final cost: 166.81558227539062 | Time: 73.9483s

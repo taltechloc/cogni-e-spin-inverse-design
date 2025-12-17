@@ -1,0 +1,320 @@
+{
+  "LinearRegression": {
+    "best_params_per_fold": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Ridge": {
+    "best_params_per_fold": [
+      {
+        "model__alpha": 1
+      },
+      {
+        "model__alpha": 1
+      },
+      {
+        "model__alpha": 1
+      },
+      {
+        "model__alpha": 10
+      },
+      {
+        "model__alpha": 10
+      }
+    ]
+  },
+  "Lasso": {
+    "best_params_per_fold": [
+      {
+        "model__alpha": 1
+      },
+      {
+        "model__alpha": 1
+      },
+      {
+        "model__alpha": 1
+      },
+      {
+        "model__alpha": 1
+      },
+      {
+        "model__alpha": 1
+      }
+    ]
+  },
+  "ElasticNet": {
+    "best_params_per_fold": [
+      {
+        "model__alpha": 1,
+        "model__l1_ratio": 0.9
+      },
+      {
+        "model__alpha": 1,
+        "model__l1_ratio": 0.9
+      },
+      {
+        "model__alpha": 1,
+        "model__l1_ratio": 0.9
+      },
+      {
+        "model__alpha": 1,
+        "model__l1_ratio": 0.7
+      },
+      {
+        "model__alpha": 1,
+        "model__l1_ratio": 0.7
+      }
+    ]
+  },
+  "DecisionTree": {
+    "best_params_per_fold": [
+      {
+        "max_depth": 5,
+        "min_samples_leaf": 2,
+        "min_samples_split": 2
+      },
+      {
+        "max_depth": 5,
+        "min_samples_leaf": 4,
+        "min_samples_split": 10
+      },
+      {
+        "max_depth": 7,
+        "min_samples_leaf": 1,
+        "min_samples_split": 2
+      },
+      {
+        "max_depth": 5,
+        "min_samples_leaf": 1,
+        "min_samples_split": 2
+      },
+      {
+        "max_depth": 5,
+        "min_samples_leaf": 4,
+        "min_samples_split": 2
+      }
+    ]
+  },
+  "RandomForest": {
+    "best_params_per_fold": [
+      {
+        "max_depth": null,
+        "max_features": "sqrt",
+        "min_samples_leaf": 1,
+        "min_samples_split": 2,
+        "n_estimators": 200
+      },
+      {
+        "max_depth": null,
+        "max_features": "sqrt",
+        "min_samples_leaf": 1,
+        "min_samples_split": 2,
+        "n_estimators": 200
+      },
+      {
+        "max_depth": null,
+        "max_features": "sqrt",
+        "min_samples_leaf": 1,
+        "min_samples_split": 2,
+        "n_estimators": 100
+      },
+      {
+        "max_depth": null,
+        "max_features": "sqrt",
+        "min_samples_leaf": 1,
+        "min_samples_split": 2,
+        "n_estimators": 200
+      },
+      {
+        "max_depth": null,
+        "max_features": "sqrt",
+        "min_samples_leaf": 1,
+        "min_samples_split": 2,
+        "n_estimators": 100
+      }
+    ]
+  },
+  "GradientBoosting": {
+    "best_params_per_fold": [
+      {
+        "learning_rate": 0.1,
+        "max_depth": 3,
+        "min_samples_leaf": 1,
+        "min_samples_split": 5,
+        "n_estimators": 200
+      },
+      {
+        "learning_rate": 0.1,
+        "max_depth": 5,
+        "min_samples_leaf": 2,
+        "min_samples_split": 5,
+        "n_estimators": 100
+      },
+      {
+        "learning_rate": 0.1,
+        "max_depth": 3,
+        "min_samples_leaf": 2,
+        "min_samples_split": 5,
+        "n_estimators": 200
+      },
+      {
+        "learning_rate": 0.1,
+        "max_depth": 3,
+        "min_samples_leaf": 2,
+        "min_samples_split": 2,
+        "n_estimators": 200
+      },
+      {
+        "learning_rate": 0.05,
+        "max_depth": 3,
+        "min_samples_leaf": 2,
+        "min_samples_split": 5,
+        "n_estimators": 200
+      }
+    ]
+  },
+  "AdaBoost": {
+    "best_params_per_fold": [
+      {
+        "learning_rate": 0.1,
+        "n_estimators": 200
+      },
+      {
+        "learning_rate": 0.1,
+        "n_estimators": 100
+      },
+      {
+        "learning_rate": 0.1,
+        "n_estimators": 200
+      },
+      {
+        "learning_rate": 0.1,
+        "n_estimators": 200
+      },
+      {
+        "learning_rate": 0.1,
+        "n_estimators": 200
+      }
+    ]
+  },
+  "KNN": {
+    "best_params_per_fold": [
+      {
+        "model__n_neighbors": 5,
+        "model__p": 2,
+        "model__weights": "distance"
+      },
+      {
+        "model__n_neighbors": 3,
+        "model__p": 2,
+        "model__weights": "distance"
+      },
+      {
+        "model__n_neighbors": 3,
+        "model__p": 1,
+        "model__weights": "distance"
+      },
+      {
+        "model__n_neighbors": 5,
+        "model__p": 1,
+        "model__weights": "distance"
+      },
+      {
+        "model__n_neighbors": 5,
+        "model__p": 1,
+        "model__weights": "distance"
+      }
+    ]
+  },
+  "MLP": {
+    "best_params_per_fold": [
+      {
+        "model__activation": "relu",
+        "model__alpha": 0.001,
+        "model__hidden_layer_sizes": [
+          100
+        ],
+        "model__learning_rate": "constant"
+      },
+      {
+        "model__activation": "relu",
+        "model__alpha": 0.001,
+        "model__hidden_layer_sizes": [
+          50,
+          50
+        ],
+        "model__learning_rate": "constant"
+      },
+      {
+        "model__activation": "relu",
+        "model__alpha": 0.001,
+        "model__hidden_layer_sizes": [
+          50,
+          50
+        ],
+        "model__learning_rate": "constant"
+      },
+      {
+        "model__activation": "relu",
+        "model__alpha": 0.001,
+        "model__hidden_layer_sizes": [
+          50,
+          50
+        ],
+        "model__learning_rate": "constant"
+      },
+      {
+        "model__activation": "relu",
+        "model__alpha": 0.0001,
+        "model__hidden_layer_sizes": [
+          50,
+          50
+        ],
+        "model__learning_rate": "constant"
+      }
+    ]
+  },
+  "XGBoost": {
+    "best_params_per_fold": [
+      {
+        "colsample_bytree": 0.8,
+        "learning_rate": 0.05,
+        "max_depth": 3,
+        "n_estimators": 200,
+        "subsample": 0.8
+      },
+      {
+        "colsample_bytree": 0.8,
+        "learning_rate": 0.05,
+        "max_depth": 3,
+        "n_estimators": 200,
+        "subsample": 0.8
+      },
+      {
+        "colsample_bytree": 1.0,
+        "learning_rate": 0.05,
+        "max_depth": 3,
+        "n_estimators": 200,
+        "subsample": 0.8
+      },
+      {
+        "colsample_bytree": 0.8,
+        "learning_rate": 0.05,
+        "max_depth": 3,
+        "n_estimators": 200,
+        "subsample": 0.8
+      },
+      {
+        "colsample_bytree": 1.0,
+        "learning_rate": 0.05,
+        "max_depth": 3,
+        "n_estimators": 200,
+        "subsample": 0.8
+      }
+    ]
+  }
+}
